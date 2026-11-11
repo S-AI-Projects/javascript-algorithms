@@ -1,0 +1,58 @@
+{
+  "command": "npm test -- --runInBand --watch=false --runTestsByPath src/algorithms/uncategorized/unique-paths/__test__/uniquePaths.test.js --json --outputFile=work/R51-T011/jest-results.json",
+  "tools": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "Python 3.9.6"
+  },
+  "tests": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "nonzero_test_count": true
+  },
+  "fixtures": [
+    {
+      "input": [
+        1,
+        1
+      ],
+      "expected": 1,
+      "actual": 1,
+      "status": "passed"
+    },
+    {
+      "input": [
+        3,
+        2
+      ],
+      "expected": 3,
+      "actual": 3,
+      "status": "passed"
+    },
+    {
+      "input": [
+        2,
+        3
+      ],
+      "expected": 3,
+      "actual": 3,
+      "status": "passed"
+    }
+  ],
+  "mutation_check": {
+    "input_before": {
+      "width": 3,
+      "height": 2
+    },
+    "input_after": {
+      "width": 3,
+      "height": 2
+    },
+    "first_result_expected": 3,
+    "first_result_actual": 3,
+    "second_result_expected": 3,
+    "second_result_actual": 3,
+    "status": "passed"
+  }
+}
