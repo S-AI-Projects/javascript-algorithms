@@ -3,9 +3,12 @@ import RadixSort from '../radix-sort/RadixSort';
 /**
  * Bucket Sort
  *
- * @param {number[]} arr
- * @param {number} bucketsNum
- * @return {number[]}
+ * Sorts an array of non-negative integers in ascending order without mutating it.
+ * Empty and single-element arrays are supported.
+ *
+ * @param {number[]} arr Array of non-negative integers.
+ * @param {number} [bucketsNum=1] Positive integer number of buckets.
+ * @return {number[]} A new array containing the sorted values.
  */
 export default function BucketSort(arr, bucketsNum = 1) {
   const buckets = new Array(bucketsNum).fill(null).map(() => []);

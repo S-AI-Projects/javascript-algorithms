@@ -1,0 +1,142 @@
+{
+  "versions": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "Python 3.9.6"
+  },
+  "install_command": "npm ci",
+  "focused_check": {
+    "command": "npm test -- --runInBand --runTestsByPath work/R51-T012/bucket-sort-boundary.test.js --json --outputFile=work/R51-T012/.focused-jest-results.json",
+    "test_count": {
+      "total": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    "exit_code": 0
+  },
+  "native_check": {
+    "command": "npm test -- --runInBand --json --outputFile=work/R51-T012/.native-jest-results.json",
+    "test_count": {
+      "total": 594,
+      "passed": 594,
+      "failed": 0
+    },
+    "exit_code": 0
+  },
+  "cases": [
+    {
+      "name": "empty collection",
+      "input": [],
+      "expected": [],
+      "actual": [],
+      "inputAfter": []
+    },
+    {
+      "name": "single-element collection",
+      "input": [
+        7
+      ],
+      "expected": [
+        7
+      ],
+      "actual": [
+        7
+      ],
+      "inputAfter": [
+        7
+      ]
+    },
+    {
+      "name": "unsorted values",
+      "input": [
+        3,
+        1,
+        2
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "actual": [
+        1,
+        2,
+        3
+      ],
+      "inputAfter": [
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "duplicate values",
+      "input": [
+        2,
+        2,
+        1
+      ],
+      "expected": [
+        1,
+        2,
+        2
+      ],
+      "actual": [
+        1,
+        2,
+        2
+      ],
+      "inputAfter": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "already ordered values",
+      "input": [
+        1,
+        2,
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "actual": [
+        1,
+        2,
+        3
+      ],
+      "inputAfter": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "reversed values",
+      "input": [
+        3,
+        2,
+        1
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "actual": [
+        1,
+        2,
+        3
+      ],
+      "inputAfter": [
+        3,
+        2,
+        1
+      ]
+    }
+  ]
+}

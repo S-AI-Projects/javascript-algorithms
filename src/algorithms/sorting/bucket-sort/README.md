@@ -19,6 +19,23 @@ Then, elements are sorted within each bin:
 
 ![Elements are sorted within each bin](./images/bucket_sort_2.png)
 
+## Supported inputs and boundaries
+
+`BucketSort` in [BucketSort.js](./BucketSort.js) sorts non-negative integer arrays
+in ascending order and returns a new array without mutating the input. It accepts
+an empty array and a single-element array; `bucketsNum` must be a positive
+integer and defaults to `1`. Bucket contents are sorted by
+[RadixSort](../radix-sort/RadixSort.js), which defines the integer-value limit.
+
+| Input | Expected result |
+| --- | --- |
+| `[]` (smallest collection) | `[]` |
+| `[7]` (smallest non-empty collection) | `[7]` |
+| `[3, 1, 2]` | `[1, 2, 3]` |
+| `[2, 2, 1]` | `[1, 2, 2]` |
+| `[1, 2, 3]` | `[1, 2, 3]` |
+| `[3, 2, 1]` | `[1, 2, 3]` |
+
 
 ## Complexity
 
