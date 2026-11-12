@@ -1,0 +1,15 @@
+{
+  "testCommand": "npm test -- --runInBand --runTestsByPath src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js --json --outputFile=work/R51-T014/jest-results.json",
+  "testExitCode": 0,
+  "mutationCheck": {
+    "command": "npm test -- --runInBand --runTestsByPath src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js --json --outputFile=jest-results.json",
+    "exitCode": 1,
+    "totalTests": 9,
+    "passedTests": 4,
+    "failedTests": 5,
+    "detected": true
+  },
+  "totalTests": 9,
+  "passedTests": 9,
+  "failedTests": 0
+}

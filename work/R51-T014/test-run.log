@@ -1,0 +1,14 @@
+
+> javascript-algorithms-and-data-structures@0.0.4 test
+> jest --runInBand --runTestsByPath src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js --json --outputFile=work/R51-T014/jest-results.json
+
+(node:57708) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js
+
+Test Suites: 1 passed, 1 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        0.251 s, estimated 1 s
+Ran all test suites within paths "src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js".
+Test results written to: work/R51-T014/jest-results.json
