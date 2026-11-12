@@ -16,6 +16,8 @@ function reverseTraversalRecursive(node, callback) {
 }
 
 /**
+ * Traverses the linked list from tail to head, calling the callback once
+ * with each node's value. Returns undefined and does not modify the list.
  * @param {LinkedList} linkedList
  * @param {traversalCallback} callback
  */
