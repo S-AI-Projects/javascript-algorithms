@@ -30,6 +30,11 @@ removed from **either end** — the front (head) or the back (tail) — in **O(1
 > **Note:** `size` is O(1) because the deque keeps a running element count that
 > is updated on every add and remove operation.
 
+For example, starting with an empty deque, `addBack(1)`, `addBack(2)`, and
+`addFront(0)` produce `toArray()` result `[0, 1, 2]`: the returned array is in
+front-to-back order. Each call to `toArray()` creates a fresh array; its elements
+are the original values and are not cloned.
+
 ## Complexity
 
 | Operation                    | Time |
