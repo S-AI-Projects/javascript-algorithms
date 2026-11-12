@@ -1,0 +1,174 @@
+
+> javascript-algorithms-and-data-structures@0.0.4 test
+> jest --runInBand --runTestsByPath src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js --json --outputFile=jest-results.json
+
+(node:57756) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js
+  ● SelectionSort › should return ascending output without mutating the input for the fixtures
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Array [
+    +   3,
+        1,
+        2,
+    -   3,
+      ]
+
+      27 |
+      28 | function assertSortedOutputPreservesInput(input, actual, expected) {
+    > 29 |   expect(actual).toEqual(expected);
+         |                  ^
+      30 |   expect(actual).toHaveLength(input.length);
+      31 |
+      32 |   for (let index = 1; index < actual.length; index += 1) {
+
+      at toEqual (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:29:18)
+      at assertSortedOutputPreservesInput (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:52:3)
+      at runInvariantCase (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:91:7)
+          at Array.forEach (<anonymous>)
+      at Object.forEach (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:90:27)
+
+  ● SelectionSort › should preserve ordering and multiplicities for 100 seeded numeric arrays
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 9
+    + Received  + 9
+
+      Array [
+    -   -80,
+    -   -62,
+    +   19,
+    +   13,
+        -31,
+    -   -29,
+    +   -80,
+    +   90,
+        -9,
+        -3,
+    -   -2,
+    -   13,
+    -   19,
+    -   19,
+    +   -62,
+    +   -29,
+    +   97,
+        77,
+        84,
+    +   -2,
+        86,
+    -   90,
+    -   97,
+    +   19,
+      ]
+
+      27 |
+      28 | function assertSortedOutputPreservesInput(input, actual, expected) {
+    > 29 |   expect(actual).toEqual(expected);
+         |                  ^
+      30 |   expect(actual).toHaveLength(input.length);
+      31 |
+      32 |   for (let index = 1; index < actual.length; index += 1) {
+
+      at toEqual (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:29:18)
+      at assertSortedOutputPreservesInput (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:52:3)
+      at runInvariantCase (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:100:7)
+          at Array.forEach (<anonymous>)
+      at Object.forEach (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:99:20)
+
+  ● SelectionSort › should sort array
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Array [
+    -   1,
+        2,
+    +   1,
+      ]
+
+      13 |     expect(sorter.sort([1])).toEqual([1]);
+      14 |     expect(sorter.sort([1, 2])).toEqual([1, 2]);
+    > 15 |     expect(sorter.sort([2, 1])).toEqual([1, 2]);
+         |                                 ^
+      16 |     expect(sorter.sort([3, 4, 2, 1, 0, 0, 4, 3, 4, 2])).toEqual([0, 0, 1, 2, 2, 3, 3, 4, 4, 4]);
+      17 |     expect(sorter.sort(sortedArr)).toEqual(sortedArr);
+      18 |     expect(sorter.sort(reverseArr)).toEqual(sortedArr);
+
+      at SortTester.toEqual [as testSort] (src/algorithms/sorting/SortTester.js:15:33)
+      at Object.testSort (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:117:16)
+
+  ● SelectionSort › should sort array with custom comparator
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Array [
+    -   "a",
+        "aa",
+    +   "a",
+      ]
+
+      40 |     expect(sorter.sort([''])).toEqual(['']);
+      41 |     expect(sorter.sort(['a'])).toEqual(['a']);
+    > 42 |     expect(sorter.sort(['aa', 'a'])).toEqual(['a', 'aa']);
+         |                                      ^
+      43 |     expect(sorter.sort(['aa', 'q', 'bbbb', 'ccc'])).toEqual(['q', 'aa', 'ccc', 'bbbb']);
+      44 |     expect(sorter.sort(['aa', 'aa'])).toEqual(['aa', 'aa']);
+      45 |   }
+
+      at SortTester.toEqual [as testSortWithCustomComparator] (src/algorithms/sorting/SortTester.js:42:38)
+      at Object.testSortWithCustomComparator (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:121:16)
+
+  ● SelectionSort › should sort negative numbers
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 6
+    + Received  + 6
+
+      Array [
+    -   -10,
+    -   -7,
+    -   -3,
+        -1,
+        0,
+    -   2,
+    -   3,
+        5,
+    -   13,
+    +   -10,
+        20,
+    +   13,
+    +   -7,
+    +   3,
+    +   2,
+    +   -3,
+      ]
+
+      23 |   static testNegativeNumbersSort(SortingClass) {
+      24 |     const sorter = new SortingClass();
+    > 25 |     expect(sorter.sort(negativeArr)).toEqual(negativeArrSorted);
+         |                                      ^
+      26 |   }
+      27 |
+      28 |   static testSortWithCustomComparator(SortingClass) {
+
+      at SortTester.toEqual [as testNegativeNumbersSort] (src/algorithms/sorting/SortTester.js:25:38)
+      at Object.testNegativeNumbersSort (src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js:125:16)
+
+Test Suites: 1 failed, 1 total
+Tests:       5 failed, 4 passed, 9 total
+Snapshots:   0 total
+Time:        0.202 s
+Ran all test suites within paths "src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js".
+Test results written to: jest-results.json
