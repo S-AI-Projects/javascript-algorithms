@@ -1,0 +1,104 @@
+
+> javascript-algorithms-and-data-structures@0.0.4 test
+> jest --runInBand --runTestsByPath src/algorithms/math/prime-factors/__test__/primeFactors.test.js --json --outputFile=jest-results.json
+
+(node:69963) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL src/algorithms/math/prime-factors/__test__/primeFactors.test.js
+  ● primeFactors › should find prime factors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   1,
+    + ]
+
+      17 | describe('primeFactors', () => {
+      18 |   it('should find prime factors', () => {
+    > 19 |     expect(primeFactors(1)).toEqual([]);
+         |                             ^
+      20 |     expect(primeFactors(2)).toEqual([2]);
+      21 |     expect(primeFactors(3)).toEqual([3]);
+      22 |     expect(primeFactors(4)).toEqual([2, 2]);
+
+      at Object.toEqual (src/algorithms/math/prime-factors/__test__/primeFactors.test.js:19:29)
+
+  ● primeFactors › should give correct deviation between exact and approx counts
+
+    expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 136.651
+    Received: Infinity
+
+    Expected precision:    2
+    Expected difference: < 0.005
+    Received difference:   Infinity
+
+      54 |   it('should give correct deviation between exact and approx counts', () => {
+      55 |     expect(approximationError(primeFactors(2).length, hardyRamanujan(2)))
+    > 56 |       .toBeCloseTo(136.651, 2);
+         |        ^
+      57 |
+      58 |     expect(approximationError(primeFactors(4).length, hardyRamanujan(2)))
+      59 |       .toBeCloseTo(118.325, 2);
+
+      at Object.toBeCloseTo (src/algorithms/math/prime-factors/__test__/primeFactors.test.js:56:8)
+
+  ● primeFactors › supported domain fixtures around 1, 2, 9, 11 and sieve through 12 › finds correct prime factors across the domain around 1, 2, 9, and 11
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   1,
+    + ]
+
+      169 |       domainFixtures.forEach(({ name, input, expected }) => {
+      170 |         const actual = primeFactors(input);
+    > 171 |         expect(actual).toEqual(expected);
+          |                        ^
+      172 |         evidenceCases.push({
+      173 |           fixture: name,
+      174 |           input,
+
+      at toEqual (src/algorithms/math/prime-factors/__test__/primeFactors.test.js:171:24)
+          at Array.forEach (<anonymous>)
+      at Object.forEach (src/algorithms/math/prime-factors/__test__/primeFactors.test.js:169:22)
+
+  ● primeFactors › supported domain fixtures around 1, 2, 9, 11 and sieve through 12 › respects sieve primes through 12 exclusive upper bound
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 1
+
+    - Array [
+    -   2,
+    - ]
+    + Array []
+
+      183 |       sieveExclusiveFixtures.forEach(({ name, input, expected }) => {
+      184 |         const actual = primeFactors(input);
+    > 185 |         expect(actual).toEqual(expected);
+          |                        ^
+      186 |         evidenceCases.push({
+      187 |           fixture: name,
+      188 |           input,
+
+      at toEqual (src/algorithms/math/prime-factors/__test__/primeFactors.test.js:185:24)
+          at Array.forEach (<anonymous>)
+      at Object.forEach (src/algorithms/math/prime-factors/__test__/primeFactors.test.js:183:30)
+
+Test Suites: 1 failed, 1 total
+Tests:       4 failed, 2 passed, 6 total
+Snapshots:   0 total
+Time:        0.182 s
+Ran all test suites within paths "src/algorithms/math/prime-factors/__test__/primeFactors.test.js".
+Test results written to: jest-results.json

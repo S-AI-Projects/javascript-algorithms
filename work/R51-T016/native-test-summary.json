@@ -1,0 +1,9 @@
+{
+  "command": "npm test -- --runInBand --watch=false --json --outputFile=work/R51-T016/jest-results.json",
+  "exit_code": 0,
+  "total_tests": 590,
+  "passed_tests": 590,
+  "failed_tests": 0,
+  "pending_tests": 0,
+  "test_suites": 178
+}
