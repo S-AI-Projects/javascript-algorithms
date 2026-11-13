@@ -2,7 +2,7 @@
 > javascript-algorithms-and-data-structures@0.0.4 test
 > jest --runInBand --runTestsByPath src/algorithms/math/prime-factors/__test__/primeFactors.test.js --json --outputFile=jest-results.json
 
-(node:69963) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(node:70703) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
 (Use `node --trace-warnings ...` to show where the warning was created)
 FAIL src/algorithms/math/prime-factors/__test__/primeFactors.test.js
   ● primeFactors › should find prime factors
@@ -99,6 +99,6 @@ FAIL src/algorithms/math/prime-factors/__test__/primeFactors.test.js
 Test Suites: 1 failed, 1 total
 Tests:       4 failed, 2 passed, 6 total
 Snapshots:   0 total
-Time:        0.182 s
+Time:        0.18 s
 Ran all test suites within paths "src/algorithms/math/prime-factors/__test__/primeFactors.test.js".
 Test results written to: jest-results.json
