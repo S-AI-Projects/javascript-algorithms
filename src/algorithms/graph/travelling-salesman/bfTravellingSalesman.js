@@ -1,10 +1,44 @@
 /**
- * Get all possible paths
- * @param {GraphVertex} startVertex
- * @param {GraphVertex[][]} [paths]
- * @param {GraphVertex[]} [path]
+ * Find all maximal simple paths starting from a given vertex using recursive depth-first search.
+ *
+ * Traversal and State Transitions:
+ * - Input state: Starts at `startVertex` with current `path` prefix (default `[]`) and
+ *   accumulator `paths` (default `[]`).
+ * - Intermediate state: Clones `path` into `currentPath`, appends `startVertex`,
+ *   computes `visitedSet` from `currentPath` to prevent cycles, and retrieves
+ *   unvisited neighbors of `startVertex`.
+ * - Decisive state transition: When `unvisitedNeighbors.length === 0`, all reachable
+ *   neighbors from this branch have been visited, marking the current path complete.
+ *   The branch terminates recursion, pushes `currentPath` to `paths`, and backtracks.
+ *   Otherwise, recurses into each unvisited neighbor.
+ *
+ * Worked Example:
+ * ```javascript
+ * import GraphVertex from '../../../../data-structures/graph/GraphVertex';
+ * import GraphEdge from '../../../../data-structures/graph/GraphEdge';
+ * import Graph from '../../../../data-structures/graph/Graph';
+ * import { findAllPaths } from './bfTravellingSalesman';
+ *
+ * const vertexA = new GraphVertex('A');
+ * const vertexB = new GraphVertex('B');
+ * const vertexC = new GraphVertex('C');
+ *
+ * const graph = new Graph();
+ * graph
+ *   .addEdge(new GraphEdge(vertexA, vertexB))
+ *   .addEdge(new GraphEdge(vertexB, vertexC))
+ *   .addEdge(new GraphEdge(vertexA, vertexC));
+ *
+ * const paths = findAllPaths(vertexA);
+ * // paths.map(p => p.map(v => v.getKey())) => [['A', 'B', 'C'], ['A', 'C', 'B']]
+ * ```
+ *
+ * @param {GraphVertex} startVertex - Starting vertex for path exploration.
+ * @param {GraphVertex[][]} [paths=[]] - Accumulator array collecting completed paths.
+ * @param {GraphVertex[]} [path=[]] - Current path prefix leading up to startVertex.
+ * @return {GraphVertex[][]} All complete maximal paths originating from startVertex.
  */
-function findAllPaths(startVertex, paths = [], path = []) {
+export function findAllPaths(startVertex, paths = [], path = []) {
   // Clone path.
   const currentPath = [...path];
 

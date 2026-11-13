@@ -1,0 +1,94 @@
+
+> javascript-algorithms-and-data-structures@0.0.4 test
+> jest --runInBand --runTestsByPath src/algorithms/graph/travelling-salesman/__test__/bfTravellingSalesman.test.js --json --outputFile=jest-results.json
+
+(node:75463) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL src/algorithms/graph/travelling-salesman/__test__/bfTravellingSalesman.test.js
+  ● bfTravellingSalesman › should solve problem for simple graph
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 4
+    Received: 0
+
+      43 |     const salesmanPath = bfTravellingSalesman(graph);
+      44 |
+    > 45 |     expect(salesmanPath.length).toBe(4);
+         |                                 ^
+      46 |
+      47 |     expect(salesmanPath[0].getKey()).toEqual(vertexA.getKey());
+      48 |     expect(salesmanPath[1].getKey()).toEqual(vertexB.getKey());
+
+      at Object.toBe (src/algorithms/graph/travelling-salesman/__test__/bfTravellingSalesman.test.js:45:33)
+
+  ● bfTravellingSalesman › findAllPaths › should find all paths for the smallest valid input (isolated single vertex)
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+      73 |       const paths = findAllPaths(vertexA);
+      74 |
+    > 75 |       expect(paths.length).toBe(1);
+         |                            ^
+      76 |       expect(paths[0].length).toBe(1);
+      77 |       expect(paths[0][0]).toBe(vertexA);
+      78 |
+
+      at Object.toBe (src/algorithms/graph/travelling-salesman/__test__/bfTravellingSalesman.test.js:75:28)
+
+  ● bfTravellingSalesman › findAllPaths › should find all paths for an ordinary input (triangle graph)
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 1
+
+      146 |       const paths = findAllPaths(vertexA);
+      147 |
+    > 148 |       expect(paths.length).toBe(2);
+          |                            ^
+      149 |       expect(paths[0].map((v) => v.getKey())).toEqual(expectedPathKeys[0]);
+      150 |       expect(paths[1].map((v) => v.getKey())).toEqual(expectedPathKeys[1]);
+      151 |
+
+      at Object.toBe (src/algorithms/graph/travelling-salesman/__test__/bfTravellingSalesman.test.js:148:28)
+
+  ● bfTravellingSalesman › findAllPaths › should execute the documentation example and produce the asserted output
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 7
+    + Received  + 0
+
+      Array [
+        Array [
+          "A",
+    -     "B",
+    -     "C",
+    -   ],
+    -   Array [
+    -     "A",
+    -     "C",
+    -     "B",
+        ],
+      ]
+
+      197 |       ];
+      198 |
+    > 199 |       expect(displayedOutput).toEqual(expectedDisplayedOutput);
+          |                               ^
+      200 |
+      201 |       evidenceCases.push({
+      202 |         name: 'documentation worked example',
+
+      at Object.toEqual (src/algorithms/graph/travelling-salesman/__test__/bfTravellingSalesman.test.js:199:31)
+
+Test Suites: 1 failed, 1 total
+Tests:       4 failed, 1 passed, 5 total
+Snapshots:   0 total
+Time:        0.227 s
+Ran all test suites within paths "src/algorithms/graph/travelling-salesman/__test__/bfTravellingSalesman.test.js".
+Test results written to: jest-results.json
