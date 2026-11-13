@@ -1,0 +1,139 @@
+[
+  {
+    "name": "smallest valid input (isolated single vertex)",
+    "fixture": "smallest valid input",
+    "input": {
+      "startVertex": "A",
+      "graphEdges": []
+    },
+    "preconditions": [
+      "bfTravellingSalesman.js:7: default parameter paths = [], path = []",
+      "bfTravellingSalesman.js:17: updatedAccumulator[vertex.getKey()] requires getKey()",
+      "bfTravellingSalesman.js:23: startVertex.getNeighbors() requires getNeighbors()",
+      "bfTravellingSalesman.js:28: !unvisitedNeighbors.length decisive base transition"
+    ],
+    "decisive_state_transition": "unvisitedNeighbors.length === 0 triggers base case at line 28, saving [A]",
+    "expected": [
+      [
+        "A"
+      ]
+    ],
+    "actual": [
+      [
+        "A"
+      ]
+    ],
+    "status": "passed"
+  },
+  {
+    "name": "ordinary input (triangle graph)",
+    "fixture": "ordinary input",
+    "input": {
+      "startVertex": "A",
+      "graphEdges": [
+        "A-B",
+        "B-C",
+        "A-C"
+      ]
+    },
+    "preconditions": [
+      "bfTravellingSalesman.js:17: updatedAccumulator accumulates visited vertices",
+      "bfTravellingSalesman.js:23: startVertex.getNeighbors() returns adjacent vertices",
+      "bfTravellingSalesman.js:24: !visitedSet[neighbor.getKey()] filters visited",
+      "bfTravellingSalesman.js:28: !unvisitedNeighbors.length decisive transition",
+      "bfTravellingSalesman.js:35-38: loop advances along each unvisited neighbor"
+    ],
+    "decisive_state_transition": "unvisitedNeighbors.length === 0 triggers base case at line 28 for each maximal branch",
+    "expected": [
+      [
+        "A",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "C",
+        "B"
+      ]
+    ],
+    "actual": [
+      [
+        "A",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "C",
+        "B"
+      ]
+    ],
+    "status": "passed"
+  },
+  {
+    "name": "documentation worked example",
+    "fixture": "documentation example",
+    "input": {
+      "startVertex": "A",
+      "graphEdges": [
+        "A-B",
+        "B-C",
+        "A-C"
+      ]
+    },
+    "preconditions": [
+      "bfTravellingSalesman.js:17: vertex.getKey() identifier check",
+      "bfTravellingSalesman.js:23: startVertex.getNeighbors() neighbor exploration",
+      "bfTravellingSalesman.js:28: !unvisitedNeighbors.length decisive terminal check"
+    ],
+    "decisive_state_transition": "Base case line 28 pushes completed path whenever unvisitedNeighbors is empty",
+    "expected": [
+      [
+        "A",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "C",
+        "B"
+      ]
+    ],
+    "actual": [
+      [
+        "A",
+        "B",
+        "C"
+      ],
+      [
+        "A",
+        "C",
+        "B"
+      ]
+    ],
+    "status": "passed"
+  },
+  {
+    "name": "non-mutation of input prefix array and vertex neighbors",
+    "fixture": "immutability check",
+    "input": {
+      "startVertex": "A",
+      "pathPrefix": [
+        "Z"
+      ]
+    },
+    "preconditions": [
+      "bfTravellingSalesman.js:9: const currentPath = [...path] isolates traversal"
+    ],
+    "decisive_state_transition": "Array cloning preserves caller input while recursion accumulates paths",
+    "expected": {
+      "externalPrefixUnchanged": true,
+      "pathsAccumulatorReturned": true
+    },
+    "actual": {
+      "externalPrefixUnchanged": true,
+      "pathsAccumulatorReturned": true
+    },
+    "status": "passed"
+  }
+]
