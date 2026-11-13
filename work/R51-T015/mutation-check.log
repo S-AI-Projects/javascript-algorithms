@@ -2,7 +2,7 @@
 > javascript-algorithms-and-data-structures@0.0.4 test
 > jest --runInBand --runTestsByPath src/algorithms/image-processing/seam-carving/__tests__/resizeImageWidth.node.js --json --outputFile=jest-results.json
 
-(node:64083) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(node:64637) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
 (Use `node --trace-warnings ...` to show where the warning was created)
 FAIL src/algorithms/image-processing/seam-carving/__tests__/resizeImageWidth.node.js
   ● resizeImageWidth › should perform content-aware image width reduction
@@ -48,6 +48,6 @@ FAIL src/algorithms/image-processing/seam-carving/__tests__/resizeImageWidth.nod
 Test Suites: 1 failed, 1 total
 Tests:       2 failed, 2 total
 Snapshots:   0 total
-Time:        1.996 s
+Time:        2.486 s
 Ran all test suites within paths "src/algorithms/image-processing/seam-carving/__tests__/resizeImageWidth.node.js".
 Test results written to: jest-results.json
