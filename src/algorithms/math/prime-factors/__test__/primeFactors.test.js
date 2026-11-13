@@ -1,3 +1,4 @@
+import fs from 'fs';
 import {
   primeFactors,
   hardyRamanujan,
@@ -83,5 +84,143 @@ describe('primeFactors', () => {
 
     expect(approximationError(primeFactors(873452453).length, hardyRamanujan(873452453)))
       .toBeCloseTo(0.823, 2);
+  });
+
+  describe('supported domain fixtures around 1, 2, 9, 11 and sieve through 12', () => {
+    const evidenceCases = [];
+
+    const domainFixtures = [
+      {
+        name: 'domain around 1 (lower boundary)',
+        input: 1,
+        expected: [],
+      },
+      {
+        name: 'domain around 2 (first prime)',
+        input: 2,
+        expected: [2],
+      },
+      {
+        name: 'domain around 2 (first odd prime)',
+        input: 3,
+        expected: [3],
+      },
+      {
+        name: 'domain around 2 (smallest composite)',
+        input: 4,
+        expected: [2, 2],
+      },
+      {
+        name: 'domain around 9 (power of 2: 2^3)',
+        input: 8,
+        expected: [2, 2, 2],
+      },
+      {
+        name: 'domain around 9 (square of prime: 3^2)',
+        input: 9,
+        expected: [3, 3],
+      },
+      {
+        name: 'domain around 9 (composite product 2 * 5)',
+        input: 10,
+        expected: [2, 5],
+      },
+      {
+        name: 'domain around 11 (prime 11)',
+        input: 11,
+        expected: [11],
+      },
+      {
+        name: 'exclusive upper bound boundary 12 (composite 2 * 2 * 3)',
+        input: 12,
+        expected: [2, 2, 3],
+      },
+    ];
+
+    const sieveExclusiveFixtures = [
+      {
+        name: 'sieve through 12 prime: 2',
+        input: 2,
+        expected: [2],
+      },
+      {
+        name: 'sieve through 12 prime: 3',
+        input: 3,
+        expected: [3],
+      },
+      {
+        name: 'sieve through 12 prime: 5',
+        input: 5,
+        expected: [5],
+      },
+      {
+        name: 'sieve through 12 prime: 7',
+        input: 7,
+        expected: [7],
+      },
+      {
+        name: 'sieve through 12 prime: 11',
+        input: 11,
+        expected: [11],
+      },
+    ];
+
+    it('finds correct prime factors across the domain around 1, 2, 9, and 11', () => {
+      domainFixtures.forEach(({ name, input, expected }) => {
+        const actual = primeFactors(input);
+        expect(actual).toEqual(expected);
+        evidenceCases.push({
+          fixture: name,
+          input,
+          expected,
+          actual,
+          status: 'passed',
+        });
+      });
+    });
+
+    it('respects sieve primes through 12 exclusive upper bound', () => {
+      sieveExclusiveFixtures.forEach(({ name, input, expected }) => {
+        const actual = primeFactors(input);
+        expect(actual).toEqual(expected);
+        evidenceCases.push({
+          fixture: name,
+          input,
+          expected,
+          actual,
+          status: 'passed',
+        });
+      });
+    });
+
+    it('is a deterministic pure function and preserves argument non-mutation', () => {
+      [1, 2, 8, 9, 11, 12].forEach((n) => {
+        const inputBefore = n;
+        const result1 = primeFactors(n);
+        const result2 = primeFactors(n);
+
+        expect(result1).toEqual(result2);
+        expect(result1).not.toBe(result2);
+        expect(n).toBe(inputBefore);
+
+        evidenceCases.push({
+          fixture: `purity and non-mutation for n=${n}`,
+          input: n,
+          expected: result1,
+          actual: result2,
+          status: 'passed',
+        });
+      });
+    });
+
+    afterAll(() => {
+      if (process.env.PRIME_FACTORS_EVIDENCE_PATH) {
+        fs.writeFileSync(
+          process.env.PRIME_FACTORS_EVIDENCE_PATH,
+          JSON.stringify(evidenceCases, null, 2),
+          'utf-8',
+        );
+      }
+    });
   });
 });
