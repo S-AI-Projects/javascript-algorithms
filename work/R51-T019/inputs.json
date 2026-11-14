@@ -1,0 +1,8 @@
+{
+  "operation": "deleteTail",
+  "seed": 19019,
+  "sizes": [1000, 10000, 50000],
+  "repetitions": 5,
+  "fixture": ["A", "B", "C"],
+  "smallestList": ["only"]
+}

@@ -1,0 +1,260 @@
+{
+  "operation": "deleteTail",
+  "inputSizeVariable": "n (number of nodes)",
+  "seed": 19019,
+  "repetitionsPerSize": 5,
+  "sizes": [
+    1000,
+    10000,
+    50000
+  ],
+  "timingScope": "deleteTail() only; list construction and correctness checks are untimed",
+  "toolVersions": {
+    "node": "v26.12.1",
+    "v8": "14.6.202.34-node.40",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "measurements": [
+    {
+      "size": 1000,
+      "samples": [
+        {
+          "expected": {
+            "deletedValue": 4246103579,
+            "newTailValue": 3167480492,
+            "remainingNodes": 999
+          },
+          "actual": {
+            "deletedValue": 4246103579,
+            "newTailValue": 3167480492,
+            "remainingNodes": 999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.011834
+        },
+        {
+          "expected": {
+            "deletedValue": 964660668,
+            "newTailValue": 3392586129,
+            "remainingNodes": 999
+          },
+          "actual": {
+            "deletedValue": 964660668,
+            "newTailValue": 3392586129,
+            "remainingNodes": 999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.009958
+        },
+        {
+          "expected": {
+            "deletedValue": 1978185053,
+            "newTailValue": 3617691766,
+            "remainingNodes": 999
+          },
+          "actual": {
+            "deletedValue": 1978185053,
+            "newTailValue": 3617691766,
+            "remainingNodes": 999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.012458
+        },
+        {
+          "expected": {
+            "deletedValue": 2991709438,
+            "newTailValue": 3842797403,
+            "remainingNodes": 999
+          },
+          "actual": {
+            "deletedValue": 2991709438,
+            "newTailValue": 3842797403,
+            "remainingNodes": 999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.00625
+        },
+        {
+          "expected": {
+            "deletedValue": 4005233823,
+            "newTailValue": 4067903040,
+            "remainingNodes": 999
+          },
+          "actual": {
+            "deletedValue": 4005233823,
+            "newTailValue": 4067903040,
+            "remainingNodes": 999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.002916
+        }
+      ],
+      "medianMilliseconds": 0.009958,
+      "rangeMilliseconds": {
+        "minimum": 0.002916,
+        "maximum": 0.012458
+      }
+    },
+    {
+      "size": 10000,
+      "samples": [
+        {
+          "expected": {
+            "deletedValue": 2680160107,
+            "newTailValue": 3154273596,
+            "remainingNodes": 9999
+          },
+          "actual": {
+            "deletedValue": 2680160107,
+            "newTailValue": 3154273596,
+            "remainingNodes": 9999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.020625
+        },
+        {
+          "expected": {
+            "deletedValue": 3924287404,
+            "newTailValue": 950554433,
+            "remainingNodes": 9999
+          },
+          "actual": {
+            "deletedValue": 3924287404,
+            "newTailValue": 950554433,
+            "remainingNodes": 9999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.021917
+        },
+        {
+          "expected": {
+            "deletedValue": 873447405,
+            "newTailValue": 3041802566,
+            "remainingNodes": 9999
+          },
+          "actual": {
+            "deletedValue": 873447405,
+            "newTailValue": 3041802566,
+            "remainingNodes": 9999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.019667
+        },
+        {
+          "expected": {
+            "deletedValue": 2117574702,
+            "newTailValue": 838083403,
+            "remainingNodes": 9999
+          },
+          "actual": {
+            "deletedValue": 2117574702,
+            "newTailValue": 838083403,
+            "remainingNodes": 9999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.019833
+        },
+        {
+          "expected": {
+            "deletedValue": 3361701999,
+            "newTailValue": 2929331536,
+            "remainingNodes": 9999
+          },
+          "actual": {
+            "deletedValue": 3361701999,
+            "newTailValue": 2929331536,
+            "remainingNodes": 9999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.020375
+        }
+      ],
+      "medianMilliseconds": 0.020375,
+      "rangeMilliseconds": {
+        "minimum": 0.019667,
+        "maximum": 0.021917
+      }
+    },
+    {
+      "size": 50000,
+      "samples": [
+        {
+          "expected": {
+            "deletedValue": 299584491,
+            "newTailValue": 3713024956,
+            "remainingNodes": 49999
+          },
+          "actual": {
+            "deletedValue": 299584491,
+            "newTailValue": 3713024956,
+            "remainingNodes": 49999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.104
+        },
+        {
+          "expected": {
+            "deletedValue": 2099989804,
+            "newTailValue": 2301596353,
+            "remainingNodes": 49999
+          },
+          "actual": {
+            "deletedValue": 2099989804,
+            "newTailValue": 2301596353,
+            "remainingNodes": 49999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.12125
+        },
+        {
+          "expected": {
+            "deletedValue": 3900395117,
+            "newTailValue": 890167750,
+            "remainingNodes": 49999
+          },
+          "actual": {
+            "deletedValue": 3900395117,
+            "newTailValue": 890167750,
+            "remainingNodes": 49999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.089625
+        },
+        {
+          "expected": {
+            "deletedValue": 1405833134,
+            "newTailValue": 3773706443,
+            "remainingNodes": 49999
+          },
+          "actual": {
+            "deletedValue": 1405833134,
+            "newTailValue": 3773706443,
+            "remainingNodes": 49999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.08175
+        },
+        {
+          "expected": {
+            "deletedValue": 3206238447,
+            "newTailValue": 2362277840,
+            "remainingNodes": 49999
+          },
+          "actual": {
+            "deletedValue": 3206238447,
+            "newTailValue": 2362277840,
+            "remainingNodes": 49999,
+            "newTailNextIsNull": true
+          },
+          "elapsedMilliseconds": 0.0845
+        }
+      ],
+      "medianMilliseconds": 0.089625,
+      "rangeMilliseconds": {
+        "minimum": 0.08175,
+        "maximum": 0.12125
+      }
+    }
+  ]
+}

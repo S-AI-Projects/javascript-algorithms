@@ -1,0 +1,30 @@
+{
+  "command": "npm test -- --runInBand --json '--outputFile=/Users/ujjwal/Desktop/untitled folder/untitled folder/javascript-algorithms/work/R51-T019/jest-results.json'",
+  "returnCode": 0,
+  "passedTests": 589,
+  "failedTests": 0,
+  "totalTests": 589,
+  "inputs": {
+    "operation": "deleteTail",
+    "seed": 19019,
+    "sizes": [
+      1000,
+      10000,
+      50000
+    ],
+    "repetitions": 5,
+    "fixture": [
+      "A",
+      "B",
+      "C"
+    ],
+    "smallestList": [
+      "only"
+    ]
+  },
+  "toolVersions": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "Python 3.9.6"
+  }
+}

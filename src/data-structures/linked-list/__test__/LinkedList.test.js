@@ -254,6 +254,26 @@ describe('LinkedList', () => {
     expect(linkedList.toArray().join(',')).toBe('1,2,3');
   });
 
+  it('should preserve values and links for three nodes and a singleton', () => {
+    const linkedList = new LinkedList();
+    expect(linkedList.head).toBeNull();
+    expect(linkedList.tail).toBeNull();
+
+    linkedList.append('A').append('B').append('C');
+
+    const [nodeA, nodeB, nodeC] = linkedList.toArray();
+    expect([nodeA.value, nodeB.value, nodeC.value]).toEqual(['A', 'B', 'C']);
+    expect(nodeA.next).toBe(nodeB);
+    expect(nodeB.next).toBe(nodeC);
+    expect(nodeC.next).toBeNull();
+    expect(linkedList.tail).toBe(nodeC);
+
+    const singleton = new LinkedList().append('only');
+    expect(singleton.head.value).toBe('only');
+    expect(singleton.tail).toBe(singleton.head);
+    expect(singleton.head.next).toBeNull();
+  });
+
   it('should reverse linked list', () => {
     const linkedList = new LinkedList();
 

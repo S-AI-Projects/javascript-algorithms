@@ -160,6 +160,8 @@ export default class LinkedList {
 
   /**
    * @return {LinkedListNode}
+   * Time complexity: O(n) worst case, where n is the number of nodes.
+   * Space complexity: O(1).
    */
   deleteTail() {
     const deletedTail = this.tail;
