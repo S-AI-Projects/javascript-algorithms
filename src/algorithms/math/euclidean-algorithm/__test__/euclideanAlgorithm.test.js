@@ -1,6 +1,18 @@
 import euclideanAlgorithm from '../euclideanAlgorithm';
 
 describe('euclideanAlgorithm', () => {
+  // euclideanAlgorithm.js:3-7 declares two numeric inputs; line 14 returns a
+  // when the second absolute input is zero. By convention, gcd(0, 0) is 0.
+  it('returns zero for the smallest supported input pair', () => {
+    expect(euclideanAlgorithm(0, 0)).toBe(0);
+  });
+
+  // euclideanAlgorithm.js:3-7 accepts these numeric inputs. Independently:
+  // 252 = 2 * 105 + 42, 105 = 2 * 42 + 21, and 42 = 2 * 21.
+  it('calculates the GCD for ordinary non-divisible inputs', () => {
+    expect(euclideanAlgorithm(252, 105)).toBe(21);
+  });
+
   it('should calculate GCD recursively', () => {
     expect(euclideanAlgorithm(0, 0)).toBe(0);
     expect(euclideanAlgorithm(2, 0)).toBe(2);
