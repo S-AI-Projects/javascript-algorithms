@@ -1,0 +1,50 @@
+{
+  "behavior_contract": {
+    "result": "A number, as documented at euclideanAlgorithm.js:5.",
+    "inputs": "Two numeric primitive arguments, documented at euclideanAlgorithm.js:3-4.",
+    "mutation": "Scalar arguments cannot be mutated; the function has no external state."
+  },
+  "inputs_and_expected_outputs": [
+    {
+      "inputs": [
+        0,
+        0
+      ],
+      "expected": 0,
+      "independent_calculation": "By the supported gcd(0, 0) = 0 convention.",
+      "test": "returns zero for the smallest supported input pair"
+    },
+    {
+      "inputs": [
+        252,
+        105
+      ],
+      "expected": 21,
+      "independent_calculation": "252 = 2*105 + 42; 105 = 2*42 + 21; 42 = 2*21.",
+      "test": "calculates the GCD for ordinary non-divisible inputs"
+    }
+  ],
+  "native_check": {
+    "command": "npm test -- --runInBand",
+    "passed": 589,
+    "total": 589,
+    "failed": 0
+  },
+  "mutation_check": {
+    "command": "npm test -- --runInBand --runTestsByPath work/R51-T020/mutation-806_xxbq/euclideanAlgorithm.mutation.test.js",
+    "mutation": "Changed the base-case comparison from b === 0 to b >= 0.",
+    "exit_code": 1,
+    "failing_assertions": [
+      "calculates the GCD for ordinary non-divisible inputs"
+    ],
+    "failed": 1,
+    "passed": 1,
+    "total": 2,
+    "semantic_mismatch": "Expected 21; received 252 for inputs [252, 105]."
+  },
+  "versions": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "3.9.6"
+  }
+}
