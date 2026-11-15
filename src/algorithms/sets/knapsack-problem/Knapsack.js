@@ -72,6 +72,15 @@ export default class Knapsack {
     // Create knapsack values matrix.
     const numberOfRows = this.possibleItems.length;
     const numberOfColumns = this.weightLimit;
+
+    // Matrix contract:
+    // - Rows represent the available items.
+    // - Columns represent capacities from 0 to weightLimit.
+    // - matrix[i][w] stores the maximum value achievable
+    //   using items from index 0 to i with capacity w.
+    // - The matrix is initialized and filled inside this method.
+    // - It is an internal implementation detail and is not returned.
+
     const knapsackMatrix = Array(numberOfRows).fill(null).map(() => {
       return Array(numberOfColumns + 1).fill(null);
     });
@@ -119,6 +128,15 @@ export default class Knapsack {
     // to the knapsack.
     let itemIndex = this.possibleItems.length - 1;
     let weightIndex = this.weightLimit;
+
+    // Handle the case when there is only one item.
+    if (this.possibleItems.length === 1) {
+      const item = this.possibleItems[0];
+
+      if (item.weight <= this.weightLimit && item.value > 0) {
+        this.selectedItems.push(item);
+      }
+    }
 
     while (itemIndex > 0) {
       const currentItem = this.possibleItems[itemIndex];

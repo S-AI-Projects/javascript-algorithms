@@ -159,4 +159,30 @@ describe('Knapsack', () => {
     expect(knapsack.selectedItems[3].toString()).toBe('v12 w3 x 1');
     expect(knapsack.selectedItems[4].toString()).toBe('v5 w2 x 2');
   });
+  it('should solve 0/1 knapsack problem with a single item', () => {
+    const possibleKnapsackItems = [
+      new KnapsackItem({ value: 10, weight: 2 }),
+    ];
+
+    const knapsack = new Knapsack(possibleKnapsackItems, 5);
+
+    knapsack.solveZeroOneKnapsackProblem();
+
+    expect(knapsack.totalValue).toBe(10);
+    expect(knapsack.totalWeight).toBe(2);
+    expect(knapsack.selectedItems.length).toBe(1);
+  });
+  it('should not select an item with zero value', () => {
+    const possibleKnapsackItems = [
+      new KnapsackItem({ value: 0, weight: 1 }),
+    ];
+
+    const knapsack = new Knapsack(possibleKnapsackItems, 2);
+
+    knapsack.solveZeroOneKnapsackProblem();
+
+    expect(knapsack.totalValue).toBe(0);
+    expect(knapsack.totalWeight).toBe(0);
+    expect(knapsack.selectedItems.length).toBe(0);
+  });
 });
