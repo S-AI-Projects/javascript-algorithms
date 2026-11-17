@@ -1,0 +1,161 @@
+{
+  "task": "R51-T030",
+  "issue": 30,
+  "item": "src/algorithms/cryptography/hill-cipher",
+  "behavior_contract": {
+    "target_function": "generateKeyMatrix(keyString) at hillCipher.js:13",
+    "inputs": "keyString (string whose length must have an integer square root, e.g. 1, 4, 9)",
+    "result": "number[][] matrix of dimensions [matrixSize, matrixSize] with shifted char codes",
+    "mutation_behavior": "Pure function; does not mutate input string; returns newly allocated 2D array",
+    "external_dependencies": [
+      "../../math/matrix/Matrix (mtrx.generate)",
+      "Math.sqrt",
+      "Number.isInteger",
+      "String.prototype.codePointAt"
+    ]
+  },
+  "fixture_and_invariants": {
+    "small_rectangular_matrix": "Rectangular matrix inputs are NOT supported by generateKeyMatrix because Hill cipher key matrices must be square (dimensions N x N). Calling generateKeyMatrix with rectangular key lengths such as 2 ('AB') or 6 ('ABCDEF') throws Error: \"Invalid key string length. The square root of the key string must be an integer\".",
+    "1x1_matrix": "Smallest valid matrix fixture: keyString 'A' of length 1 (Math.sqrt(1) = 1), producing 1x1 matrix [[0]].",
+    "zero_containing_matrix": "Tested with keyString 'A' (yielding [[0]]), keyString 'ABCD' (yielding [[0, 1], [2, 3]]), and keyString 'HILLMAGIC' (yielding [[7, 8, 11], [11, 12, 0], [6, 8, 2]]). All contain zero cells.",
+    "determinant_interface_note": "As specified in the goal instructions, determinant([[1,2],[3,4]]) = -2 applies strictly to a determinant interface. generateKeyMatrix generates the key matrix representation, not its determinant."
+  },
+  "inputs_and_expected_outputs": [
+    {
+      "input": "A",
+      "expected": [
+        [
+          0
+        ]
+      ],
+      "actual_original": [
+        [
+          0
+        ]
+      ],
+      "actual_mutant": [
+        [
+          0
+        ]
+      ],
+      "dimensions": [
+        1,
+        1
+      ],
+      "independent_calculation": "'A'.codePointAt(0) % 65 = 65 % 65 = 0",
+      "test": "generates a 1x1 key matrix for a single character key string"
+    },
+    {
+      "input": "ABCD",
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "actual_original": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "actual_mutant": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "dimensions": [
+        2,
+        2
+      ],
+      "independent_calculation": "'A': 65%65=0, 'B': 66%65=1, 'C': 67%65=2, 'D': 68%65=3",
+      "test": "generates a 2x2 key matrix with independently calculated cell values"
+    },
+    {
+      "input": "AB / ABCDEF",
+      "expected": "throws Error: Invalid key string length. The square root of the key string must be an integer",
+      "actual_original": "throws Error: Invalid key string length. The square root of the key string must be an integer",
+      "dimensions": "non-square / rectangular (unsupported)",
+      "test": "rejects rectangular matrix shapes since key matrices must be square"
+    },
+    {
+      "input": "HILLMAGIC",
+      "expected": [
+        [
+          7,
+          8,
+          11
+        ],
+        [
+          11,
+          12,
+          0
+        ],
+        [
+          6,
+          8,
+          2
+        ]
+      ],
+      "actual_original": [
+        [
+          7,
+          8,
+          11
+        ],
+        [
+          11,
+          12,
+          0
+        ],
+        [
+          6,
+          8,
+          2
+        ]
+      ],
+      "dimensions": [
+        3,
+        3
+      ],
+      "independent_calculation": "'H': 7, 'I': 8, 'L': 11, 'L': 11, 'M': 12, 'A': 0, 'G': 6, 'I': 8, 'C': 2",
+      "test": "generates a 3x3 key matrix containing zero for HILLMAGIC"
+    }
+  ],
+  "native_check": {
+    "command": "npm test -- --runInBand",
+    "passed": 591,
+    "total": 591,
+    "failed": 0
+  },
+  "mutation_check": {
+    "command": "npm test -- --runInBand --runTestsByPath <temp_dir>/hillCipher.mutation.test.js",
+    "mutation": "Altered index accumulation from 'keyStringIndex += 1;' to 'keyStringIndex += 0;'.",
+    "exit_code": 1,
+    "failing_assertions": [
+      "generates a 2x2 key matrix with independently calculated cell values"
+    ],
+    "failed": 1,
+    "passed": 1,
+    "total": 2,
+    "semantic_mismatch": "Expected [[0, 1], [2, 3]]; received [[0, 0], [0, 0]] due to unadvanced character index."
+  },
+  "versions": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.14.7"
+  }
+}
