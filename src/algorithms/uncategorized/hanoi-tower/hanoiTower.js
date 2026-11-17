@@ -1,13 +1,36 @@
 import Stack from '../../../data-structures/stack/Stack';
 
 /**
+ * Solves the Tower of Hanoi puzzle recursively.
+ *
+ * Invariants & Preconditions:
+ * - Preconditions:
+ *   - numberOfDiscs: positive integer (n >= 1).
+ *   - fromPole: Stack holding at least n discs in strictly ascending order from top to bottom.
+ *   - withPole, toPole: Stack instances where any existing discs are strictly larger
+ *     than the moving discs.
+ *   - moveCallback: function invoked before each move with (disc, fromPoleArray, toPoleArray).
+ * - Invariants maintained at each step:
+ *   1. Move Count Invariant: Exactly (2^n - 1) moves are performed to transfer n discs.
+ *   2. Valid Placement Invariant: A disc is never placed on top of a smaller disc.
+ *   3. Conservation Invariant: The multiset of all discs across all three poles is strictly
+ *      conserved.
+ *   4. Deterministic Transfer Invariant: The top n discs from fromPole are transferred to toPole
+ *      in identical order, while withPole returns to its initial state.
+ *
+ * Smallest Valid Input:
+ *   numberOfDiscs = 1 -> Exactly 1 move (line 38 base case).
+ *
+ * Ordinary Input:
+ *   numberOfDiscs = 3 -> Exactly 7 moves (2^3 - 1 = 7).
+ *
  * @param {number} numberOfDiscs
  * @param {Stack} fromPole
  * @param {Stack} withPole
  * @param {Stack} toPole
  * @param {function(disc: number, fromPole: number[], toPole: number[])} moveCallback
  */
-function hanoiTowerRecursive({
+export function hanoiTowerRecursive({
   numberOfDiscs,
   fromPole,
   withPole,

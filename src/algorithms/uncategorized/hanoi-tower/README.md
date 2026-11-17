@@ -23,6 +23,15 @@ With `3` disks, the puzzle can be solved in `7` moves. The minimal
 number of moves required to solve a Tower of Hanoi puzzle 
 is `2^n − 1`, where `n` is the number of disks.
 
+## Algorithm Invariants
+
+The recursive solver `hanoiTowerRecursive` in [hanoiTower.js](./hanoiTower.js) preserves several fundamental invariants throughout execution:
+
+1. **Move Count Invariant**: Exactly `2^n - 1` moves are performed to transfer `n` discs.
+2. **Valid Placement Invariant**: At every step, a disc is only placed onto an empty pole or on top of a strictly larger disc (`disc < toPole.peek()`).
+3. **Conservation of Discs**: The total multiset of discs across all three poles (`fromPole`, `withPole`, `toPole`) is strictly conserved at every step.
+4. **Deterministic Transfer**: The top `n` discs from `fromPole` are transferred to `toPole` in the exact original relative order without altering any underlying discs.
+
 ## References
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Tower_of_Hanoi)

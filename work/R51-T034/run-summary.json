@@ -1,0 +1,15 @@
+{
+  "testCommand": "npm test -- --runInBand --watch=false src/algorithms/uncategorized/hanoi-tower/__test__/hanoiTower.test.js --json --outputFile=work/R51-T034/jest-results.json",
+  "testExitCode": 0,
+  "totalTests": 6,
+  "passedTests": 6,
+  "failedTests": 0,
+  "mutationCheck": {
+    "command": "npm test -- --runInBand --watch=false src/algorithms/uncategorized/hanoi-tower/__test__/hanoiTower.test.js --json --outputFile=/var/folders/jp/qb_46cj54nn0n02zclt9fhq80000gn/T/hanoi-mutation-dictaocd/jest-mutation-results.json",
+    "exitCode": 1,
+    "detected": true,
+    "totalTests": 6,
+    "passedTests": 2,
+    "failedTests": 4
+  }
+}
