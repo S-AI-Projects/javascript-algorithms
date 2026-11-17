@@ -1,0 +1,179 @@
+{
+  "task": "R51-T032",
+  "target": "src/algorithms/sets/shortest-common-supersequence",
+  "tool_versions": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "3.13.14"
+  },
+  "command": "npm test -- --runInBand --watch=false src/algorithms/sets/shortest-common-supersequence/__test__/shortestCommonSupersequence.test.js --json --outputFile=work/R51-T032/jest-results.json",
+  "test_count": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "name": "smallest valid input (both empty sequences)",
+      "input": {
+        "set1": [],
+        "set2": []
+      },
+      "expected": [],
+      "precondition_source_line": "shortestCommonSupersequence.js:29-31, README.md:3-4"
+    },
+    {
+      "name": "boundary: first sequence empty, second singleton",
+      "input": {
+        "set1": [],
+        "set2": [
+          "A"
+        ]
+      },
+      "expected": [
+        "A"
+      ],
+      "precondition_source_line": "shortestCommonSupersequence.js:29-31, README.md:3-4"
+    },
+    {
+      "name": "boundary: first sequence singleton, second empty",
+      "input": {
+        "set1": [
+          "A"
+        ],
+        "set2": []
+      },
+      "expected": [
+        "A"
+      ],
+      "precondition_source_line": "shortestCommonSupersequence.js:29-31, README.md:3-4"
+    },
+    {
+      "name": "boundary: single-element identical sequences",
+      "input": {
+        "set1": [
+          "A"
+        ],
+        "set2": [
+          "A"
+        ]
+      },
+      "expected": [
+        "A"
+      ],
+      "precondition_source_line": "shortestCommonSupersequence.js:23-84, README.md:3-4"
+    },
+    {
+      "name": "boundary: single-element disjoint sequences",
+      "input": {
+        "set1": [
+          "A"
+        ],
+        "set2": [
+          "B"
+        ]
+      },
+      "expected": [
+        "A",
+        "B"
+      ],
+      "precondition_source_line": "shortestCommonSupersequence.js:29-31, README.md:3-4"
+    },
+    {
+      "name": "ordinary input from README.md (geek and eke)",
+      "input": {
+        "set1": [
+          "G",
+          "E",
+          "E",
+          "K"
+        ],
+        "set2": [
+          "E",
+          "K",
+          "E"
+        ]
+      },
+      "expected": [
+        "G",
+        "E",
+        "K",
+        "E",
+        "K"
+      ],
+      "precondition_source_line": "README.md:37-38, shortestCommonSupersequence.js:23-84"
+    },
+    {
+      "name": "ordinary input from README.md (AGGTAB and GXTXAYB)",
+      "input": {
+        "set1": [
+          "A",
+          "G",
+          "G",
+          "T",
+          "A",
+          "B"
+        ],
+        "set2": [
+          "G",
+          "X",
+          "T",
+          "X",
+          "A",
+          "Y",
+          "B"
+        ]
+      },
+      "expected": [
+        "A",
+        "G",
+        "G",
+        "X",
+        "T",
+        "X",
+        "A",
+        "Y",
+        "B"
+      ],
+      "precondition_source_line": "README.md:40-42, shortestCommonSupersequence.js:23-84"
+    },
+    {
+      "name": "non-mutation check",
+      "input": {
+        "set1": [
+          "A",
+          "G",
+          "G",
+          "T",
+          "A",
+          "B"
+        ],
+        "set2": [
+          "G",
+          "X",
+          "T",
+          "X",
+          "A",
+          "Y",
+          "B"
+        ]
+      },
+      "expected": {
+        "result": [
+          "A",
+          "G",
+          "G",
+          "X",
+          "T",
+          "X",
+          "A",
+          "Y",
+          "B"
+        ],
+        "set1_unmutated": true,
+        "set2_unmutated": true
+      },
+      "precondition_source_line": "shortestCommonSupersequence.js:23-84"
+    }
+  ]
+}
