@@ -65,7 +65,14 @@ p = 'c*a*b'
 Output: `true`
 
 Explanation: `c` can be repeated 0 times, `a` can be repeated 
-1 time. Therefore it matches `aab`.
+2 times. Therefore it matches `aab`.
+
+## Reference Comparison
+
+The dynamic programming implementation in [regularExpressionMatching.js](./regularExpressionMatching.js) is validated against an independent recursive backtracking reference matcher and native JavaScript regular expressions across empty inputs, single characters, wildcards (`.`), zero-or-more quantifiers (`*`), and multi-character strings.
+
+Representative result explanation:
+- Given input string `'aab'` and pattern `'c*a*b'`, the result is `true`. The subpattern `'c*'` matches zero occurrences of `'c'`, `'a*'` matches two occurrences of `'a'`, and `'b'` matches `'b'`, matching the entire string.
 
 ## References
 

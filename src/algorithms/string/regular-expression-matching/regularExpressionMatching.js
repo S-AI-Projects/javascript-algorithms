@@ -4,6 +4,23 @@ const ANY_CHAR = '.';
 /**
  * Dynamic programming approach.
  *
+ * Contract & Preconditions:
+ * - string: string containing lowercase letters a-z (can be empty '')
+ * - pattern: string containing lowercase letters a-z, '.', or '*' (can be empty '')
+ * - Returns boolean: true if pattern matches the entire string, false otherwise.
+ * - Purity: Pure function; inputs are never mutated.
+ *
+ * Representative Result:
+ * - regularExpressionMatching('aab', 'c*a*b') === true
+ *   Preconditions established at lines 28-36 (function signature & DP setup),
+ *   lines 60-68 and 88-116 (* zero-or-more preceding element handling).
+ *   Explanation: 'c*' matches 0 occurrences of 'c', 'a*' matches 2 occurrences of 'a',
+ *   and 'b' matches 'b', yielding an exact match for the entire string 'aab'.
+ *
+ * Smallest Valid Input:
+ * - regularExpressionMatching('', '') === true
+ *   Precondition established at line 50 (matchMatrix[0][0] = true).
+ *
  * @param {string} string
  * @param {string} pattern
  * @return {boolean}
