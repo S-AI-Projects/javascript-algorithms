@@ -1,0 +1,242 @@
+{
+  "task": "R51-T033",
+  "target": "src/algorithms/string/regular-expression-matching",
+  "tool_versions": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "3.13.14"
+  },
+  "command": "npm test -- --runInBand --watch=false src/algorithms/string/regular-expression-matching/__test__/regularExpressionMatching.test.js --json --outputFile=work/R51-T033/jest-results.json",
+  "test_count": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "name": "smallest valid input (both empty)",
+      "input": {
+        "string": "",
+        "pattern": ""
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:50"
+    },
+    {
+      "name": "empty string with zero occurrence pattern",
+      "input": {
+        "string": "",
+        "pattern": "a*"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:60-68"
+    },
+    {
+      "name": "empty string with wildcard star",
+      "input": {
+        "string": "",
+        "pattern": ".*"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:60-68"
+    },
+    {
+      "name": "empty string with multiple star sequences",
+      "input": {
+        "string": "",
+        "pattern": "a*b*"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:60-68"
+    },
+    {
+      "name": "empty string with non-empty non-star pattern",
+      "input": {
+        "string": "",
+        "pattern": "a"
+      },
+      "expected": false,
+      "precondition_source_line": "regularExpressionMatching.js:52-61"
+    },
+    {
+      "name": "empty string with dot pattern",
+      "input": {
+        "string": "",
+        "pattern": "."
+      },
+      "expected": false,
+      "precondition_source_line": "regularExpressionMatching.js:52-61"
+    },
+    {
+      "name": "non-empty string with empty pattern",
+      "input": {
+        "string": "a",
+        "pattern": ""
+      },
+      "expected": false,
+      "precondition_source_line": "regularExpressionMatching.js:59-61"
+    },
+    {
+      "name": "single identical character",
+      "input": {
+        "string": "a",
+        "pattern": "a"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:100-117"
+    },
+    {
+      "name": "single mismatched character",
+      "input": {
+        "string": "a",
+        "pattern": "b"
+      },
+      "expected": false,
+      "precondition_source_line": "regularExpressionMatching.js:118-130"
+    },
+    {
+      "name": "single character matched by dot",
+      "input": {
+        "string": "a",
+        "pattern": "."
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:100-117"
+    },
+    {
+      "name": "single character matched by star",
+      "input": {
+        "string": "a",
+        "pattern": "a*"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:71-99"
+    },
+    {
+      "name": "single character matched by dot star",
+      "input": {
+        "string": "a",
+        "pattern": ".*"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:71-99"
+    },
+    {
+      "name": "zero occurrences before matched character",
+      "input": {
+        "string": "a",
+        "pattern": "b*a"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:71-99, 100-117"
+    },
+    {
+      "name": "length mismatch",
+      "input": {
+        "string": "aa",
+        "pattern": "a"
+      },
+      "expected": false,
+      "precondition_source_line": "regularExpressionMatching.js:118-130"
+    },
+    {
+      "name": "multiple occurrences matched by star",
+      "input": {
+        "string": "aa",
+        "pattern": "a*"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:71-99"
+    },
+    {
+      "name": "multiple occurrences matched by dot star",
+      "input": {
+        "string": "aa",
+        "pattern": ".*"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:71-99"
+    },
+    {
+      "name": "distinct characters matched by dot star",
+      "input": {
+        "string": "ab",
+        "pattern": ".*"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:71-99"
+    },
+    {
+      "name": "unmatched trailing character",
+      "input": {
+        "string": "ab",
+        "pattern": "a*"
+      },
+      "expected": false,
+      "precondition_source_line": "regularExpressionMatching.js:118-130"
+    },
+    {
+      "name": "exact multi-character match",
+      "input": {
+        "string": "aab",
+        "pattern": "aab"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:100-117"
+    },
+    {
+      "name": "representative ordinary input (aab and c*a*b)",
+      "input": {
+        "string": "aab",
+        "pattern": "c*a*b"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:28-36, 60-68, 88-116"
+    },
+    {
+      "name": "multiple stars with trailing optional",
+      "input": {
+        "string": "aab",
+        "pattern": "c*a*b*"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:71-99"
+    },
+    {
+      "name": "reordered characters mismatch",
+      "input": {
+        "string": "aab",
+        "pattern": "baa"
+      },
+      "expected": false,
+      "precondition_source_line": "regularExpressionMatching.js:118-130"
+    },
+    {
+      "name": "complex mismatch",
+      "input": {
+        "string": "mississippi",
+        "pattern": "mis*is*p*."
+      },
+      "expected": false,
+      "precondition_source_line": "regularExpressionMatching.js:118-130"
+    },
+    {
+      "name": "complex match",
+      "input": {
+        "string": "mississippi",
+        "pattern": "mis*is*.p*."
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:71-117"
+    },
+    {
+      "name": "non-mutation check",
+      "input": {
+        "string": "aab",
+        "pattern": "c*a*b"
+      },
+      "expected": true,
+      "precondition_source_line": "regularExpressionMatching.js:28"
+    }
+  ]
+}
