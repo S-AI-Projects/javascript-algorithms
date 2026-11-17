@@ -1,0 +1,257 @@
+[
+  {
+    "fixture": "smallest valid input (discoveryTime = 0, lowDiscoveryTime = 0)",
+    "preconditionSource": "graphBridges.js line 21",
+    "run": "isolated_run_1",
+    "input": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    },
+    "expected": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    },
+    "actual": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    }
+  },
+  {
+    "fixture": "smallest valid input (discoveryTime = 0, lowDiscoveryTime = 0)",
+    "preconditionSource": "graphBridges.js line 21",
+    "run": "isolated_run_2",
+    "input": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    },
+    "expected": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    },
+    "actual": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    }
+  },
+  {
+    "fixture": "intervening valid input (discoveryTime = 10, lowDiscoveryTime = 5)",
+    "preconditionSource": "intervening",
+    "run": "intervening_valid_input",
+    "input": {
+      "discoveryTime": 10,
+      "lowDiscoveryTime": 5
+    },
+    "expected": {
+      "discoveryTime": 10,
+      "lowDiscoveryTime": 5
+    },
+    "actual": {
+      "discoveryTime": 10,
+      "lowDiscoveryTime": 5
+    }
+  },
+  {
+    "fixture": "smallest valid input (discoveryTime = 0, lowDiscoveryTime = 0)",
+    "preconditionSource": "graphBridges.js line 21",
+    "run": "run_after_intervening_input",
+    "input": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    },
+    "expected": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    },
+    "actual": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    }
+  },
+  {
+    "fixture": "smallest valid input (discoveryTime = 0, lowDiscoveryTime = 0)",
+    "preconditionSource": "graphBridges.js line 21",
+    "run": "run_after_prior_instance_mutation",
+    "input": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    },
+    "expected": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    },
+    "actual": {
+      "discoveryTime": 0,
+      "lowDiscoveryTime": 0
+    }
+  },
+  {
+    "fixture": "initial vertex discovery (discoveryTime = 1, lowDiscoveryTime = 1)",
+    "preconditionSource": "graphBridges.js lines 53-56",
+    "run": "isolated_run_1",
+    "input": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    },
+    "expected": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    },
+    "actual": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    }
+  },
+  {
+    "fixture": "initial vertex discovery (discoveryTime = 1, lowDiscoveryTime = 1)",
+    "preconditionSource": "graphBridges.js lines 53-56",
+    "run": "isolated_run_2",
+    "input": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    },
+    "expected": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    },
+    "actual": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    }
+  },
+  {
+    "fixture": "intervening valid input (discoveryTime = 10, lowDiscoveryTime = 5)",
+    "preconditionSource": "intervening",
+    "run": "intervening_valid_input",
+    "input": {
+      "discoveryTime": 10,
+      "lowDiscoveryTime": 5
+    },
+    "expected": {
+      "discoveryTime": 10,
+      "lowDiscoveryTime": 5
+    },
+    "actual": {
+      "discoveryTime": 10,
+      "lowDiscoveryTime": 5
+    }
+  },
+  {
+    "fixture": "initial vertex discovery (discoveryTime = 1, lowDiscoveryTime = 1)",
+    "preconditionSource": "graphBridges.js lines 53-56",
+    "run": "run_after_intervening_input",
+    "input": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    },
+    "expected": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    },
+    "actual": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    }
+  },
+  {
+    "fixture": "initial vertex discovery (discoveryTime = 1, lowDiscoveryTime = 1)",
+    "preconditionSource": "graphBridges.js lines 53-56",
+    "run": "run_after_prior_instance_mutation",
+    "input": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    },
+    "expected": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    },
+    "actual": {
+      "discoveryTime": 1,
+      "lowDiscoveryTime": 1
+    }
+  },
+  {
+    "fixture": "ordinary input with updated low link (discoveryTime = 3, lowDiscoveryTime = 1)",
+    "preconditionSource": "graphBridges.js lines 53-56 and lines 71-75",
+    "run": "isolated_run_1",
+    "input": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    },
+    "expected": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    },
+    "actual": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    }
+  },
+  {
+    "fixture": "ordinary input with updated low link (discoveryTime = 3, lowDiscoveryTime = 1)",
+    "preconditionSource": "graphBridges.js lines 53-56 and lines 71-75",
+    "run": "isolated_run_2",
+    "input": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    },
+    "expected": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    },
+    "actual": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    }
+  },
+  {
+    "fixture": "intervening valid input (discoveryTime = 10, lowDiscoveryTime = 5)",
+    "preconditionSource": "intervening",
+    "run": "intervening_valid_input",
+    "input": {
+      "discoveryTime": 10,
+      "lowDiscoveryTime": 5
+    },
+    "expected": {
+      "discoveryTime": 10,
+      "lowDiscoveryTime": 5
+    },
+    "actual": {
+      "discoveryTime": 10,
+      "lowDiscoveryTime": 5
+    }
+  },
+  {
+    "fixture": "ordinary input with updated low link (discoveryTime = 3, lowDiscoveryTime = 1)",
+    "preconditionSource": "graphBridges.js lines 53-56 and lines 71-75",
+    "run": "run_after_intervening_input",
+    "input": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    },
+    "expected": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    },
+    "actual": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    }
+  },
+  {
+    "fixture": "ordinary input with updated low link (discoveryTime = 3, lowDiscoveryTime = 1)",
+    "preconditionSource": "graphBridges.js lines 53-56 and lines 71-75",
+    "run": "run_after_prior_instance_mutation",
+    "input": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    },
+    "expected": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    },
+    "actual": {
+      "discoveryTime": 3,
+      "lowDiscoveryTime": 1
+    }
+  }
+]

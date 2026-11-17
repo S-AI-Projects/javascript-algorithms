@@ -2,8 +2,22 @@ import depthFirstSearch from '../depth-first-search/depthFirstSearch';
 
 /**
  * Helper class for visited vertex metadata.
+ *
+ * Deterministic Execution & Contract:
+ * - Observable Dependencies: None. Pure constructor with no I/O, network, randomness, or UI.
+ * - Purity & Isolation: Each instantiation creates a fresh, isolated metadata instance.
+ *   Calling the constructor repeatedly or across intervening calls produces deterministic,
+ *   isolated results without mutating argument objects or retaining shared state.
+ *
+ * Preconditions:
+ * - discoveryTime: number (non-negative integer timestamp when vertex is first entered).
+ * - lowDiscoveryTime: number (lowest discovery time reachable from vertex).
+ *
+ * Representative Cases:
+ * - Smallest valid input: { discoveryTime: 0, lowDiscoveryTime: 0 } (line 22).
+ * - Ordinary input: { discoveryTime: 3, lowDiscoveryTime: 1 } (lines 53-56 enterVertex usage).
  */
-class VisitMetadata {
+export class VisitMetadata {
   constructor({ discoveryTime, lowDiscoveryTime }) {
     this.discoveryTime = discoveryTime;
     this.lowDiscoveryTime = lowDiscoveryTime;
