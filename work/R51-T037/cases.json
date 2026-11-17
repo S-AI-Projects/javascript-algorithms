@@ -1,0 +1,20 @@
+{
+  "preconditionSource": "PolynomialHash.js line 23",
+  "smallestInput": {
+    "word": "a",
+    "charCodes": [
+      97
+    ],
+    "expectedHash": 97,
+    "actualHash": 97
+  },
+  "ordinaryInput": {
+    "word": "ab",
+    "charCodes": [
+      97,
+      98
+    ],
+    "expectedHash": 51,
+    "actualHash": 51
+  }
+}

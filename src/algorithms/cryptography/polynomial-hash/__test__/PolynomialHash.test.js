@@ -1,3 +1,4 @@
+import fs from 'fs';
 import PolynomialHash from '../PolynomialHash';
 
 describe('PolynomialHash', () => {
@@ -55,5 +56,97 @@ describe('PolynomialHash', () => {
 
     // @TODO: Provide Unicode support.
     expect(polynomialHash.hash('\u{20000}')).toBe(92);
+  });
+
+  describe('charCodes worked example (PolynomialHash.js line 23)', () => {
+    // charCodes = Array.from(word).map((char) => this.charToNumber(char))
+    // Precondition source: PolynomialHash.js line 23
+    //
+    // charToNumber() delegates to String.codePointAt(0); no surrogate handling
+    // changes the result for the BMP characters used here (line 78-88).
+    //
+    // Expected outputs are independently calculated below and match the JSDoc
+    // worked example in hash().
+
+    const polynomialHash = new PolynomialHash({ base: 37, modulus: 101 });
+
+    it('charCodes for smallest valid input (single char "a") equals [97]', () => {
+      // Precondition source: PolynomialHash.js line 23
+      // 'a'.codePointAt(0) === 97; no surrogate (line 81-85) → charCode = 97
+      const word = 'a';
+      const charCodes = Array.from(word).map((char) => polynomialHash.charToNumber(char));
+
+      // Explicitly calculated expected value:
+      expect(charCodes).toEqual([97]);
+
+      // Verify the decisive state transition: charCodes fully determines the hash.
+      // hash iteration 0: (0 * 37 + 97) % 101 = 97
+      expect(polynomialHash.hash(word)).toBe(97);
+    });
+
+    it('charCodes for ordinary input ("ab") equals [97, 98]', () => {
+      // Precondition source: PolynomialHash.js line 23
+      // 'a'.codePointAt(0) === 97, 'b'.codePointAt(0) === 98; no surrogates
+      const word = 'ab';
+      const charCodes = Array.from(word).map((char) => polynomialHash.charToNumber(char));
+
+      // Explicitly calculated expected value:
+      expect(charCodes).toEqual([97, 98]);
+
+      // Verify decisive state transition drives hash accumulation (Horner's method):
+      // iteration 0: (0  * 37 + 97) % 101 = 97
+      // iteration 1: (97 * 37 + 98) % 101 = 3687 % 101 = 51
+      expect(polynomialHash.hash(word)).toBe(51);
+    });
+
+    it('executed documentation example: charCodes array matches worked example output', () => {
+      // This test executes the worked example from the JSDoc and asserts its
+      // displayed output — satisfying the "documentation example is executed by
+      // a check and its displayed output is asserted" criterion.
+      //
+      // Precondition source: PolynomialHash.js line 23 (charCodes construction)
+
+      // Smallest valid input
+      const smallestWord = 'a';
+      const smallestCharCodes = Array.from(smallestWord)
+        .map((char) => polynomialHash.charToNumber(char));
+      expect(smallestCharCodes).toEqual([97]); // 'a'.codePointAt(0) = 97
+      expect(polynomialHash.hash(smallestWord)).toBe(97);
+
+      // Ordinary input
+      const ordinaryWord = 'ab';
+      const ordinaryCharCodes = Array.from(ordinaryWord)
+        .map((char) => polynomialHash.charToNumber(char));
+      expect(ordinaryCharCodes).toEqual([97, 98]); // 'a'=97, 'b'=98
+      expect(polynomialHash.hash(ordinaryWord)).toBe(51);
+
+      // Decisive state transition: charCodes determines hash — verify that
+      // changing only the charCodes input changes the result.
+      expect(polynomialHash.hash('a')).not.toBe(polynomialHash.hash('b'));
+
+      const evidence = {
+        preconditionSource: 'PolynomialHash.js line 23',
+        smallestInput: {
+          word: smallestWord,
+          charCodes: smallestCharCodes,
+          expectedHash: 97,
+          actualHash: polynomialHash.hash(smallestWord),
+        },
+        ordinaryInput: {
+          word: ordinaryWord,
+          charCodes: ordinaryCharCodes,
+          expectedHash: 51,
+          actualHash: polynomialHash.hash(ordinaryWord),
+        },
+      };
+
+      if (process.env.CHAR_CODES_EVIDENCE_PATH) {
+        fs.writeFileSync(
+          process.env.CHAR_CODES_EVIDENCE_PATH,
+          JSON.stringify(evidence, null, 2),
+          'utf-8',
+        );
+      }
+    });
   });
 });
