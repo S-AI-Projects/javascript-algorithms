@@ -1,11 +1,25 @@
 import longestCommonSubsequence from '../longest-common-subsequence/longestCommonSubsequence';
 
 /**
+ * Shortest Common Supersequence
+ *
+ * Finds the shortest sequence that has both set1 and set2 as subsequences.
+ * Preserves the input arrays without mutating them.
+ *
+ * Contract:
+ * - Preconditions:
+ *   - set1: Array of elements representing the first sequence (e.g. string[]).
+ *   - set2: Array of elements representing the second sequence (e.g. string[]).
+ *   - Smallest valid input is two empty arrays: set1 = [], set2 = [].
+ * - Postcondition:
+ *   - Returns a new Array containing the shortest common supersequence.
+ * - Mutation:
+ *   - Pure function; neither set1 nor set2 is mutated.
+ *
  * @param {string[]} set1
  * @param {string[]} set2
  * @return {string[]}
  */
-
 export default function shortestCommonSupersequence(set1, set2) {
   // Let's first find the longest common subsequence of two sets.
   const lcs = longestCommonSubsequence(set1, set2);
