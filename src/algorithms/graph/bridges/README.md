@@ -19,6 +19,10 @@ An undirected connected graph with no cut edges
 
 ![Bridges in graph](https://www.geeksforgeeks.org/wp-content/uploads/Bridge3.png)
 
+## Deterministic Execution & Metadata
+
+The helper class `VisitMetadata` in [graphBridges.js](./graphBridges.js) stores traversal timestamps (`discoveryTime` and `lowDiscoveryTime`) for vertices during depth-first search. It is implemented as a pure, deterministic data structure with no external dependencies (no time, network, randomness, or UI side-effects). Repeated calls with fresh equivalent inputs produce identical, isolated instances that do not interfere across calls.
+
 ## References
 
 - [GeeksForGeeks on YouTube](https://www.youtube.com/watch?v=thLQYBlz2DM&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)
