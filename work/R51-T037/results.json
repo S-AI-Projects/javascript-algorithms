@@ -1,0 +1,33 @@
+{
+  "task": "R51-T037",
+  "issue": 37,
+  "tool_versions": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "3.13.14"
+  },
+  "command": "npm test -- --runInBand --watchAll=false --json --outputFile=/Users/aniketmanna/javascript-algorithms/work/R51-T037/jest-results.json src/algorithms/cryptography/polynomial-hash/__test__/PolynomialHash.test.js",
+  "test_count": 5,
+  "passed": 5,
+  "failed": 0,
+  "cases": {
+    "preconditionSource": "PolynomialHash.js line 23",
+    "smallestInput": {
+      "word": "a",
+      "charCodes": [
+        97
+      ],
+      "expectedHash": 97,
+      "actualHash": 97
+    },
+    "ordinaryInput": {
+      "word": "ab",
+      "charCodes": [
+        97,
+        98
+      ],
+      "expectedHash": 51,
+      "actualHash": 51
+    }
+  }
+}

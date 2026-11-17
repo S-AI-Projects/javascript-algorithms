@@ -16,6 +16,32 @@ export default class PolynomialHash {
    *
    * Time complexity: O(word.length).
    *
+   * Decisive state transition — charCodes array (PolynomialHash.js line 23):
+   *   charCodes = Array.from(word).map((char) => this.charToNumber(char))
+   *
+   * Each Unicode character is mapped to its code-point number via charToNumber().
+   * The resulting array drives the Horner-method accumulation in the loop below.
+   * Once charCodes is fixed the hash value is fully determined; all subsequent
+   * operations merely fold those numbers into a single residue.
+   *
+   * Worked example (base = 37, modulus = 101):
+   *
+   *   Smallest valid input — word = 'a':
+   *     charCodes = [97]           // 'a'.codePointAt(0) === 97 (line 23)
+   *     hash iteration 0: hash = (0 * 37 + 97) % 101 = 97 % 101 = 97
+   *     result: 97
+   *
+   *   Ordinary input — word = 'ab':
+   *     charCodes = [97, 98]       // 'a' → 97, 'b' → 98  (line 23)
+   *     hash iteration 0: hash = (0  * 37 + 97) % 101 = 97 % 101 = 97
+   *     hash iteration 1: hash = (97 * 37 + 98) % 101 = (3589 + 98) % 101
+   *                             = 3687 % 101 = 3687 - 36*101 = 3687 - 3636 = 51
+   *     result: 51
+   *
+   * Preconditions (source: PolynomialHash.js line 23):
+   *   - word is a non-empty string of valid Unicode characters.
+   *   - charToNumber() returns a non-negative integer for every character.
+   *
    * @param {string} word - String that needs to be hashed.
    * @return {number}
    */
