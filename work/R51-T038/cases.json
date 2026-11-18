@@ -1,0 +1,17 @@
+{
+  "preconditionSource": "DoublyLinkedList.js lines 57-64 (append next/previous links)",
+  "fixture": "A→B→C",
+  "values": {
+    "head": "A",
+    "middle": "B",
+    "tail": "C"
+  },
+  "links": {
+    "headPreviousIsNull": true,
+    "headNextValueIsB": true,
+    "tailNextIsNull": true,
+    "tailPreviousValueIsB": true,
+    "bPreviousIsHead": true,
+    "bNextIsTail": true
+  }
+}

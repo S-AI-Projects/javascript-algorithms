@@ -1,3 +1,4 @@
+import fs from 'fs';
 import DoublyLinkedList from '../DoublyLinkedList';
 
 describe('DoublyLinkedList', () => {
@@ -276,5 +277,191 @@ describe('DoublyLinkedList', () => {
     expect(linkedList.tail.previous.value).toBe(3);
     expect(linkedList.tail.previous.previous.value).toBe(2);
     expect(linkedList.tail.previous.previous.previous.value).toBe(1);
+  });
+
+  describe('failure-path coverage and A→B→C node-link fixture (DoublyLinkedList.js)', () => {
+    // -------------------------------------------------------------------------
+    // Failure / empty-result paths exercised:
+    //   • delete() on empty list   → null  (DoublyLinkedList.js line 74-76)
+    //   • deleteTail() on empty    → null  (DoublyLinkedList.js line 157-160)
+    //   • deleteHead() on empty    → null  (DoublyLinkedList.js line 184-186)
+    //   • find() on empty list     → null  (DoublyLinkedList.js line 130-132)
+    //   • find() – value not found → null  (DoublyLinkedList.js line 150)
+    // -------------------------------------------------------------------------
+
+    it('smallest supported list: empty list has null head and null tail', () => {
+      // Smallest valid input — an empty DoublyLinkedList (no nodes at all).
+      // Precondition source: DoublyLinkedList.js line 10-13 (constructor sets head/tail to null)
+      const list = new DoublyLinkedList();
+
+      // Check both values explicitly
+      expect(list.head).toBeNull(); // DoublyLinkedList.js line 10
+      expect(list.tail).toBeNull(); // DoublyLinkedList.js line 13
+      expect(list.toString()).toBe('');
+    });
+
+    it('delete() on empty list returns null (DoublyLinkedList.js line 74-76)', () => {
+      // Failure branch: "if (!this.head) { return null; }" — line 74-76
+      const list = new DoublyLinkedList();
+
+      // Failure case: delete on empty list → null sentinel
+      const result = list.delete('A');
+      expect(result).toBeNull(); // explicit expected value: null
+
+      // State remains valid after failure — head and tail still null
+      expect(list.head).toBeNull();
+      expect(list.tail).toBeNull();
+
+      // Ordinary valid call still succeeds after the failure case
+      list.append('A');
+      const afterFailure = list.delete('A');
+      expect(afterFailure).not.toBeNull();
+      expect(afterFailure.value).toBe('A'); // explicit expected value: 'A'
+      expect(list.head).toBeNull();
+      expect(list.tail).toBeNull();
+    });
+
+    it('deleteTail() on empty list returns null (DoublyLinkedList.js line 157-160)', () => {
+      // Failure branch: "if (!this.tail) { return null; }" — line 157-160
+      const list = new DoublyLinkedList();
+
+      const result = list.deleteTail();
+      expect(result).toBeNull(); // explicit expected value: null
+
+      // State valid after failure
+      expect(list.head).toBeNull();
+      expect(list.tail).toBeNull();
+
+      // Ordinary valid call succeeds after failure
+      list.append('X');
+      const node = list.deleteTail();
+      expect(node).not.toBeNull();
+      expect(node.value).toBe('X'); // explicit expected value: 'X'
+      expect(list.head).toBeNull();
+      expect(list.tail).toBeNull();
+    });
+
+    it('deleteHead() on empty list returns null (DoublyLinkedList.js line 184-186)', () => {
+      // Failure branch: "if (!this.head) { return null; }" — line 184-186
+      const list = new DoublyLinkedList();
+
+      const result = list.deleteHead();
+      expect(result).toBeNull(); // explicit expected value: null
+
+      // State valid after failure
+      expect(list.head).toBeNull();
+      expect(list.tail).toBeNull();
+
+      // Ordinary valid call succeeds after failure
+      list.append('Y');
+      const node = list.deleteHead();
+      expect(node).not.toBeNull();
+      expect(node.value).toBe('Y'); // explicit expected value: 'Y'
+      expect(list.head).toBeNull();
+      expect(list.tail).toBeNull();
+    });
+
+    it('find() on empty list returns null (DoublyLinkedList.js line 130-132)', () => {
+      // Failure branch: "if (!this.head) { return null; }" — line 130-132
+      const list = new DoublyLinkedList();
+
+      const result = list.find({ value: 'A' });
+      expect(result).toBeNull(); // explicit expected value: null
+
+      // State valid after failure
+      expect(list.head).toBeNull();
+      expect(list.tail).toBeNull();
+
+      // Ordinary valid call succeeds after failure
+      list.append('A');
+      const found = list.find({ value: 'A' });
+      expect(found).not.toBeNull();
+      expect(found.value).toBe('A'); // explicit expected value: 'A'
+    });
+
+    it('find() returns null when value absent in non-empty list (DoublyLinkedList.js line 150)', () => {
+      // Failure branch: exhausted traversal returns null — line 150
+      const list = new DoublyLinkedList();
+      list.append('A').append('B').append('C');
+
+      const result = list.find({ value: 'Z' });
+      expect(result).toBeNull(); // explicit expected value: null
+
+      // State remains valid — list unchanged
+      expect(list.head.value).toBe('A');
+      expect(list.tail.value).toBe('C');
+
+      // Ordinary valid call succeeds after the absent-value case
+      const found = list.find({ value: 'B' });
+      expect(found).not.toBeNull();
+      expect(found.value).toBe('B'); // explicit expected value: 'B'
+    });
+
+    it('three distinct nodes A→B→C: values and node links checked separately', () => {
+      // Fixture: Construct three distinct nodes A→B→C.
+      // Checks values and node links in separate assertions so a value-only
+      // comparison cannot hide a broken link.
+      //
+      // Precondition source:
+      //   append() builds next/previous links — DoublyLinkedList.js lines 57-64
+      const list = new DoublyLinkedList();
+      list.append('A').append('B').append('C');
+
+      // --- Value checks ---
+      expect(list.head.value).toBe('A'); // explicit: 'A'
+      expect(list.head.next.value).toBe('B'); // explicit: 'B'
+      expect(list.head.next.next.value).toBe('C'); // explicit: 'C'
+      expect(list.tail.value).toBe('C'); // explicit: 'C'
+
+      // --- Forward link checks (next pointers) ---
+      // A.next === B node
+      expect(list.head.next).toBe(list.head.next); // identity — B node is B node
+      expect(list.head.next.value).toBe('B');
+      // B.next === C node (which is tail)
+      expect(list.head.next.next).toBe(list.tail);
+      // C.next === null (end of list)
+      expect(list.tail.next).toBeNull();
+
+      // --- Backward link checks (previous pointers) ---
+      // A.previous === null (start of list)
+      expect(list.head.previous).toBeNull();
+      // B.previous === A node (which is head)
+      expect(list.head.next.previous).toBe(list.head);
+      // C.previous === B node
+      expect(list.tail.previous).toBe(list.head.next);
+      expect(list.tail.previous.value).toBe('B'); // explicit: 'B'
+
+      // --- Roundtrip link integrity: forward then back must land on same node ---
+      // A → B → A
+      expect(list.head.next.previous).toBe(list.head);
+      // B → C → B
+      expect(list.tail.previous.next).toBe(list.tail);
+
+      const evidenceData = {
+        preconditionSource: 'DoublyLinkedList.js lines 57-64 (append next/previous links)',
+        fixture: 'A→B→C',
+        values: {
+          head: list.head.value,
+          middle: list.head.next.value,
+          tail: list.tail.value,
+        },
+        links: {
+          headPreviousIsNull: list.head.previous === null,
+          headNextValueIsB: list.head.next.value === 'B',
+          tailNextIsNull: list.tail.next === null,
+          tailPreviousValueIsB: list.tail.previous.value === 'B',
+          bPreviousIsHead: list.head.next.previous === list.head,
+          bNextIsTail: list.head.next.next === list.tail,
+        },
+      };
+
+      if (process.env.DLL_EVIDENCE_PATH) {
+        fs.writeFileSync(
+          process.env.DLL_EVIDENCE_PATH,
+          JSON.stringify(evidenceData, null, 2),
+          'utf-8',
+        );
+      }
+    });
   });
 });

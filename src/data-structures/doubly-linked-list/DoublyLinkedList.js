@@ -1,6 +1,20 @@
 import DoublyLinkedListNode from './DoublyLinkedListNode';
 import Comparator from '../../utils/comparator/Comparator';
 
+/**
+ * DoublyLinkedList data structure implementation.
+ *
+ * Failure / Absent-Result Contract:
+ * Where operations encounter an empty list or missing elements, methods
+ * implement a total contract using sentinel return values instead of throwing:
+ * - delete(value): returns null when list is empty (lines 74-76).
+ * - deleteTail(): returns null when list is empty (lines 157-160).
+ * - deleteHead(): returns null when list is empty (lines 184-186).
+ * - find({ value, callback }): returns null when list is empty (lines 130-132)
+ *   or when no matching element is found (line 150).
+ * In all failure/absent-result paths, caller-owned state remains valid and
+ * uncorrupted; subsequent valid operations proceed normally.
+ */
 export default class DoublyLinkedList {
   /**
    * @param {Function} [comparatorFunction]

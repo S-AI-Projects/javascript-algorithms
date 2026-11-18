@@ -1,0 +1,30 @@
+{
+  "task": "R51-T038",
+  "issue": 38,
+  "tool_versions": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "3.13.14"
+  },
+  "command": "npm test -- --runInBand --watchAll=false --json --outputFile=/Users/aniketmanna/javascript-algorithms/work/R51-T038/jest-results.json src/data-structures/doubly-linked-list/__test__/DoublyLinkedList.test.js",
+  "test_count": 19,
+  "passed": 19,
+  "failed": 0,
+  "cases": {
+    "preconditionSource": "DoublyLinkedList.js lines 57-64 (append next/previous links)",
+    "fixture": "A\u2192B\u2192C",
+    "values": {
+      "head": "A",
+      "middle": "B",
+      "tail": "C"
+    },
+    "links": {
+      "headPreviousIsNull": true,
+      "headNextValueIsB": true,
+      "tailNextIsNull": true,
+      "tailPreviousValueIsB": true,
+      "bPreviousIsHead": true,
+      "bNextIsTail": true
+    }
+  }
+}
