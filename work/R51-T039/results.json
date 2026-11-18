@@ -1,0 +1,76 @@
+{
+  "task": "R51-T039",
+  "issue": 39,
+  "tool_versions": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "3.13.14"
+  },
+  "command": "npm test -- --runInBand --watchAll=false --json --outputFile=/Users/aniketmanna/javascript-algorithms/work/R51-T039/jest-results.json src/algorithms/sets/longest-common-subsequence/__test__/longestCommonSubsequence.test.js",
+  "test_count": 5,
+  "passed": 5,
+  "failed": 0,
+  "complexity": {
+    "claim": "O(n * m) time worst-case, O(n * m) space worst-case",
+    "input_size_variable": "n = set1.length, m = set2.length",
+    "observation_type": "DP cell-fill count (exact, deterministic)",
+    "no_wall_clock_threshold": true
+  },
+  "evidence": {
+    "preconditionSource": "longestCommonSubsequence.js line 6",
+    "complexityInputVar": "n = set1.length, m = set2.length",
+    "worstCaseClaim": "O(n * m) time, O(n * m) space",
+    "observationType": "operation count (DP cell fills = n*m exactly)",
+    "repsPerSize": 5,
+    "sizes": [
+      {
+        "n": 4,
+        "m": 4,
+        "expectedOpCount": 16,
+        "observedOpCounts": [
+          16,
+          16,
+          16,
+          16,
+          16
+        ],
+        "median": 16,
+        "range": 0,
+        "lcsLength": 4,
+        "complexityClaim": "O(n*m) worst-case \u2014 observed count equals n*m exactly"
+      },
+      {
+        "n": 8,
+        "m": 8,
+        "expectedOpCount": 64,
+        "observedOpCounts": [
+          64,
+          64,
+          64,
+          64,
+          64
+        ],
+        "median": 64,
+        "range": 0,
+        "lcsLength": 8,
+        "complexityClaim": "O(n*m) worst-case \u2014 observed count equals n*m exactly"
+      },
+      {
+        "n": 16,
+        "m": 16,
+        "expectedOpCount": 256,
+        "observedOpCounts": [
+          256,
+          256,
+          256,
+          256,
+          256
+        ],
+        "median": 256,
+        "range": 0,
+        "lcsLength": 16,
+        "complexityClaim": "O(n*m) worst-case \u2014 observed count equals n*m exactly"
+      }
+    ]
+  }
+}
