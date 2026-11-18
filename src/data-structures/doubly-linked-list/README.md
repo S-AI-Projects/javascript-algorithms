@@ -113,6 +113,20 @@ end Reverse Traversal
 
 O(n)
 
+## Failure & Absent-Result Contract
+
+The methods of `DoublyLinkedList` use a total-function design that returns `null`
+as an explicit sentinel value rather than raising exceptions for missing items:
+
+- `delete(value)` on an empty list returns `null` (lines 74-76).
+- `deleteTail()` on an empty list returns `null` (lines 157-160).
+- `deleteHead()` on an empty list returns `null` (lines 184-186).
+- `find({ value, callback })` returns `null` on an empty list (lines 130-132) or when
+  no node matches the search criteria (line 150).
+
+In each case, list state (`head` and `tail`) remains untouched and valid, so subsequent
+operations succeed without error.
+
 ## References
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Doubly_linked_list)
