@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "commands": [
+    {
+      "command": "HUSKY=0 npm ci",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test -- --runInBand --watchAll=false --runTestsByPath src/algorithms/search/linear-search/__test__/linearSearch.test.js",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test -- --runInBand --watchAll=false",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run lint",
+      "exit_code": 0
+    }
+  ],
+  "environment": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "3.13.14"
+  },
+  "full_test_summary": "Tests:       589 passed, 589 total",
+  "nonzero_test_count": 589,
+  "before_after_evidence_agrees": true
+}

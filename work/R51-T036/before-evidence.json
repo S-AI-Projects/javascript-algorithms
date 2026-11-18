@@ -1,0 +1,92 @@
+[
+  {
+    "name": "first element",
+    "input": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "seekElement": 2,
+    "expected": [
+      0
+    ],
+    "actual": [
+      0
+    ]
+  },
+  {
+    "name": "last element",
+    "input": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "seekElement": 8,
+    "expected": [
+      3
+    ],
+    "actual": [
+      3
+    ]
+  },
+  {
+    "name": "missing element",
+    "input": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "seekElement": 5,
+    "expected": [],
+    "actual": []
+  },
+  {
+    "name": "singleton match",
+    "input": [
+      7
+    ],
+    "seekElement": 7,
+    "expected": [
+      0
+    ],
+    "actual": [
+      0
+    ]
+  },
+  {
+    "name": "singleton miss",
+    "input": [
+      7
+    ],
+    "seekElement": 2,
+    "expected": [],
+    "actual": []
+  },
+  {
+    "name": "empty collection",
+    "input": [],
+    "seekElement": 2,
+    "expected": [],
+    "actual": []
+  },
+  {
+    "name": "duplicate values",
+    "input": [
+      2,
+      4,
+      2
+    ],
+    "seekElement": 2,
+    "expected": [
+      0,
+      2
+    ],
+    "actual": [
+      0,
+      2
+    ]
+  }
+]
