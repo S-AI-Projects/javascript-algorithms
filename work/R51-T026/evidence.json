@@ -1,0 +1,63 @@
+{
+  "task": "R51-T026",
+  "issue": 26,
+  "item": "src/algorithms/math/pascal-triangle",
+  "behavior_contract": {
+    "target_function": "pascalTriangle(lineNumber) at pascalTriangle.js:19",
+    "inputs": "lineNumber: zero-based row index (number >= 0), established at line 2",
+    "result": "number[]: coefficients of the nth line of Pascal triangle",
+    "mutation_behavior": "Pure function; returns a new array; does not mutate arguments",
+    "external_dependencies": []
+  },
+  "refactored_responsibility": {
+    "name": "calculateNextCoefficient(previousCoefficient, lineNumber, columnIndex)",
+    "description": "Extracts the coherent calculation of the consecutive binomial coefficient C(n, k) = C(n, k - 1) * (n - k + 1) / k from the previous coefficient. Clarifies intermediate state names previousCoefficient and binomialFactor.",
+    "clarified_state": [
+      "previousCoefficient: C(n, k - 1), the immediate predecessor in the row",
+      "binomialFactor: (n - k + 1), the numerator multiplier in the recurrence relation"
+    ]
+  },
+  "fixtures": [
+    {
+      "description": "Smallest valid input (lower boundary)",
+      "precondition_source": "pascalTriangle.js:2 (@param {number} lineNumber - zero based)",
+      "input": 0,
+      "expected": [
+        1
+      ],
+      "independent_calculation": "Row 0 has C(0, 0) = 1.",
+      "test_name": "calculates coefficients for the smallest valid input (lineNumber = 0)"
+    },
+    {
+      "description": "Ordinary input",
+      "precondition_source": "pascalTriangle.js:2 (@param {number} lineNumber - zero based)",
+      "input": 4,
+      "expected": [
+        1,
+        4,
+        6,
+        4,
+        1
+      ],
+      "independent_calculation": "C(4, 0) = 1; C(4, 1) = 1 * (4 - 1 + 1) / 1 = 4; C(4, 2) = 4 * (4 - 2 + 1) / 2 = 6; C(4, 3) = 6 * (4 - 3 + 1) / 3 = 4; C(4, 4) = 4 * (4 - 4 + 1) / 4 = 1.",
+      "test_name": "calculates coefficients for an ordinary input (lineNumber = 4)"
+    }
+  ],
+  "native_check": {
+    "command": "npm test -- --runInBand",
+    "passed": 590,
+    "total": 590,
+    "failed": 0
+  },
+  "focused_check": {
+    "command": "npm test -- --runInBand src/algorithms/math/pascal-triangle/__test__/pascalTriangle.test.js",
+    "passed": 4,
+    "total": 4,
+    "failed": 0
+  },
+  "tool_versions": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.14.7"
+  }
+}
