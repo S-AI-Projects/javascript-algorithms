@@ -1,0 +1,95 @@
+{
+  "task": "R51-T040",
+  "issue": 40,
+  "tool_versions": {
+    "node": "v26.12.1",
+    "npm": "11.20.0",
+    "python": "3.13.14"
+  },
+  "command": "npm test -- --runInBand --watchAll=false --json --outputFile=/Users/aniketmanna/javascript-algorithms/work/R51-T040/jest-results.json src/algorithms/sets/combinations/__test__/combineWithRepetitions.test.js",
+  "test_count": 7,
+  "passed": 7,
+  "failed": 0,
+  "source_has_no_mutation": true,
+  "mutation_experiment": {
+    "input": {
+      "comboOptions": [
+        "A",
+        "B"
+      ],
+      "comboLength": 2
+    },
+    "original_output_count": 3,
+    "mutant_output_count": 1,
+    "named_assertion": "result.length === 3 (mutant produces 1)",
+    "mutation_detected": true
+  },
+  "evidence": {
+    "preconditionSource": "combineWithRepetitions.js line 29",
+    "protectedCondition": "comboOptions.slice(optionIndex) \u2014 includes current element for repetition",
+    "plausibleMutation": "comboOptions.slice(optionIndex + 1) \u2014 skips current element",
+    "smallestInputWhereOriginalAndMutantDiffer": {
+      "comboOptions": [
+        "A",
+        "B"
+      ],
+      "comboLength": 2,
+      "originalOutput": [
+        [
+          "A",
+          "A"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "B"
+        ]
+      ],
+      "mutantOutput": [
+        [
+          "A",
+          "B"
+        ]
+      ],
+      "namedAssertionThatDetectsMutation": "result.length === 3 (mutant produces 1)"
+    },
+    "ordinaryInput": {
+      "comboOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "comboLength": 2,
+      "expectedOutput": [
+        [
+          "A",
+          "A"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "C"
+        ],
+        [
+          "B",
+          "B"
+        ],
+        [
+          "B",
+          "C"
+        ],
+        [
+          "C",
+          "C"
+        ]
+      ],
+      "count": 6
+    }
+  }
+}
