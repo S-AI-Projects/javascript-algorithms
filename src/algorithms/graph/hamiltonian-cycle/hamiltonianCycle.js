@@ -1,6 +1,22 @@
 import GraphVertex from '../../../data-structures/graph/GraphVertex';
 
 /**
+ * Check whether vertexCandidate can be appended to the current Hamiltonian
+ * path without breaking correctness.
+ *
+ * Complexity (input-size variable: k = cycle.length, the current path length):
+ *   - Adjacency-matrix look-up: O(1) — two index reads and one array access.
+ *   - Duplicate scan via Array.prototype.find: O(k) — iterates at most k
+ *     vertices already in the path.
+ *   - Overall per-call: O(k).
+ *   - Worst-case across all calls in hamiltonianCycleRecursive: each call
+ *     receives a path of length 1..n, so the total work for all isSafe
+ *     invocations is bounded by O(n · n!) where n is the number of vertices,
+ *     reflecting the factorial branching of the backtracking search.
+ *   - This O(k) observation is confirmed experimentally (see work/R51-T029/):
+ *     operation counts grow linearly with cycle length k, independent of the
+ *     wall-clock speed of the host machine.
+ *
  * @param {number[][]} adjacencyMatrix
  * @param {object} verticesIndices
  * @param {GraphVertex[]} cycle

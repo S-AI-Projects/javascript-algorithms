@@ -1,0 +1,121 @@
+{
+  "tool_versions": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python3": "Python 3.14.7"
+  },
+  "native_test_suite": {
+    "command": "npm test -- --runInBand",
+    "exit_code": 0,
+    "test_count_passed": 589,
+    "output_tail": "st.js\nPASS src/algorithms/sets/power-set/__test__/btPowerSet.test.js\nPASS src/algorithms/sets/maximum-subarray/__test__/dpMaximumSubarray.test.js\nPASS src/algorithms/sets/longest-increasing-subsequence/__test__/dpLongestIncreasingSubsequence.test.js\nPASS src/algorithms/sets/fisher-yates/__test__/fisherYates.test.js\nPASS src/algorithms/sets/combination-sum/__test__/combinationSum.test.js\nPASS src/algorithms/sets/cartesian-product/__test__/cartesianProduct.test.js\nPASS src/algorithms/math/sieve-of-eratosthenes/__test__/sieveOfEratosthenes.test.js\nPASS src/algorithms/math/least-common-multiple/__test__/leastCommonMultiple.test.js\nPASS src/algorithms/math/primality-test/__test__/trialDivision.test.js\nPASS src/algorithms/math/pascal-triangle/__test__/pascalTriangleRecursive.test.js\nPASS src/algorithms/math/is-power-of-two/__test__/isPowerOfTwoBitwise.test.js\nPASS src/algorithms/math/fibonacci/__test__/fibonacci.test.js\nPASS src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithm.test.js\nPASS src/algorithms/math/bits/__test__/updateBit.test.js\nPASS src/algorithms/math/bits/__test__/setBit.test.js\nPASS src/algorithms/math/bits/__test__/multiplyUnsigned.test.js\nPASS src/algorithms/math/bits/__test__/isPowerOfTwo.test.js\nPASS src/algorithms/math/bits/__test__/countSetBits.test.js\nPASS src/algorithms/math/bits/__test__/clearBit.test.js\nPASS src/algorithms/linked-list/traversal/__test__/traversal.test.js\nPASS src/data-structures/queue/__test__/Queue.test.js\nPASS src/data-structures/stack/__test__/Stack.test.js\nPASS src/data-structures/doubly-linked-list/__test__/DoublyLinkedListNode.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/uniquePaths.test.js\nPASS src/algorithms/sets/power-set/__test__/bwPowerSet.test.js\nPASS src/algorithms/sets/knapsack-problem/__test__/KnapsackItem.test.js\nPASS src/algorithms/math/radian/__test__/degreeToRadian.test.js\nPASS src/algorithms/math/is-power-of-two/__test__/isPowerOfTwo.test.js\nPASS src/algorithms/math/factorial/__test__/factorialRecursive.test.js\nPASS src/algorithms/math/bits/__test__/switchSign.test.js\nPASS src/algorithms/math/bits/__test__/getBit.test.js\nPASS src/utils/comparator/__test__/Comparator.test.js\nPASS src/data-structures/linked-list/__test__/LinkedListNode.test.js\nPASS src/data-structures/heap/__test__/Heap.test.js\nPASS src/algorithms/sorting/__test__/Sort.test.js\nPASS src/algorithms/sets/longest-common-subsequence/__test__/longestCommonSubsequence.test.js\nPASS src/algorithms/math/pascal-triangle/__test__/pascalTriangle.test.js\nPASS src/algorithms/math/factorial/__test__/factorial.test.js\nPASS src/algorithms/math/horner-method/__test__/classicPolynome.test.js\nPASS src/algorithms/math/bits/__test__/multiplyByTwo.test.js\nPASS src/algorithms/math/bits/__test__/divideByTwo.test.js\nPASS src/algorithms/math/bits/__test__/bitLength.test.js\n\nTest Suites: 178 passed, 178 total\nTests:       589 passed, 589 total\nSnapshots:   0 total\nTime:        2.635 s, estimated 4 s\nRan all test suites.\n"
+  },
+  "focused_test_run": {
+    "command": "npm test -- --runInBand src/algorithms/graph/hamiltonian-cycle/__test__/hamiltonianCycle.test.js",
+    "exit_code": 0,
+    "test_count_passed": 4,
+    "output_tail": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest --runInBand src/algorithms/graph/hamiltonian-cycle/__test__/hamiltonianCycle.test.js\n\n(node:7448) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.\n(Use `node --trace-warnings ...` to show where the warning was created)\nPASS src/algorithms/graph/hamiltonian-cycle/__test__/hamiltonianCycle.test.js\n\nTest Suites: 1 passed, 1 total\nTests:       4 passed, 4 total\nSnapshots:   0 total\nTime:        0.115 s, estimated 1 s\nRan all test suites matching src/algorithms/graph/hamiltonian-cycle/__test__/hamiltonianCycle.test.js.\n"
+  },
+  "fixture_correctness": [
+    {
+      "label": "smallest valid input (k=1)",
+      "cycle": [
+        "0"
+      ],
+      "candidate": "1",
+      "expected": true,
+      "actual": true,
+      "ops": 2,
+      "precondition_source": "hamiltonianCycle.js line 26",
+      "manual_trace": "adjacency_matrix[idx_0][idx_1]=0 \u2260 \u221e \u2192 pass; '1' not in ['0'] \u2192 no duplicate \u2192 True"
+    },
+    {
+      "label": "smallest, duplicate candidate (k=2)",
+      "cycle": [
+        "0",
+        "1"
+      ],
+      "candidate": "0",
+      "expected": false,
+      "actual": false,
+      "ops": 2,
+      "precondition_source": "hamiltonianCycle.js line 26",
+      "manual_trace": "adjacency_matrix[idx_1][idx_0]=0 \u2260 \u221e \u2192 pass; '0' found in ['0','1'] at pos 0 \u2192 duplicate \u2192 False"
+    },
+    {
+      "label": "ordinary input (k=5)",
+      "cycle": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "candidate": "5",
+      "expected": true,
+      "actual": true,
+      "ops": 6,
+      "precondition_source": "hamiltonianCycle.js line 26",
+      "manual_trace": "adjacency_matrix[idx_4][idx_5]=0 \u2260 \u221e \u2192 pass; '5' not in ['0','1','2','3','4'] \u2192 no duplicate \u2192 True"
+    }
+  ],
+  "complexity_experiment": {
+    "description": "Operation counts for isSafe over three increasing cycle lengths k. Each call performs 1 adjacency-matrix look-up + k duplicate-scan steps, giving O(k) per-call complexity. Worst-case total across all backtracking calls: O(n \u00b7 n!). Measurement avoids wall-clock times; counts are deterministic.",
+    "input_size_variable": "k = cycle.length (current Hamiltonian path length)",
+    "complexity_claim": "O(k) per call; O(n \u00b7 n!) total over all isSafe invocations",
+    "distinction": "Worst-case O(k) per call is an algorithmic analysis of Array.find. O(n \u00b7 n!) total is an upper bound on the backtracking search tree, not a wall-clock observation.",
+    "sizes": [
+      1,
+      5,
+      10
+    ],
+    "repetitions": 5,
+    "results": [
+      {
+        "k": 1,
+        "repetitions": 5,
+        "op_counts": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "median_ops": 2,
+        "range_ops": 0,
+        "expected_ops": 2,
+        "all_correct": true
+      },
+      {
+        "k": 5,
+        "repetitions": 5,
+        "op_counts": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "median_ops": 6,
+        "range_ops": 0,
+        "expected_ops": 6,
+        "all_correct": true
+      },
+      {
+        "k": 10,
+        "repetitions": 5,
+        "op_counts": [
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        "median_ops": 11,
+        "range_ops": 0,
+        "expected_ops": 11,
+        "all_correct": true
+      }
+    ]
+  }
+}
