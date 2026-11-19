@@ -1,0 +1,53 @@
+{
+  "task": "R51-T002",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/algorithms/string/hamming-distance/__test__/hammingDistance.test.js --watchAll=false",
+  "test_count": 7,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "boundary_table": [
+    {
+      "boundary": "Equal length interior (stated fixture)",
+      "input_a": "GAGCCT",
+      "input_b": "CATCGT",
+      "expected": 3,
+      "actual": 3,
+      "citation": "Lines 11-17 loop count differences"
+    },
+    {
+      "boundary": "Identical strings (0 distance)",
+      "input_a": "GAGCCT",
+      "input_b": "GAGCCT",
+      "expected": 0,
+      "actual": 0,
+      "citation": "Line 14 condition never met"
+    },
+    {
+      "boundary": "Smallest supported domain (empty strings)",
+      "input_a": "",
+      "input_b": "",
+      "expected": 0,
+      "actual": 0,
+      "citation": "Line 19 length equality holds (0 == 0)"
+    },
+    {
+      "boundary": "Single-character domain boundary",
+      "input_a": "x",
+      "input_b": "y",
+      "expected": 1,
+      "actual": 1,
+      "citation": "Lines 13-17 single iteration difference"
+    },
+    {
+      "boundary": "Explicitly unsupported (unequal length)",
+      "input_a": "GAGCCT",
+      "input_b": "GAGCCTA",
+      "expected_exception": "Strings must be of the same length",
+      "actual_exception": "Strings must be of the same length",
+      "citation": "Line 19 error guard"
+    }
+  ]
+}
