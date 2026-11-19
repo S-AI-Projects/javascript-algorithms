@@ -1,6 +1,14 @@
 /**
  * Interpolation search implementation.
  *
+ * Deterministic Contract & External State:
+ * - Purity: Strictly pure with zero external dependencies (no global state, no timers,
+ *   no network, no Math.random(), no DOM/UI).
+ * - Input Isolation: Never mutates the input `sortedArray`.
+ * - Repeatability: Repeated invocations with identical inputs produce identical outputs
+ *   regardless of prior calls or interleaved state.
+ * - Miss Sentinel: Returns `-1` when seek element is absent (line 59).
+ *
  * @param {*[]} sortedArray - sorted array with uniformly distributed values
  * @param {*} seekElement
  * @return {number}

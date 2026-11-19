@@ -1,0 +1,66 @@
+{
+  "task": "R51-T005",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/algorithms/search/interpolation-search/__test__/interpolationSearch.test.js --watchAll=false",
+  "test_count": 3,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "dependency_analysis": {
+    "external_dependencies": "None. The function is completely pure and operates solely on primitive inputs.",
+    "state_leakage": "None. Consecutive and interleaved runs preserve identical outputs."
+  },
+  "fixtures": [
+    {
+      "array": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "searches": [
+        {
+          "target": 2,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "target": 8,
+          "expected": 3,
+          "actual": 3
+        },
+        {
+          "target": 5,
+          "expected": -1,
+          "actual": -1
+        }
+      ]
+    },
+    {
+      "singleton": [
+        7
+      ],
+      "searches": [
+        {
+          "target": 7,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "target": 3,
+          "expected": -1,
+          "actual": -1
+        }
+      ]
+    },
+    {
+      "empty": [],
+      "target": 4,
+      "expected": -1,
+      "actual": -1
+    }
+  ],
+  "isolation_verified": true
+}
