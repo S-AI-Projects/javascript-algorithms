@@ -1,4 +1,4 @@
-import LRUCache from '../LRUCache';
+import LRUCache, { LinkedListNode } from '../LRUCache';
 
 describe('LRUCache', () => {
   it('should set and get values to and from the cache', () => {
@@ -146,5 +146,52 @@ describe('LRUCache', () => {
     expect(cache.get('key-4')).toBeUndefined();
     expect(cache.get('key-5')).toBe(5);
     expect(cache.get('key-6')).toBe(6);
+  });
+
+  describe('LinkedListNode executable documentation (R51-T007)', () => {
+    it('executes documentation example: three distinct nodes A -> B -> C', () => {
+      // Input state: construct three distinct nodes
+      const nodeA = new LinkedListNode('A', 1);
+      const nodeB = new LinkedListNode('B', 2);
+      const nodeC = new LinkedListNode('C', 3);
+
+      // Intermediate state transition: link references bidirectionally
+      nodeA.next = nodeB;
+      nodeB.prev = nodeA;
+      nodeB.next = nodeC;
+      nodeC.prev = nodeB;
+
+      // 1. Check values separately
+      expect(nodeA.key).toBe('A');
+      expect(nodeA.val).toBe(1);
+      expect(nodeB.key).toBe('B');
+      expect(nodeB.val).toBe(2);
+      expect(nodeC.key).toBe('C');
+      expect(nodeC.val).toBe(3);
+
+      // 2. Check forward and backward node links separately
+      expect(nodeA.prev).toBeNull();
+      expect(nodeA.next).toBe(nodeB);
+      expect(nodeB.prev).toBe(nodeA);
+      expect(nodeB.next).toBe(nodeC);
+      expect(nodeC.prev).toBe(nodeB);
+      expect(nodeC.next).toBeNull();
+
+      // Traversal integrity
+      expect(nodeA.next.next).toBe(nodeC);
+      expect(nodeC.prev.prev).toBe(nodeA);
+    });
+
+    it('executes smallest supported list: singleton node', () => {
+      const singleNode = new LinkedListNode('X', 42);
+
+      // Values checked separately
+      expect(singleNode.key).toBe('X');
+      expect(singleNode.val).toBe(42);
+
+      // Links checked separately
+      expect(singleNode.prev).toBeNull();
+      expect(singleNode.next).toBeNull();
+    });
   });
 });
