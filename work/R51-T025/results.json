@@ -1,0 +1,42 @@
+{
+  "task": "R51-T025",
+  "description": "Make verification repeatable for greedyJumpGame",
+  "source_file": "src/algorithms/uncategorized/jump-game/greedyJumpGame.js",
+  "test_file": "src/algorithms/uncategorized/jump-game/__test__/greedyJumpGame.test.js",
+  "purity_verdict": "greedyJumpGame is a pure function: it only reads `numbers` via indexed access and uses a local variable `leftGoodPosition`. It never writes to `numbers`. No external dependencies.",
+  "total_failures": 0,
+  "failures": [],
+  "fixtures": [
+    {
+      "label": "smallest valid input",
+      "input": [
+        1,
+        0
+      ],
+      "expected": true,
+      "actual_call1": true,
+      "actual_call2": true,
+      "input_mutated": false,
+      "calls_agree": true,
+      "precondition_source": "greedyJumpGame.js line 17 (@param {number[]} numbers)",
+      "manual_trace": "leftGoodPosition=1; index 0: maxJump=0+1=1 >= 1 \u2192 leftGoodPosition=0; result: 0===0 \u2192 true"
+    },
+    {
+      "label": "ordinary input",
+      "input": [
+        3,
+        2,
+        1,
+        0,
+        4
+      ],
+      "expected": false,
+      "actual_call1": false,
+      "actual_call2": false,
+      "input_mutated": false,
+      "calls_agree": true,
+      "precondition_source": "greedyJumpGame.js line 17 (@param {number[]} numbers)",
+      "manual_trace": "leftGoodPosition=4; no index i satisfies i+numbers[i]>=4 \u2192 leftGoodPosition stays 4; result: 4===0 \u2192 false"
+    }
+  ]
+}
