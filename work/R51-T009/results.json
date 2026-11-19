@@ -1,0 +1,80 @@
+{
+  "task": "R51-T009",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/algorithms/string/z-algorithm/__test__/zAlgorithm.test.js --watchAll=false",
+  "test_count": 4,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "complexity_analysis": {
+    "input_size_variable": "N = zString.length (line 21)",
+    "theoretical_worst_case": "O(N) time, O(N) space",
+    "empirical_scaling": {
+      "1000": {
+        "median_ms": 0.035,
+        "range_ms": [
+          0.035,
+          0.042
+        ],
+        "mean_comparisons": 1172,
+        "max_comparisons_ratio_to_N": 1.188
+      },
+      "5000": {
+        "median_ms": 0.211,
+        "range_ms": [
+          0.211,
+          0.217
+        ],
+        "mean_comparisons": 5869,
+        "max_comparisons_ratio_to_N": 1.179
+      },
+      "20000": {
+        "median_ms": 0.864,
+        "range_ms": [
+          0.857,
+          0.9
+        ],
+        "mean_comparisons": 23421,
+        "max_comparisons_ratio_to_N": 1.1845
+      }
+    }
+  },
+  "fixtures": [
+    {
+      "name": "smallest valid input",
+      "input": "a",
+      "expected": [
+        0
+      ],
+      "actual": [
+        0
+      ]
+    },
+    {
+      "name": "ordinary input",
+      "input": "aab$aabx",
+      "expected": [
+        0,
+        1,
+        0,
+        0,
+        3,
+        1,
+        0,
+        0
+      ],
+      "actual": [
+        0,
+        1,
+        0,
+        0,
+        3,
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}
