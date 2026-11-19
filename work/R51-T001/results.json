@@ -1,0 +1,87 @@
+{
+  "task": "R51-T001",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/algorithms/graph/eulerian-path/__test__/eulerianPath.test.js --watchAll=false",
+  "test_count": 6,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "cases": [
+    {
+      "name": "smallest valid input",
+      "precondition_lines": [
+        "line 24",
+        "line 36",
+        "line 41",
+        "lines 53-57"
+      ],
+      "input": "Graph with 2 vertices ['A', 'B'] and 1 edge A-B",
+      "expected_return": [
+        "A",
+        "B"
+      ],
+      "actual_return": [
+        "A",
+        "B"
+      ],
+      "observable_mutation": {
+        "expected_remaining_edges": 0,
+        "actual_remaining_edges": 0
+      }
+    },
+    {
+      "name": "ordinary input",
+      "precondition_lines": [
+        "line 24",
+        "line 36",
+        "line 41",
+        "lines 53-57"
+      ],
+      "input": "Graph with 4 vertices ['A', 'B', 'C', 'D'] and 3 edges A-B, B-C, C-D",
+      "expected_return": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "actual_return": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "observable_mutation": {
+        "expected_remaining_edges": 0,
+        "actual_remaining_edges": 0
+      }
+    },
+    {
+      "name": "domain boundary (cycle with repeated vertex)",
+      "precondition_lines": [
+        "line 24",
+        "line 36",
+        "line 41",
+        "line 53"
+      ],
+      "input": "Triangle circuit A-B, B-C, C-A",
+      "expected_return": [
+        "A",
+        "B",
+        "C",
+        "A"
+      ],
+      "actual_return": [
+        "A",
+        "B",
+        "C",
+        "A"
+      ],
+      "observable_mutation": {
+        "expected_remaining_edges": 0,
+        "actual_remaining_edges": 0
+      }
+    }
+  ]
+}

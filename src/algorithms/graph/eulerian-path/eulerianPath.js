@@ -3,6 +3,21 @@ import graphBridges from '../bridges/graphBridges';
 /**
  * Fleury's algorithm of finding Eulerian Path (visit all graph edges exactly once).
  *
+ * Contract:
+ * - Preconditions:
+ *   - `graph` must be an undirected Graph instance containing vertices and edges (line 24).
+ *   - Edges must have getKey() methods returning a valid key (line 36).
+ *   - Vertices must have getDegree() and getKey() methods (line 41).
+ *   - Graph must be connected and either contain 0 odd-degree vertices (Eulerian circuit)
+ *     or exactly 2 odd-degree vertices (Eulerian path) (lines 53-57).
+ * - Observable Mutation:
+ *   - Mutates the input `graph`: every traversed edge is deleted from the graph via
+ *     `graph.deleteEdge(edgeToDelete)` (line 112). When execution finishes, all traversed
+ *     edges are removed from the input graph.
+ * - Return Value:
+ *   - Returns an ordered array of `GraphVertex` representing the sequence of visited vertices
+ *     in the Eulerian path / circuit (line 115).
+ *
  * @param {Graph} graph
  * @return {GraphVertex[]}
  */
