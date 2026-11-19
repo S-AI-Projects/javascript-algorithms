@@ -1,0 +1,62 @@
+{
+  "tool_versions": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python3": "Python 3.14.7"
+  },
+  "native_test_suite": {
+    "command": "npm test -- --runInBand",
+    "exit_code": 0,
+    "test_count_passed": 595,
+    "output_tail": "lgorithms/math/fibonacci/__test__/fibonacci.test.js\nPASS src/algorithms/sets/fisher-yates/__test__/fisherYates.test.js\nPASS src/algorithms/math/bits/__test__/isPositive.test.js\nPASS src/algorithms/math/pascal-triangle/__test__/pascalTriangle.test.js\nPASS src/algorithms/sets/cartesian-product/__test__/cartesianProduct.test.js\nPASS src/algorithms/math/bits/__test__/updateBit.test.js\nPASS src/algorithms/math/bits/__test__/isEven.test.js\nPASS src/algorithms/math/bits/__test__/fullAdder.test.js\nPASS src/algorithms/math/bits/__test__/multiply.test.js\nPASS src/algorithms/math/bits/__test__/multiplyUnsigned.test.js\nPASS src/algorithms/uncategorized/n-queens/__test__/QueensPosition.test.js\nPASS src/algorithms/linked-list/traversal/__test__/traversal.test.js\nPASS src/algorithms/math/bits/__test__/getBit.test.js\nPASS src/algorithms/sets/combination-sum/__test__/combinationSum.test.js\nPASS src/algorithms/string/palindrome/__test__/isPalindrome.test.js\nPASS src/algorithms/math/liu-hui/__test__/liuHui.test.js\nPASS src/algorithms/sets/power-set/__test__/caPowerSet.test.js\nPASS src/algorithms/math/integer-partition/__test__/integerPartition.test.js\nPASS src/algorithms/uncategorized/n-queens/__test__/nQueensBitwise.test.js\nPASS src/algorithms/math/bits/__test__/bitLength.test.js\nPASS src/algorithms/math/sieve-of-eratosthenes/__test__/sieveOfEratosthenes.test.js\nPASS src/algorithms/math/radian/__test__/radianToDegree.test.js\nPASS src/algorithms/math/radian/__test__/degreeToRadian.test.js\nPASS src/algorithms/math/bits/__test__/switchSign.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/dpUniquePaths.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/btUniquePaths.test.js\nPASS src/algorithms/math/bits/__test__/bitsDiff.test.js\nPASS src/algorithms/math/bits/__test__/multiplyByTwo.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/uniquePaths.test.js\nPASS src/algorithms/sets/power-set/__test__/btPowerSet.test.js\nPASS src/algorithms/math/bits/__test__/clearBit.test.js\nPASS src/algorithms/sets/power-set/__test__/bwPowerSet.test.js\nPASS src/algorithms/math/factorial/__test__/factorialRecursive.test.js\nPASS src/algorithms/math/bits/__test__/divideByTwo.test.js\nPASS src/algorithms/math/bits/__test__/setBit.test.js\nPASS src/algorithms/math/fourier-transform/__test__/inverseDiscreteFourierTransform.test.js\nPASS src/algorithms/math/factorial/__test__/factorial.test.js\nPASS src/algorithms/math/fourier-transform/__test__/discreteFourierTransform.test.js\nPASS src/algorithms/sorting/__test__/Sort.test.js\nPASS src/data-structures/heap/__test__/Heap.test.js\nPASS src/playground/__test__/playground.test.js\n\nTest Suites: 178 passed, 178 total\nTests:       595 passed, 595 total\nSnapshots:   0 total\nTime:        3.719 s\nRan all test suites.\nnpm notice\nnpm notice New major version of npm available! 11.20.0 -> 12.2.3\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3\nnpm notice To update run: npm install -g npm@12.2.3\nnpm notice\n"
+  },
+  "focused_test_run": {
+    "command": "npm test -- --runInBand src/algorithms/uncategorized/jump-game/__test__/greedyJumpGame.test.js",
+    "exit_code": 0,
+    "test_count_passed": 9,
+    "output_tail": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest --runInBand src/algorithms/uncategorized/jump-game/__test__/greedyJumpGame.test.js\n\n(node:6572) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.\n(Use `node --trace-warnings ...` to show where the warning was created)\nPASS src/algorithms/uncategorized/jump-game/__test__/greedyJumpGame.test.js\n\nTest Suites: 1 passed, 1 total\nTests:       9 passed, 9 total\nSnapshots:   0 total\nTime:        0.112 s, estimated 1 s\nRan all test suites matching src/algorithms/uncategorized/jump-game/__test__/greedyJumpGame.test.js.\n"
+  },
+  "fixture_verification": [
+    {
+      "label": "smallest valid input",
+      "input": [
+        1,
+        0
+      ],
+      "expected": true,
+      "actual_call1": true,
+      "actual_call2": true,
+      "input_mutated": false,
+      "calls_agree": true,
+      "precondition_source": "greedyJumpGame.js line 17 (@param {number[]} numbers)",
+      "manual_trace": "leftGoodPosition=1; index 0: maxJump=0+1=1 >= 1 \u2192 leftGoodPosition=0; result: 0===0 \u2192 true"
+    },
+    {
+      "label": "ordinary input",
+      "input": [
+        3,
+        2,
+        1,
+        0,
+        4
+      ],
+      "expected": false,
+      "actual_call1": false,
+      "actual_call2": false,
+      "input_mutated": false,
+      "calls_agree": true,
+      "precondition_source": "greedyJumpGame.js line 17 (@param {number[]} numbers)",
+      "manual_trace": "leftGoodPosition=4; no index i satisfies i+numbers[i]>=4 \u2192 leftGoodPosition stays 4; result: 4===0 \u2192 false"
+    }
+  ],
+  "cross_fixture_isolation": {
+    "smallest_then_ordinary": {
+      "smallest": true,
+      "ordinary": false
+    },
+    "ordinary_then_smallest": {
+      "ordinary": false,
+      "smallest": true
+    }
+  }
+}
