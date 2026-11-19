@@ -1,0 +1,295 @@
+{
+  "task": "R51-T003",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/algorithms/search/binary-search/__test__/binarySearch.test.js --watchAll=false",
+  "test_count": 5,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "fixture": {
+    "array": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "searches": [
+      {
+        "target": 2,
+        "expected": 0,
+        "result": "hit"
+      },
+      {
+        "target": 8,
+        "expected": 3,
+        "result": "hit"
+      },
+      {
+        "target": 5,
+        "expected": -1,
+        "result": "miss (sentinel)"
+      }
+    ]
+  },
+  "oracle_comparison_count": 26,
+  "oracle_results": [
+    {
+      "array": [],
+      "target": 0,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [],
+      "target": 5,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        7
+      ],
+      "target": 7,
+      "expected_index": 0,
+      "oracle_index": 0
+    },
+    {
+      "array": [
+        7
+      ],
+      "target": 3,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        7
+      ],
+      "target": 9,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        1,
+        3
+      ],
+      "target": 1,
+      "expected_index": 0,
+      "oracle_index": 0
+    },
+    {
+      "array": [
+        1,
+        3
+      ],
+      "target": 3,
+      "expected_index": 1,
+      "oracle_index": 1
+    },
+    {
+      "array": [
+        1,
+        3
+      ],
+      "target": 0,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        1,
+        3
+      ],
+      "target": 2,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        1,
+        3
+      ],
+      "target": 4,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "target": 10,
+      "expected_index": 0,
+      "oracle_index": 0
+    },
+    {
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "target": 20,
+      "expected_index": 1,
+      "oracle_index": 1
+    },
+    {
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "target": 30,
+      "expected_index": 2,
+      "oracle_index": 2
+    },
+    {
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "target": 15,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "target": 35,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "target": 2,
+      "expected_index": 0,
+      "oracle_index": 0
+    },
+    {
+      "array": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "target": 4,
+      "expected_index": 1,
+      "oracle_index": 1
+    },
+    {
+      "array": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "target": 6,
+      "expected_index": 2,
+      "oracle_index": 2
+    },
+    {
+      "array": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "target": 8,
+      "expected_index": 3,
+      "oracle_index": 3
+    },
+    {
+      "array": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "target": 1,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "target": 5,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "target": 9,
+      "expected_index": -1,
+      "oracle_index": -1
+    },
+    {
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "target": 5,
+      "expected_index": 2,
+      "oracle_index": 2
+    },
+    {
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "target": 1,
+      "expected_index": 0,
+      "oracle_index": 0
+    },
+    {
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "target": 9,
+      "expected_index": 4,
+      "oracle_index": 4
+    },
+    {
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "target": 6,
+      "expected_index": -1,
+      "oracle_index": -1
+    }
+  ]
+}
