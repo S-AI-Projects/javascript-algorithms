@@ -1,0 +1,92 @@
+{
+  "task": "R51-T006",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/algorithms/sets/cartesian-product/__test__/cartesianProduct.test.js --watchAll=false",
+  "test_count": 5,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "refactoring_summary": {
+    "responsibility": "Pair formation in Cartesian product loop",
+    "named_state": "const pair = [setA[indexA], setB[indexB]]",
+    "behavior_preserved": true
+  },
+  "fixtures": [
+    {
+      "name": "smallest valid input",
+      "precondition_lines": [
+        "lines 18-19"
+      ],
+      "setA": [
+        1
+      ],
+      "setB": [
+        2
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "name": "ordinary input",
+      "precondition_lines": [
+        "lines 18-19"
+      ],
+      "setA": [
+        "x",
+        "y"
+      ],
+      "setB": [
+        1,
+        2
+      ],
+      "expected": [
+        [
+          "x",
+          1
+        ],
+        [
+          "x",
+          2
+        ],
+        [
+          "y",
+          1
+        ],
+        [
+          "y",
+          2
+        ]
+      ],
+      "actual": [
+        [
+          "x",
+          1
+        ],
+        [
+          "x",
+          2
+        ],
+        [
+          "y",
+          1
+        ],
+        [
+          "y",
+          2
+        ]
+      ]
+    }
+  ]
+}
