@@ -68,4 +68,67 @@ describe('kNN', () => {
     const expectedClass = 3;
     expect(kNN(dataSet, labels, toClassify)).toBe(expectedClass);
   });
+
+  describe('property and invariant tests (R51-T004)', () => {
+    it('smallest valid input: 1 point, 1 label, k=1 (preconditions: lines 28, 37)', () => {
+      const dataSet = [[0, 0]];
+      const labels = [1];
+      const toClassify = [0, 0];
+
+      const dataSetClone = JSON.stringify(dataSet);
+      const labelsClone = JSON.stringify(labels);
+      const toClassifyClone = JSON.stringify(toClassify);
+
+      const result = kNN(dataSet, labels, toClassify, 1);
+      expect(result).toBe(1);
+
+      // Verify input immutability
+      expect(JSON.stringify(dataSet)).toBe(dataSetClone);
+      expect(JSON.stringify(labels)).toBe(labelsClone);
+      expect(JSON.stringify(toClassify)).toBe(toClassifyClone);
+    });
+
+    it('ordinary input: 3 points with known 2-to-1 majority label (preconditions: lines 28, 37)', () => {
+      const dataSet = [[1, 1], [2, 2], [10, 10]];
+      const labels = [1, 1, 2];
+      const toClassify = [1.5, 1.5];
+
+      const result = kNN(dataSet, labels, toClassify, 3);
+      expect(result).toBe(1);
+    });
+
+    it('invariant: homogeneous labels always classify as that label across 100 seeded cases', () => {
+      // Deterministic PRNG with fixed seed
+      let seed = 12345;
+      function pseudoRandom() {
+        seed = (seed * 1664525 + 1013904223) % 4294967296;
+        return seed / 4294967296;
+      }
+
+      for (let trial = 0; trial < 100; trial += 1) {
+        const pointCount = 3 + Math.floor(pseudoRandom() * 5); // 3 to 7 points
+        const chosenLabel = 1 + Math.floor(pseudoRandom() * 5); // Label between 1 and 5
+        const dataSet = [];
+        const labels = [];
+
+        for (let p = 0; p < pointCount; p += 1) {
+          const x = Number((pseudoRandom() * 20 - 10).toFixed(2));
+          const y = Number((pseudoRandom() * 20 - 10).toFixed(2));
+          dataSet.push([x, y]);
+          labels.push(chosenLabel);
+        }
+
+        const query = [
+          Number((pseudoRandom() * 20 - 10).toFixed(2)),
+          Number((pseudoRandom() * 20 - 10).toFixed(2)),
+        ];
+
+        const k = 1 + 2 * Math.floor(pseudoRandom() * Math.floor(pointCount / 2)); // Odd k
+        const classified = kNN(dataSet, labels, query, k);
+
+        // Invariant: must classify as chosenLabel because all data points have chosenLabel
+        expect(classified).toBe(chosenLabel);
+      }
+    });
+  });
 });

@@ -1,5 +1,17 @@
+import euclideanDistance from '../../math/euclidean-distance/euclideanDistance';
+
 /**
  * Classifies the point in space based on k-nearest neighbors algorithm.
+ *
+ * Invariant & Contract:
+ * - Preconditions:
+ *   - `dataSet`, `labels`, and `toClassify` must be non-null and defined (line 28).
+ *   - Each point in `dataSet` must have the same dimension as `toClassify` (line 37).
+ * - Documented Invariants:
+ *   - Homogeneous Labels Invariant: When all training points share an identical class label `L`,
+ *     `kNN` must return `L` for any query point and any valid `k`.
+ *   - Immutability Invariant: The function never mutates `dataSet`, `labels`, or `toClassify`.
+ *   - Output Shape: Always returns a numeric class label from the candidate labels.
  *
  * @param {number[][]} dataSet - array of data points, i.e. [[0, 1], [3, 4], [5, 7]]
  * @param {number[]} labels - array of classes (labels), i.e. [1, 1, 2]
@@ -7,9 +19,6 @@
  * @param {number} k - number of nearest neighbors which will be taken into account (preferably odd)
  * @return {number} - the class of the point
  */
-
-import euclideanDistance from '../../math/euclidean-distance/euclideanDistance';
-
 export default function kNN(
   dataSet,
   labels,

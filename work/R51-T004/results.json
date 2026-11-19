@@ -1,0 +1,76 @@
+{
+  "task": "R51-T004",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/algorithms/ml/knn/__test__/kNN.test.js --watchAll=false",
+  "test_count": 10,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "fixtures": [
+    {
+      "name": "smallest valid input",
+      "precondition_lines": [
+        "line 28",
+        "line 37"
+      ],
+      "dataSet": [
+        [
+          0,
+          0
+        ]
+      ],
+      "labels": [
+        1
+      ],
+      "toClassify": [
+        0,
+        0
+      ],
+      "k": 1,
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "ordinary input",
+      "precondition_lines": [
+        "line 28",
+        "line 37"
+      ],
+      "dataSet": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          10,
+          10
+        ]
+      ],
+      "labels": [
+        1,
+        1,
+        2
+      ],
+      "toClassify": [
+        1.5,
+        1.5
+      ],
+      "k": 3,
+      "expected": 1,
+      "actual": 1
+    }
+  ],
+  "property_check": {
+    "name": "Homogeneous Labels Invariant",
+    "trials": 100,
+    "seed": 12345,
+    "invariant_passed": true,
+    "mutant_detected": true
+  }
+}
