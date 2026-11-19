@@ -136,4 +136,86 @@ describe('eulerianPath', () => {
     expect(eulerianPathSet[8].getKey()).toBe(vertexG.getKey());
     expect(eulerianPathSet[9].getKey()).toBe(vertexF.getKey());
   });
+
+  describe('contract regression tests (R51-T001)', () => {
+    it('smallest valid input: 2 vertices with 1 edge (preconditions: lines 24, 36, 41)', () => {
+      // Smallest valid input fixture
+      const vertexA = new GraphVertex('A');
+      const vertexB = new GraphVertex('B');
+      const edgeAB = new GraphEdge(vertexA, vertexB);
+
+      const graph = new Graph();
+      graph.addEdge(edgeAB);
+
+      // Verify precondition state before execution
+      expect(graph.getAllVertices().length).toBe(2);
+      expect(graph.getAllEdges().length).toBe(1);
+
+      // Independent expected output: ['A', 'B']
+      const path = eulerianPath(graph);
+      const pathKeys = path.map((vertex) => vertex.getKey());
+      expect(pathKeys).toEqual(['A', 'B']);
+
+      // Test observable mutation separately: all traversed edges deleted (line 112)
+      expect(graph.getAllEdges().length).toBe(0);
+    });
+
+    it('ordinary input: 4 vertices connected in a linear path A-B-C-D', () => {
+      // Ordinary input fixture: two odd-degree endpoints (A, D) and intermediaries (B, C)
+      const vertexA = new GraphVertex('A');
+      const vertexB = new GraphVertex('B');
+      const vertexC = new GraphVertex('C');
+      const vertexD = new GraphVertex('D');
+
+      const edgeAB = new GraphEdge(vertexA, vertexB);
+      const edgeBC = new GraphEdge(vertexB, vertexC);
+      const edgeCD = new GraphEdge(vertexC, vertexD);
+
+      const graph = new Graph();
+      graph
+        .addEdge(edgeAB)
+        .addEdge(edgeBC)
+        .addEdge(edgeCD);
+
+      expect(graph.getAllEdges().length).toBe(3);
+
+      // Independent expected output: traversal visits edges in order A -> B -> C -> D
+      const path = eulerianPath(graph);
+      const pathKeys = path.map((vertex) => vertex.getKey());
+      expect(pathKeys).toEqual(['A', 'B', 'C', 'D']);
+
+      // Test observable mutation separately: all traversed edges deleted (line 112)
+      expect(graph.getAllEdges().length).toBe(0);
+    });
+
+    it('domain boundary: triangle cycle A-B-C-A with repeated vertex', () => {
+      // Domain boundary fixture: circuit where all vertices have even degree 2
+      const vertexA = new GraphVertex('A');
+      const vertexB = new GraphVertex('B');
+      const vertexC = new GraphVertex('C');
+
+      const edgeAB = new GraphEdge(vertexA, vertexB);
+      const edgeBC = new GraphEdge(vertexB, vertexC);
+      const edgeCA = new GraphEdge(vertexC, vertexA);
+
+      const graph = new Graph();
+      graph
+        .addEdge(edgeAB)
+        .addEdge(edgeBC)
+        .addEdge(edgeCA);
+
+      expect(graph.getAllEdges().length).toBe(3);
+
+      // Independent expected output: circuit starts and ends at vertex A
+      const path = eulerianPath(graph);
+      const pathKeys = path.map((vertex) => vertex.getKey());
+      expect(pathKeys).toEqual(['A', 'B', 'C', 'A']);
+
+      // Repeated value boundary check
+      expect(pathKeys[0]).toBe(pathKeys[pathKeys.length - 1]);
+
+      // Test observable mutation separately: all traversed edges deleted (line 112)
+      expect(graph.getAllEdges().length).toBe(0);
+    });
+  });
 });
