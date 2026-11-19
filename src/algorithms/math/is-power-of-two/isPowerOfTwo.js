@@ -1,4 +1,15 @@
 /**
+ * Checks whether given positive integer is a power of two.
+ *
+ * Contract & Protected Condition:
+ * - Preconditions:
+ *   - Input `number` is a numeric value (line 16).
+ *   - Numbers less than 1 cannot be powers of two (lines 18-20).
+ * - Protected Condition:
+ *   - Boundary condition `number < 1` (line 18) ensures `1` (2^0) is supported and returns `true`.
+ *     A plausible mistake changing `< 1` to `<= 1` would erroneously reject `1`.
+ * - Return Value: `boolean` (true if number is power of two, false otherwise).
+ *
  * @param {number} number
  * @return {boolean}
  */
