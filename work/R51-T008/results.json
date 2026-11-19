@@ -1,0 +1,46 @@
+{
+  "task": "R51-T008",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/algorithms/graph/kruskal/__test__/kruskal.test.js --watchAll=false",
+  "test_count": 7,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "failure_branch": {
+    "source_citation": "lines 23-25",
+    "trigger_condition": "graph.isDirected === true",
+    "expected_exception": "Kruskal's algorithms works only for undirected graphs",
+    "caller_state_preserved": true,
+    "post_failure_call_succeeded": true
+  },
+  "fixtures": [
+    {
+      "name": "smallest valid input",
+      "precondition_lines": [
+        "line 23",
+        "line 41"
+      ],
+      "input": "Undirected graph with 1 edge (weight 5) between 2 vertices",
+      "expected_weight": 5,
+      "actual_weight": 5
+    },
+    {
+      "name": "ordinary input",
+      "precondition_lines": [
+        "line 23",
+        "line 41"
+      ],
+      "input": "Triangle graph with edge weights [1, 2, 3]",
+      "expected_weight": 3,
+      "actual_weight": 3
+    },
+    {
+      "name": "empty graph branch",
+      "input": "Undirected graph with 0 edges",
+      "expected_weight": 0,
+      "actual_weight": 0
+    }
+  ]
+}

@@ -3,6 +3,17 @@ import QuickSort from '../../sorting/quick-sort/QuickSort';
 import DisjointSet from '../../../data-structures/disjoint-set/DisjointSet';
 
 /**
+ * Kruskal's algorithm of finding Minimum Spanning Tree (MST) of undirected graph.
+ *
+ * Contract & Failure Paths:
+ * - Preconditions:
+ *   - `graph` must be an undirected Graph instance (`!graph.isDirected`, line 23).
+ *   - Edges must have defined weights for sorting (line 41).
+ * - Documented Failure Branch:
+ *   - Directed graph rejection (lines 23-25): throws Error if graph.isDirected is true.
+ * - Empty Result Branch:
+ *   - When `graph` has no edges, returns an empty MST with 0 edges and 0 weight.
+ *
  * @param {Graph} graph
  * @return {Graph}
  */
