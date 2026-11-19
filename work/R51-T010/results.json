@@ -1,0 +1,41 @@
+{
+  "task": "R51-T010",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/algorithms/math/is-power-of-two/__test__/isPowerOfTwo.test.js --watchAll=false",
+  "test_count": 4,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "mutation_experiment": {
+    "protected_condition": "number < 1 at line 18",
+    "plausible_mutation": "number <= 1 at line 18",
+    "minimal_divergent_input": 1,
+    "original_result": true,
+    "mutant_result": false,
+    "mutation_detected": true
+  },
+  "fixtures": [
+    {
+      "name": "smallest valid input",
+      "precondition_lines": [
+        "line 16",
+        "line 18"
+      ],
+      "input": 1,
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "ordinary input",
+      "precondition_lines": [
+        "line 16",
+        "line 18"
+      ],
+      "input": 8,
+      "expected": true,
+      "actual": true
+    }
+  ]
+}
