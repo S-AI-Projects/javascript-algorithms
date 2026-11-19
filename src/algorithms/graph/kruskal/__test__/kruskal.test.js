@@ -88,4 +88,74 @@ describe('kruskal', () => {
     expect(minimumSpanningTree.getAllEdges().length).toBe(graph.getAllVertices().length - 1);
     expect(minimumSpanningTree.toString()).toBe('A,B,C,D');
   });
+
+  describe('failure-path coverage and boundary fixtures (R51-T008)', () => {
+    it('smallest valid input: 2 vertices with 1 edge (preconditions: lines 24, 42)', () => {
+      const vertexA = new GraphVertex('A');
+      const vertexB = new GraphVertex('B');
+      const edgeAB = new GraphEdge(vertexA, vertexB, 5);
+
+      const graph = new Graph();
+      graph.addEdge(edgeAB);
+
+      const mst = kruskal(graph);
+      expect(mst.getWeight()).toBe(5);
+      expect(mst.getAllEdges().length).toBe(1);
+      expect(mst.getAllVertices().length).toBe(2);
+    });
+
+    it('ordinary input: triangle graph (preconditions: lines 24, 42)', () => {
+      const vertexA = new GraphVertex('A');
+      const vertexB = new GraphVertex('B');
+      const vertexC = new GraphVertex('C');
+
+      const edgeAB = new GraphEdge(vertexA, vertexB, 1);
+      const edgeBC = new GraphEdge(vertexB, vertexC, 2);
+      const edgeCA = new GraphEdge(vertexC, vertexA, 3);
+
+      const graph = new Graph();
+      graph
+        .addEdge(edgeAB)
+        .addEdge(edgeBC)
+        .addEdge(edgeCA);
+
+      const mst = kruskal(graph);
+      // Independent expected output: edges with weights 1 and 2 are selected; weight = 3
+      expect(mst.getWeight()).toBe(3);
+      expect(mst.getAllEdges().length).toBe(2);
+    });
+
+    it('failure branch (lines 23-25): rejects directed graph and preserves caller state', () => {
+      // Smallest input reaching failure branch
+      const directedGraph = new Graph(true);
+      const vertexA = new GraphVertex('A');
+      directedGraph.addVertex(vertexA);
+
+      // Assert exact exception
+      expect(() => kruskal(directedGraph)).toThrow(
+        "Kruskal's algorithms works only for undirected graphs",
+      );
+
+      // Verify caller state preserved
+      expect(directedGraph.isDirected).toBe(true);
+      expect(directedGraph.getAllVertices().length).toBe(1);
+
+      // Verify subsequent valid call succeeds after failure
+      const validGraph = new Graph();
+      const vertexX = new GraphVertex('X');
+      const vertexY = new GraphVertex('Y');
+      validGraph.addEdge(new GraphEdge(vertexX, vertexY, 10));
+
+      const mst = kruskal(validGraph);
+      expect(mst.getWeight()).toBe(10);
+      expect(mst.getAllEdges().length).toBe(1);
+    });
+
+    it('empty result branch: graph with no edges produces empty spanning tree', () => {
+      const emptyGraph = new Graph();
+      const mst = kruskal(emptyGraph);
+      expect(mst.getAllEdges().length).toBe(0);
+      expect(mst.getWeight()).toBe(0);
+    });
+  });
 });
