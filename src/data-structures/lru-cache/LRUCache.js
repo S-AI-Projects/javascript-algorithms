@@ -3,14 +3,38 @@
 /**
  * Simple implementation of the Doubly-Linked List Node
  * that is used in LRUCache class below.
+ *
+ * Example:
+ * Constructing three distinct nodes A -> B -> C:
+ * ```javascript
+ * const nodeA = new LinkedListNode('A', 1);
+ * const nodeB = new LinkedListNode('B', 2);
+ * const nodeC = new LinkedListNode('C', 3);
+ *
+ * // Decisive state transition: linking node references bidirectionally
+ * nodeA.next = nodeB;
+ * nodeB.prev = nodeA;
+ * nodeB.next = nodeC;
+ * nodeC.prev = nodeB;
+ * ```
+ * Resulting structure:
+ * - Values: nodeA.val = 1, nodeB.val = 2, nodeC.val = 3
+ * - Forward links: nodeA.next === nodeB, nodeB.next === nodeC, nodeC.next === null
+ * - Backward links: nodeC.prev === nodeB, nodeB.prev === nodeA, nodeA.prev === null
+ *
+ * Smallest supported list (singleton node):
+ * ```javascript
+ * const singleNode = new LinkedListNode('X', 42);
+ * // singleNode.prev === null, singleNode.next === null
+ * ```
  */
 class LinkedListNode {
   /**
    * Creates a doubly-linked list node.
-   * @param {string} key
-   * @param {any} val
-   * @param {LinkedListNode} prev
-   * @param {LinkedListNode} next
+   * @param {string} [key]
+   * @param {any} [val]
+   * @param {LinkedListNode} [prev]
+   * @param {LinkedListNode} [next]
    */
   constructor(key, val, prev = null, next = null) {
     this.key = key;
@@ -150,4 +174,5 @@ class LRUCache {
   }
 }
 
+export { LinkedListNode };
 export default LRUCache;

@@ -1,0 +1,46 @@
+{
+  "task": "R51-T007",
+  "status": "PASSED",
+  "command": "npm test -- --runInBand src/data-structures/lru-cache/__test__/LRUCache.test.js --watchAll=false",
+  "test_count": 9,
+  "tools": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python": "3.15.0"
+  },
+  "executable_example": {
+    "item": "LinkedListNode",
+    "decisive_transition": "Bidirectional link assignment (nodeA.next = nodeB, nodeB.prev = nodeA, etc.)",
+    "fixtures": [
+      {
+        "name": "three distinct nodes A -> B -> C",
+        "values": {
+          "nodeA": 1,
+          "nodeB": 2,
+          "nodeC": 3
+        },
+        "links": {
+          "nodeA.next": "nodeB",
+          "nodeB.next": "nodeC",
+          "nodeC.next": null,
+          "nodeC.prev": "nodeB",
+          "nodeB.prev": "nodeA",
+          "nodeA.prev": null
+        },
+        "verified_independently": true
+      },
+      {
+        "name": "smallest supported list (singleton node)",
+        "values": {
+          "key": "X",
+          "val": 42
+        },
+        "links": {
+          "prev": null,
+          "next": null
+        },
+        "verified_independently": true
+      }
+    ]
+  }
+}
