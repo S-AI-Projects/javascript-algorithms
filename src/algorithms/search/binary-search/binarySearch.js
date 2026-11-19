@@ -3,12 +3,17 @@ import Comparator from '../../../utils/comparator/Comparator';
 /**
  * Binary search implementation.
  *
+ * Representative Result:
+ * - Searching `[2, 4, 6, 8]` for `5` checks middle elements (4 at index 1, then 6 at index 2).
+ *   Since `5` is not present, boundaries collapse (`startIndex > endIndex`) and the function
+ *   returns the miss sentinel `-1` (line 48).
+ * - Searching `[2, 4, 6, 8]` for `2` finds index `0` (hit points directly to value 2).
+ *
  * @param {*[]} sortedArray
  * @param {*} seekElement
  * @param {function(a, b)} [comparatorCallback]
  * @return {number}
  */
-
 export default function binarySearch(sortedArray, seekElement, comparatorCallback) {
   // Let's create comparator from the comparatorCallback function.
   // Comparator object will give us common comparison methods like equal() and lessThan().
