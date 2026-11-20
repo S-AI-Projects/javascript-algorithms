@@ -1,0 +1,14 @@
+{
+  "task": "R51-T022",
+  "description": "Identify the smallest supported domain around levenshteinDistance and make boundary behavior explicit",
+  "source_file": "src/algorithms/string/levenshtein-distance/levenshteinDistance.js",
+  "test_file": "src/algorithms/string/levenshtein-distance/__test__/levenshteinDistance.test.js",
+  "required_fixtures": {
+    "\"\" / \"\"": 0,
+    "\"a\" / \"\"": 1,
+    "\"cat\" / \"cat\"": 0,
+    "\"kitten\" / \"sitting\"": 3
+  },
+  "total_failures": 0,
+  "failures": []
+}
