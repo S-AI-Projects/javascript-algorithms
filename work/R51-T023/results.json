@@ -1,0 +1,26 @@
+{
+  "task": "R51-T023",
+  "description": "Compare isValid against independent reduction reference oracle and verify Stack LIFO fixture",
+  "source_file": "src/algorithms/stack/valid-parentheses/validParentheses.js",
+  "test_file": "src/algorithms/stack/valid-parentheses/__test__/validParentheses.test.js",
+  "stack_fixture": {
+    "operations": "push A, B, C; pop twice; push D; drain",
+    "expected_order": [
+      "C",
+      "B",
+      "D",
+      "A"
+    ],
+    "actual_order": [
+      "C",
+      "B",
+      "D",
+      "A"
+    ],
+    "lifo_order_and_size_verified": true,
+    "empty_state_verified": true
+  },
+  "oracle_test_count": 30,
+  "total_failures": 0,
+  "failures": []
+}
