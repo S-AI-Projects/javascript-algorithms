@@ -1,0 +1,38 @@
+{
+  "versions": {
+    "node": {
+      "cmd": "node -v",
+      "returncode": 0,
+      "stdout": "v24.22.1\n",
+      "stderr": ""
+    },
+    "npm": {
+      "cmd": "npm -v",
+      "returncode": 0,
+      "stdout": "11.19.1\n",
+      "stderr": ""
+    },
+    "python": {
+      "cmd": "python3 --version",
+      "returncode": 0,
+      "stdout": "Python 3.15.2\n",
+      "stderr": ""
+    }
+  },
+  "test_full": {
+    "returncode": 0,
+    "stdout": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest --runInBand\n\n"
+  },
+  "test_specific": {
+    "returncode": 0,
+    "stdout": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest src/algorithms/math/radian/__test__/degreeToRadian.test.js\n\n"
+  },
+  "lint": {
+    "returncode": 1,
+    "stdout": "\n> javascript-algorithms-and-data-structures@0.0.4 lint\n> eslint ./src/**\n\n\n/Users/anjali/Assignment/javascript-algorithms/src/algorithms/math/radian/__test__/degreeToRadian.test.js\n  4:28  error  Useless path segments for \"../../radian/degreeToRadian\", should be \"../degreeToRadian\"  import/no-useless-path-segments\n\n\u2716 1 problem (1 error, 0 warnings)\n  1 error and 0 warnings potentially fixable with the `--fix` option.\n\n"
+  },
+  "diff_check": {
+    "returncode": 0,
+    "stdout": ""
+  }
+}
