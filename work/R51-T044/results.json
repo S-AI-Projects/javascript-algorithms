@@ -1,0 +1,116 @@
+{
+  "task": "R51-T044",
+  "description": "Test an invariant of bfMaximumSubarray (bfMaximumSubarray.js)",
+  "source_file": "src/algorithms/sets/maximum-subarray/bfMaximumSubarray.js",
+  "test_file": "src/algorithms/sets/maximum-subarray/__test__/bfMaximumSubarray.test.js",
+  "invariants": [
+    "Invariant 1 (Contiguity): Output is a contiguous subsegment of inputArray",
+    "Invariant 2 (Sum Maximality): For any contiguous subsegment S, sum(S) <= sum(result)",
+    "Invariant 3 (Immutability): inputArray elements, order, and length remain unchanged",
+    "Invariant 4 (Empty Boundary): When inputArray is [], returns []"
+  ],
+  "fixture_validation": {
+    "smallest_valid": {
+      "input": [],
+      "expected": [],
+      "actual": [],
+      "preconditions": [
+        {
+          "line": 8,
+          "precondition": "inputArray is an array"
+        },
+        {
+          "line": 13,
+          "precondition": "startIndex < inputArray.length (0 < 0 is false, loop terminates)"
+        },
+        {
+          "line": 25,
+          "precondition": "inputArray.slice(0, 0) returns fresh empty array"
+        }
+      ]
+    },
+    "ordinary": {
+      "input": [
+        -2,
+        1,
+        -3,
+        4,
+        -1,
+        2,
+        1,
+        -5,
+        4
+      ],
+      "expected": [
+        4,
+        -1,
+        2,
+        1
+      ],
+      "actual": [
+        4,
+        -1,
+        2,
+        1
+      ],
+      "sum": 6,
+      "preconditions": [
+        {
+          "line": 8,
+          "precondition": "inputArray is an array of numbers"
+        },
+        {
+          "line": 13,
+          "precondition": "iterates over all start indices"
+        },
+        {
+          "line": 17,
+          "precondition": "strictly greater comparison selects [4, -1, 2, 1]"
+        },
+        {
+          "line": 25,
+          "precondition": "returns slice without mutating input"
+        }
+      ]
+    }
+  },
+  "readable_small_case": {
+    "case_index": 0,
+    "input": [
+      -5,
+      36,
+      17,
+      -33,
+      3,
+      -23,
+      13,
+      37
+    ],
+    "result": [
+      36,
+      17
+    ],
+    "sum": 53
+  },
+  "property_test_summary": {
+    "seed": 42,
+    "generator": "Mulberry32",
+    "total_cases": 100,
+    "passed_cases": 100
+  },
+  "mutant_detection": {
+    "mutant_description": "Drops first element of maximal subarray",
+    "test_input": [
+      10,
+      20,
+      30
+    ],
+    "mutant_result": [
+      20,
+      30
+    ],
+    "mutant_caught": true
+  },
+  "total_failures": 0,
+  "failures": []
+}
