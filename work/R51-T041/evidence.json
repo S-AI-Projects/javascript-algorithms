@@ -1,0 +1,29 @@
+{
+  "tool_versions": {
+    "node": "v24.22.1",
+    "npm": "11.19.1",
+    "python3": "Python 3.15.2"
+  },
+  "native_test_suite": {
+    "command": "npm test -- --runInBand",
+    "exit_code": 0,
+    "test_count_passed": 596,
+    "output_tail": "onSum.test.js\nPASS src/algorithms/string/palindrome/__test__/isPalindrome.test.js\nPASS src/algorithms/math/liu-hui/__test__/liuHui.test.js\nPASS src/algorithms/sets/power-set/__test__/caPowerSet.test.js\nPASS src/algorithms/math/integer-partition/__test__/integerPartition.test.js\nPASS src/algorithms/uncategorized/n-queens/__test__/nQueensBitwise.test.js\nPASS src/algorithms/math/bits/__test__/bitLength.test.js\nPASS src/algorithms/math/sieve-of-eratosthenes/__test__/sieveOfEratosthenes.test.js\nPASS src/algorithms/math/radian/__test__/radianToDegree.test.js\nPASS src/algorithms/math/radian/__test__/degreeToRadian.test.js\nPASS src/algorithms/math/bits/__test__/switchSign.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/dpUniquePaths.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/btUniquePaths.test.js\nPASS src/algorithms/math/bits/__test__/bitsDiff.test.js\nPASS src/algorithms/math/bits/__test__/multiplyByTwo.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/uniquePaths.test.js\nPASS src/algorithms/sets/power-set/__test__/btPowerSet.test.js\nPASS src/algorithms/math/bits/__test__/clearBit.test.js\nPASS src/algorithms/sets/power-set/__test__/bwPowerSet.test.js\nPASS src/algorithms/math/factorial/__test__/factorialRecursive.test.js\nPASS src/algorithms/math/bits/__test__/divideByTwo.test.js\nPASS src/algorithms/math/bits/__test__/setBit.test.js\nPASS src/algorithms/math/fourier-transform/__test__/inverseDiscreteFourierTransform.test.js\nPASS src/algorithms/math/factorial/__test__/factorial.test.js\nPASS src/algorithms/math/fourier-transform/__test__/discreteFourierTransform.test.js\nPASS src/algorithms/sorting/__test__/Sort.test.js\nPASS src/data-structures/heap/__test__/Heap.test.js\nPASS src/playground/__test__/playground.test.js\nPASS src/algorithms/math/fourier-transform/__test__/fastFourierTransform.test.js\n\nTest Suites: 178 passed, 178 total\nTests:       596 passed, 596 total\nSnapshots:   0 total\nTime:        3.785 s\nRan all test suites.\n"
+  },
+  "focused_test_suite": {
+    "command": "npm test -- /Users/anjali/Assignment/javascript-algorithms/src/algorithms/math/fourier-transform/__test__/fastFourierTransform.test.js",
+    "exit_code": 0,
+    "test_count_passed": 12,
+    "output": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest /Users/anjali/Assignment/javascript-algorithms/src/algorithms/math/fourier-transform/__test__/fastFourierTransform.test.js\n\nPASS src/algorithms/math/fourier-transform/__test__/fastFourierTransform.test.js\n\nTest Suites: 1 passed, 1 total\nTests:       12 passed, 12 total\nSnapshots:   0 total\nTime:        0.127 s, estimated 1 s\nRan all test suites matching /Users/anjali/Assignment/javascript-algorithms/src/algorithms/math/fourier-transform/__test__/fastFourierTransform.test.js.\n"
+  },
+  "lint": {
+    "command": "npm run lint",
+    "exit_code": 0,
+    "output": "\n> javascript-algorithms-and-data-structures@0.0.4 lint\n> eslint ./src/**\n\n"
+  },
+  "git_diff_check": {
+    "command": "git diff --check",
+    "exit_code": 0,
+    "output": ""
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "task": "R51-T041",
+  "description": "Lock down the contract of reverseBits (fastFourierTransform.js)",
+  "source_file": "src/algorithms/math/fourier-transform/fastFourierTransform.js",
+  "test_file": "src/algorithms/math/fourier-transform/__test__/fastFourierTransform.test.js",
+  "fixture_results": [
+    {
+      "category": "empty",
+      "input": 0,
+      "bits_count": 0,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "category": "empty",
+      "input": 5,
+      "bits_count": 0,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "category": "empty",
+      "input": 255,
+      "bits_count": 0,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "category": "singleton",
+      "input": 0,
+      "bits_count": 1,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "category": "singleton",
+      "input": 1,
+      "bits_count": 1,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "category": "singleton",
+      "input": 2,
+      "bits_count": 1,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "category": "singleton",
+      "input": 3,
+      "bits_count": 1,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "category": "three_element_asymmetric",
+      "input": 1,
+      "bits_count": 3,
+      "expected": 4,
+      "actual": 4,
+      "passed": true,
+      "desc": "[1,0,0] -> [0,0,1]"
+    },
+    {
+      "category": "three_element_asymmetric",
+      "input": 4,
+      "bits_count": 3,
+      "expected": 1,
+      "actual": 1,
+      "passed": true,
+      "desc": "[0,0,1] -> [1,0,0]"
+    },
+    {
+      "category": "three_element_asymmetric",
+      "input": 3,
+      "bits_count": 3,
+      "expected": 6,
+      "actual": 6,
+      "passed": true,
+      "desc": "[1,1,0] -> [0,1,1]"
+    },
+    {
+      "category": "three_element_asymmetric",
+      "input": 6,
+      "bits_count": 3,
+      "expected": 3,
+      "actual": 3,
+      "passed": true,
+      "desc": "[0,1,1] -> [1,1,0]"
+    },
+    {
+      "category": "three_element_palindrome",
+      "input": 2,
+      "bits_count": 3,
+      "expected": 2,
+      "actual": 2,
+      "passed": true,
+      "desc": "[0,1,0] -> [0,1,0]"
+    },
+    {
+      "category": "three_element_palindrome",
+      "input": 5,
+      "bits_count": 3,
+      "expected": 5,
+      "actual": 5,
+      "passed": true,
+      "desc": "[1,0,1] -> [1,0,1]"
+    },
+    {
+      "category": "three_element_repeated",
+      "input": 0,
+      "bits_count": 3,
+      "expected": 0,
+      "actual": 0,
+      "passed": true,
+      "desc": "[0,0,0] -> [0,0,0]"
+    },
+    {
+      "category": "three_element_repeated",
+      "input": 7,
+      "bits_count": 3,
+      "expected": 7,
+      "actual": 7,
+      "passed": true,
+      "desc": "[1,1,1] -> [1,1,1]"
+    },
+    {
+      "category": "string_coercion",
+      "input": "1",
+      "bits_count": 3,
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "category": "string_coercion",
+      "input": "3",
+      "bits_count": 3,
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "category": "string_coercion",
+      "input": "6",
+      "bits_count": 3,
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "category": "byte_reversal",
+      "input": 65,
+      "bits_count": 8,
+      "expected": 130,
+      "actual": 130,
+      "passed": true,
+      "desc": "'A' (65=0b01000001) -> 130=0b10000010"
+    },
+    {
+      "category": "byte_reversal",
+      "input": 66,
+      "bits_count": 8,
+      "expected": 66,
+      "actual": 66,
+      "passed": true,
+      "desc": "'B' (66=0b01000010) -> 66=0b01000010"
+    },
+    {
+      "category": "byte_reversal",
+      "input": 67,
+      "bits_count": 8,
+      "expected": 194,
+      "actual": 194,
+      "passed": true,
+      "desc": "'C' (67=0b01000011) -> 194=0b11000010"
+    }
+  ],
+  "total_failures": 0,
+  "failures": []
+}
