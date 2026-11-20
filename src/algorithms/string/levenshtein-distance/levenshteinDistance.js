@@ -1,4 +1,27 @@
 /**
+ * Calculate the Levenshtein (edit) distance between two strings with unit costs
+ * (insertions, deletions, substitutions each cost 1).
+ *
+ * Domain and Boundary Contract:
+ * - Public inputs:
+ *     @param {string} a - first string sequence (length >= 0)
+ *     @param {string} b - second string sequence (length >= 0)
+ * - Result:
+ *     @return {number} - non-negative integer representing minimum edits
+ * - Mutation: Pure function; inputs are not mutated.
+ * - External dependencies: None (uses standard Math.min).
+ *
+ * Input Partitioning & Boundary Table:
+ * - Valid boundary:
+ *     "", ""              -> 0 (smallest domain input, both lengths = 0)
+ *     "a", ""             -> 1 (asymmetric empty boundary, deletion only)
+ *     "", "a"             -> 1 (asymmetric empty boundary, insertion only)
+ * - Valid interior:
+ *     "cat", "cat"        -> 0 (identical non-empty strings, 0 edits)
+ *     "kitten", "sitting" -> 3 (multi-character edit: sub+sub+ins)
+ * - Unsupported / Out-of-contract:
+ *     null or undefined   -> TypeError (unspecified by contract; native property read)
+ *
  * @param {string} a
  * @param {string} b
  * @return {number}

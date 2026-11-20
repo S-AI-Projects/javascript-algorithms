@@ -1,0 +1,139 @@
+{
+  "tool_versions": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python3": "Python 3.14.7"
+  },
+  "native_test_suite": {
+    "command": "npm test -- --runInBand",
+    "exit_code": 0,
+    "test_count_passed": 593,
+    "output_tail": "math/liu-hui/__test__/liuHui.test.js\nPASS src/algorithms/math/pascal-triangle/__test__/pascalTriangleRecursive.test.js\nPASS src/algorithms/math/least-common-multiple/__test__/leastCommonMultiple.test.js\nPASS src/algorithms/math/horner-method/__test__/classicPolynome.test.js\nPASS src/algorithms/math/fibonacci/__test__/fibonacci.test.js\nPASS src/algorithms/math/factorial/__test__/factorial.test.js\nPASS src/algorithms/math/fast-powering/__test__/fastPowering.test.js\nPASS src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithmIterative.test.js\nPASS src/algorithms/math/bits/__test__/updateBit.test.js\nPASS src/algorithms/math/bits/__test__/switchSign.test.js\nPASS src/algorithms/math/bits/__test__/isPowerOfTwo.test.js\nPASS src/algorithms/math/bits/__test__/fullAdder.test.js\nPASS src/algorithms/cryptography/rail-fence-cipher/__test__/railFenceCipher.test.js\nPASS src/algorithms/graph/detect-cycle/__test__/detectUndirectedCycleUsingDisjointSet.test.js\nPASS src/algorithms/linked-list/traversal/__test__/traversal.test.js\nPASS src/algorithms/linked-list/reverse-traversal/__test__/reverseTraversal.test.js\nPASS src/data-structures/tree/binary-search-tree/__test__/BinarySearchTree.test.js\nPASS src/data-structures/doubly-linked-list/__test__/DoublyLinkedListNode.test.js\nPASS src/data-structures/disjoint-set/__test__/DisjointSetItem.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/dpUniquePaths.test.js\nPASS src/algorithms/uncategorized/n-queens/__test__/QueensPosition.test.js\nPASS src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__/accumulatorBestTimeToBuySellStocks.test.js\nPASS src/algorithms/math/radian/__test__/radianToDegree.test.js\nPASS src/algorithms/math/is-power-of-two/__test__/isPowerOfTwoBitwise.test.js\nPASS src/algorithms/search/interpolation-search/__test__/interpolationSearch.test.js\nPASS src/algorithms/math/pascal-triangle/__test__/pascalTriangle.test.js\nPASS src/algorithms/math/fibonacci/__test__/fibonacciNth.test.js\nPASS src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithm.test.js\nPASS src/algorithms/math/factorial/__test__/factorialRecursive.test.js\nPASS src/algorithms/math/bits/__test__/setBit.test.js\nPASS src/algorithms/math/bits/__test__/multiplyByTwo.test.js\nPASS src/algorithms/math/bits/__test__/getBit.test.js\nPASS src/algorithms/math/bits/__test__/isPositive.test.js\nPASS src/algorithms/math/bits/__test__/isEven.test.js\nPASS src/algorithms/math/bits/__test__/countSetBits.test.js\nPASS src/algorithms/math/bits/__test__/clearBit.test.js\nPASS src/algorithms/math/bits/__test__/bitLength.test.js\nPASS src/data-structures/linked-list/__test__/LinkedListNode.test.js\nPASS src/data-structures/disjoint-set/__test__/DisjointSetAdhoc.test.js\nPASS src/utils/comparator/__test__/Comparator.test.js\nPASS src/algorithms/math/bits/__test__/divideByTwo.test.js\n\nTest Suites: 178 passed, 178 total\nTests:       593 passed, 593 total\nSnapshots:   0 total\nTime:        2.647 s, estimated 3 s\nRan all test suites.\n"
+  },
+  "focused_test_run": {
+    "command": "npm test -- --runInBand src/algorithms/string/levenshtein-distance/__test__/levenshteinDistance.test.js",
+    "exit_code": 0,
+    "test_count_passed": 7,
+    "output_tail": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest --runInBand src/algorithms/string/levenshtein-distance/__test__/levenshteinDistance.test.js\n\n(node:20493) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.\n(Use `node --trace-warnings ...` to show where the warning was created)\nPASS src/algorithms/string/levenshtein-distance/__test__/levenshteinDistance.test.js\n\nTest Suites: 1 passed, 1 total\nTests:       7 passed, 7 total\nSnapshots:   0 total\nTime:        0.121 s, estimated 1 s\nRan all test suites matching src/algorithms/string/levenshtein-distance/__test__/levenshteinDistance.test.js.\n"
+  },
+  "fixture_verification": [
+    {
+      "partition": "valid_boundary",
+      "input_a": "",
+      "input_b": "",
+      "expected": 0,
+      "actual": 0,
+      "manual_trace": "Both lengths are 0; 0 edits required to transform empty string to empty string.",
+      "precondition_source": "levenshteinDistance.js lines 25-29"
+    },
+    {
+      "partition": "valid_boundary",
+      "input_a": "a",
+      "input_b": "",
+      "expected": 1,
+      "actual": 1,
+      "manual_trace": "len(a)=1, len(b)=0; exactly 1 deletion needed.",
+      "precondition_source": "levenshteinDistance.js lines 25-29"
+    },
+    {
+      "partition": "valid_boundary",
+      "input_a": "",
+      "input_b": "a",
+      "expected": 1,
+      "actual": 1,
+      "manual_trace": "len(a)=0, len(b)=1; exactly 1 insertion needed.",
+      "precondition_source": "levenshteinDistance.js lines 25-29"
+    },
+    {
+      "partition": "valid_interior",
+      "input_a": "cat",
+      "input_b": "cat",
+      "expected": 0,
+      "actual": 0,
+      "manual_trace": "Strings are identical; 0 substitutions or edits needed.",
+      "precondition_source": "levenshteinDistance.js lines 25-29"
+    },
+    {
+      "partition": "valid_interior",
+      "input_a": "kitten",
+      "input_b": "sitting",
+      "expected": 3,
+      "actual": 3,
+      "manual_trace": "3 unit-cost edits: replace k->s, replace e->i, insert g at end.",
+      "precondition_source": "levenshteinDistance.js lines 25-29"
+    }
+  ],
+  "boundary_table": {
+    "source_contract": "levenshteinDistance.js lines 25-29: @param {string} a, @param {string} b, @return {number}",
+    "domain": "Pairs of finite strings with length >= 0",
+    "partitions": [
+      {
+        "name": "valid_boundary",
+        "description": "Boundary cases at domain extremes (length 0 for one or both strings)",
+        "examples": [
+          {
+            "inputs": [
+              "",
+              ""
+            ],
+            "expected": 0
+          },
+          {
+            "inputs": [
+              "a",
+              ""
+            ],
+            "expected": 1
+          },
+          {
+            "inputs": [
+              "",
+              "a"
+            ],
+            "expected": 1
+          }
+        ]
+      },
+      {
+        "name": "valid_interior",
+        "description": "Typical strings of length > 0, both equal and distinct",
+        "examples": [
+          {
+            "inputs": [
+              "cat",
+              "cat"
+            ],
+            "expected": 0
+          },
+          {
+            "inputs": [
+              "kitten",
+              "sitting"
+            ],
+            "expected": 3
+          }
+        ]
+      },
+      {
+        "name": "unsupported_boundary",
+        "description": "Outside documented contract (@param {string}), null/undefined yields native TypeError without custom framework",
+        "examples": [
+          {
+            "inputs": [
+              null,
+              ""
+            ],
+            "expected_error": "TypeError"
+          },
+          {
+            "inputs": [
+              "",
+              null
+            ],
+            "expected_error": "TypeError"
+          }
+        ]
+      }
+    ]
+  }
+}
