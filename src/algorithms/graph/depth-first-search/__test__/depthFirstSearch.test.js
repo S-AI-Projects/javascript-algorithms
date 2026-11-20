@@ -162,4 +162,100 @@ describe('depthFirstSearch', () => {
       expect(params.previousVertex).toEqual(leaveVertexParamsMap[callIndex].previousVertex);
     }
   });
+
+  // ─── initCallbacks fallback and cycle-rejection tests (R51-T028) ─────────
+  //
+  // Source contract: depthFirstSearch.js lines 33-56 (initCallbacks)
+  // Tested branches:
+  //   - Line 51: fallback to default allowTraversalCallback when omitted
+  //   - Line 46: return false; rejection branch when cycle revisits seen vertex
+  //   - Line 52-53: fallback to stubCallback when enterVertex/leaveVertex omitted
+  //
+  // Fixture:
+  //   Directed graph with cycle A -> B -> C -> A and isolated vertex D.
+  //   Starting at A: DFS must visit A, B, C; cycle C -> A must be rejected
+  //   by line 46 (returning false); traversal terminates without visiting D.
+  // ─────────────────────────────────────────────────────────────────────────
+
+  describe('initCallbacks fallback and absent-result cycle termination', () => {
+    it('exercises cycle-rejection branch (line 46) and terminates without visiting isolated D', () => {
+      const graph = new Graph(true);
+
+      const vertexA = new GraphVertex('A');
+      const vertexB = new GraphVertex('B');
+      const vertexC = new GraphVertex('C');
+      const vertexD = new GraphVertex('D'); // isolated vertex
+
+      const edgeAB = new GraphEdge(vertexA, vertexB);
+      const edgeBC = new GraphEdge(vertexB, vertexC);
+      const edgeCA = new GraphEdge(vertexC, vertexA);
+
+      graph
+        .addEdge(edgeAB)
+        .addEdge(edgeBC)
+        .addEdge(edgeCA)
+        .addVertex(vertexD);
+
+      const entered = [];
+      const left = [];
+
+      // Caller-owned state passed to callbacks
+      const callerState = {
+        appId: 'test-dfs-run',
+        runCount: 1,
+        enterVertex: ({ currentVertex }) => {
+          entered.push(currentVertex.getKey());
+        },
+        leaveVertex: ({ currentVertex }) => {
+          left.push(currentVertex.getKey());
+        },
+        // Note: allowTraversal is intentionally omitted to exercise the
+        // initCallbacks fallback branch (line 51) and rejection branch (line 46)
+      };
+
+      // 1. Run DFS starting at vertex A on cycle graph with isolated D
+      depthFirstSearch(graph, vertexA, callerState);
+
+      // Traversal visits cycle A -> B -> C -> A and terminates at A -> B via rejection branch
+      expect(entered).toEqual(['A', 'B', 'C', 'A']);
+      expect(left).toEqual(['A', 'C', 'B', 'A']);
+
+      // Assert that cycle terminated without visiting isolated vertex D
+      expect(entered.includes('D')).toBe(false);
+      expect(left.includes('D')).toBe(false);
+
+      // 2. Verify caller-owned state remains valid after the cycle rejection
+      expect(callerState.appId).toBe('test-dfs-run');
+      expect(callerState.runCount).toBe(1);
+      expect(typeof callerState.allowTraversal).toBe('function');
+
+      // 3. Include a successful call after the rejection:
+      // Starting from isolated vertex D should succeed independently
+      const enteredAfter = [];
+      depthFirstSearch(graph, vertexD, {
+        enterVertex: ({ currentVertex }) => {
+          enteredAfter.push(currentVertex.getKey());
+        },
+      });
+
+      expect(enteredAfter).toEqual(['D']);
+    });
+
+    it('exercises total contract of initCallbacks with omitted / empty callbacks (lines 51-53)', () => {
+      const graph = new Graph(true);
+      const vertexA = new GraphVertex('A');
+      const vertexB = new GraphVertex('B');
+      graph.addEdge(new GraphEdge(vertexA, vertexB));
+
+      // Call DFS with completely omitted callbacks (relies on default parameter line 33)
+      expect(() => depthFirstSearch(graph, vertexA)).not.toThrow();
+
+      // Subsequent ordinary call still succeeds
+      const visited = [];
+      depthFirstSearch(graph, vertexA, {
+        enterVertex: ({ currentVertex }) => visited.push(currentVertex.getKey()),
+      });
+      expect(visited).toEqual(['A', 'B']);
+    });
+  });
 });
