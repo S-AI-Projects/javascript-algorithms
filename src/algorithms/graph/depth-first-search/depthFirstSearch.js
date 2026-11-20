@@ -11,10 +11,26 @@
  */
 
 /**
+ * Initializes and completes the DFS callbacks object.
+ *
+ * Contract & Branching:
+ * - Total contract: Never throws on valid object or omitted argument;
+ *   returns a populated Callbacks object.
+ * - Fallback / Absent-result branches:
+ *   - Line 51: `callbacks.allowTraversal || allowTraversalCallback`
+ *     Fallback when allowTraversal is absent/undefined.
+ *   - Line 46: `return false;` in default allowTraversalCallback
+ *     Rejection branch that terminates traversal when a cycle revisits a seen vertex.
+ *   - Line 52: `callbacks.enterVertex || stubCallback`
+ *     Fallback no-op when enterVertex is absent.
+ *   - Line 53: `callbacks.leaveVertex || stubCallback`
+ *     Fallback no-op when leaveVertex is absent.
+ * - Mutation: Populates properties on the passed callbacks object in place.
+ *
  * @param {Callbacks} [callbacks]
  * @returns {Callbacks}
  */
-function initCallbacks(callbacks = {}) {
+export function initCallbacks(callbacks = {}) {
   const initiatedCallback = callbacks;
 
   const stubCallback = () => {};

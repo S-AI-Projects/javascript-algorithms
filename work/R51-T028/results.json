@@ -1,0 +1,37 @@
+{
+  "task": "R51-T028",
+  "description": "Exercise documented absent-result / rejection branch of initCallbacks in depthFirstSearch.js",
+  "source_file": "src/algorithms/graph/depth-first-search/depthFirstSearch.js",
+  "test_file": "src/algorithms/graph/depth-first-search/__test__/depthFirstSearch.test.js",
+  "tested_branches": [
+    {
+      "name": "allowTraversal_fallback",
+      "line": 51,
+      "code": "callbacks.allowTraversal || allowTraversalCallback"
+    },
+    {
+      "name": "cycle_rejection",
+      "line": 46,
+      "code": "return false;"
+    },
+    {
+      "name": "enterVertex_fallback",
+      "line": 52,
+      "code": "callbacks.enterVertex || stubCallback"
+    },
+    {
+      "name": "leaveVertex_fallback",
+      "line": 53,
+      "code": "callbacks.leaveVertex || stubCallback"
+    }
+  ],
+  "fixture": {
+    "description": "Cycle A->B->C->A with isolated D",
+    "start": "A",
+    "cycle_terminates_without_visiting_D": true,
+    "caller_state_valid_afterwards": true,
+    "subsequent_call_succeeds": true
+  },
+  "total_failures": 0,
+  "failures": []
+}
