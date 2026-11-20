@@ -8,7 +8,20 @@ hashTable.set('(', ')');
 hashTable.set('[', ']');
 
 /**
- * Check if string has valid parentheses.
+ * Check if string has valid balanced parentheses using a LIFO Stack.
+ *
+ * Contract & Invariants:
+ * - Public inputs:
+ *     @param {string} parenthesesString - string of bracket characters to validate
+ * - Return value:
+ *     @return {boolean} - true if brackets are properly matched and nested,
+ *                         false otherwise.
+ * - Empty-state contract (line 31):
+ *     Empty string "" explicitly returns false by specification.
+ * - Stack LIFO Invariant:
+ *     Closing brackets are pushed as opening brackets are read; closing brackets
+ *     must match the top of stack in strict LIFO order.
+ * - External dependencies: Stack (LinkedList-backed) and HashTable.
  *
  * @param {string} parenthesesString
  * @return {boolean}

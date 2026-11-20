@@ -1,0 +1,261 @@
+{
+  "tool_versions": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python3": "Python 3.14.7"
+  },
+  "native_test_suite": {
+    "command": "npm test -- --runInBand",
+    "exit_code": 0,
+    "test_count_passed": 589,
+    "output_tail": "ASS src/algorithms/math/horner-method/__test__/hornerMethod.test.js\nPASS src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithmIterative.test.js\nPASS src/algorithms/math/factorial/__test__/factorial.test.js\nPASS src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithm.test.js\nPASS src/algorithms/math/bits/__test__/switchSign.test.js\nPASS src/algorithms/math/bits/__test__/updateBit.test.js\nPASS src/algorithms/math/bits/__test__/countSetBits.test.js\nPASS src/algorithms/math/bits/__test__/multiplyUnsigned.test.js\nPASS src/algorithms/math/bits/__test__/multiplyByTwo.test.js\nPASS src/algorithms/math/bits/__test__/isEven.test.js\nPASS src/algorithms/math/bits/__test__/getBit.test.js\nPASS src/algorithms/math/bits/__test__/fullAdder.test.js\nPASS src/algorithms/math/bits/__test__/clearBit.test.js\nPASS src/algorithms/math/bits/__test__/bitLength.test.js\nPASS src/algorithms/math/binary-floating-point/__tests__/floatAsBinaryString.test.js\nPASS src/algorithms/search/linear-search/__test__/linearSearch.test.js\nPASS src/algorithms/linked-list/traversal/__test__/traversal.test.js\nPASS src/algorithms/graph/topological-sorting/__test__/topologicalSort.test.js\nPASS src/algorithms/graph/detect-cycle/__test__/detectUndirectedCycleUsingDisjointSet.test.js\nPASS src/algorithms/graph/bridges/__test__/graphBridges.test.js\nPASS src/algorithms/cryptography/rail-fence-cipher/__test__/railFenceCipher.test.js\nPASS src/data-structures/stack/__test__/Stack.test.js\nPASS src/data-structures/queue/__test__/Queue.test.js\nPASS src/data-structures/linked-list/__test__/LinkedListNode.test.js\nPASS src/data-structures/priority-queue/__test__/PriorityQueue.test.js\nPASS src/data-structures/graph/__test__/GraphEdge.test.js\nPASS src/data-structures/hash-table/__test__/HashTable.test.js\nPASS src/data-structures/doubly-linked-list/__test__/DoublyLinkedListNode.test.js\nPASS src/data-structures/disjoint-set/__test__/DisjointSetItem.test.js\nPASS src/data-structures/disjoint-set/__test__/DisjointSetAdhoc.test.js\nPASS src/utils/comparator/__test__/Comparator.test.js\nPASS src/playground/__test__/playground.test.js\nPASS src/algorithms/uncategorized/rain-terraces/__test__/dpRainTerraces.test.js\nPASS src/algorithms/uncategorized/n-queens/__test__/QueensPosition.test.js\nPASS src/algorithms/sets/power-set/__test__/btPowerSet.test.js\nPASS src/algorithms/sets/power-set/__test__/caPowerSet.test.js\nPASS src/algorithms/math/radian/__test__/radianToDegree.test.js\nPASS src/algorithms/math/is-power-of-two/__test__/isPowerOfTwo.test.js\nPASS src/algorithms/math/horner-method/__test__/classicPolynome.test.js\nPASS src/algorithms/math/factorial/__test__/factorialRecursive.test.js\nPASS src/algorithms/math/bits/__test__/setBit.test.js\nPASS src/algorithms/math/bits/__test__/isPositive.test.js\nPASS src/algorithms/math/bits/__test__/divideByTwo.test.js\n\nTest Suites: 178 passed, 178 total\nTests:       589 passed, 589 total\nSnapshots:   0 total\nTime:        2.473 s, estimated 3 s\nRan all test suites.\n"
+  },
+  "focused_test_run": {
+    "command": "npm test -- --runInBand src/algorithms/stack/valid-parentheses/__test__/validParentheses.test.js",
+    "exit_code": 0,
+    "test_count_passed": 6,
+    "output_tail": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest --runInBand src/algorithms/stack/valid-parentheses/__test__/validParentheses.test.js\n\n(node:23216) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.\n(Use `node --trace-warnings ...` to show where the warning was created)\nPASS src/algorithms/stack/valid-parentheses/__test__/validParentheses.test.js\n\nTest Suites: 1 passed, 1 total\nTests:       6 passed, 6 total\nSnapshots:   0 total\nTime:        0.116 s, estimated 1 s\nRan all test suites matching src/algorithms/stack/valid-parentheses/__test__/validParentheses.test.js.\n"
+  },
+  "stack_fixture": {
+    "popped_order": [
+      "C",
+      "B",
+      "D",
+      "A"
+    ],
+    "expected_order": [
+      "C",
+      "B",
+      "D",
+      "A"
+    ],
+    "operation_history": [
+      {
+        "op": "push(A)",
+        "size": 1,
+        "top": "A"
+      },
+      {
+        "op": "push(B)",
+        "size": 2,
+        "top": "B"
+      },
+      {
+        "op": "push(C)",
+        "size": 3,
+        "top": "C"
+      },
+      {
+        "op": "pop()->C",
+        "size": 2,
+        "top": "B"
+      },
+      {
+        "op": "pop()->B",
+        "size": 1,
+        "top": "A"
+      },
+      {
+        "op": "push(D)",
+        "size": 2,
+        "top": "D"
+      },
+      {
+        "op": "drain()->D",
+        "size": 1,
+        "top": "A"
+      },
+      {
+        "op": "drain()->A",
+        "size": 0,
+        "top": null
+      }
+    ],
+    "empty_state_contract": "Stack returns None on pop/peek when empty; isEmpty() returns True"
+  },
+  "oracle_verification": {
+    "total_cases": 30,
+    "cases": [
+      {
+        "input": "",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Empty string (line 31 contract: returns false)"
+      },
+      {
+        "input": "()",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Simple pair ()"
+      },
+      {
+        "input": "[]",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Simple pair []"
+      },
+      {
+        "input": "{}",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Simple pair {}"
+      },
+      {
+        "input": "()[]{}",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Consecutive valid pairs"
+      },
+      {
+        "input": "{[()]}",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Nested mixed brackets"
+      },
+      {
+        "input": "((({[]})))",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Deeply nested"
+      },
+      {
+        "input": "([]{})",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Nested consecutive"
+      },
+      {
+        "input": "{()[]}",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Enclosed pairs"
+      },
+      {
+        "input": "((()))",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Triple parens"
+      },
+      {
+        "input": "[[[]]]",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Triple brackets"
+      },
+      {
+        "input": "{{{}}}",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Triple braces"
+      },
+      {
+        "input": "(())",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Double parens"
+      },
+      {
+        "input": "[[]]",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Double brackets"
+      },
+      {
+        "input": "{{}}",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Double braces"
+      },
+      {
+        "input": "()()()",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Three parens"
+      },
+      {
+        "input": "[][][]",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Three brackets"
+      },
+      {
+        "input": "{}{}{}",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Three braces"
+      },
+      {
+        "input": "([{}])",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Layered all three"
+      },
+      {
+        "input": "{[()()]}",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Nested branch pair"
+      },
+      {
+        "input": "({[]})",
+        "expected": true,
+        "oracle_result": true,
+        "note": "Inverse nesting"
+      },
+      {
+        "input": "((",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Unclosed opening parens"
+      },
+      {
+        "input": ")",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Single closing paren"
+      },
+      {
+        "input": "(]",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Mismatched closing bracket"
+      },
+      {
+        "input": "({)}",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Interleaved improper nesting"
+      },
+      {
+        "input": "([)]",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Interleaved square and round"
+      },
+      {
+        "input": "{[(])}",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Deeply interleaved invalid"
+      },
+      {
+        "input": "))((",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Reversed orientation"
+      },
+      {
+        "input": "((({[(]})))",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Complex invalid inner pair"
+      },
+      {
+        "input": "()[]{} }",
+        "expected": false,
+        "oracle_result": false,
+        "note": "Trailing unmatched token"
+      }
+    ]
+  }
+}
