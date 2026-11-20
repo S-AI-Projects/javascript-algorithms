@@ -1,0 +1,14 @@
+{
+  "task": "R51-T024",
+  "description": "Property test for InsertionSort: ordered output, multiset preserved, no mutation",
+  "source_file": "src/algorithms/sorting/insertion-sort/InsertionSort.js",
+  "test_file": "src/algorithms/sorting/insertion-sort/__test__/InsertionSort.test.js",
+  "source_contract": {
+    "clone_line": 5,
+    "return_line": 37,
+    "sort_order": "ascending (comparator.lessThan, line 18)",
+    "mutation": "none \u2014 input is cloned at line 5"
+  },
+  "total_failures": 0,
+  "failures": []
+}
