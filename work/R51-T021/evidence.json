@@ -1,0 +1,87 @@
+{
+  "tool_versions": {
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "python3": "Python 3.14.7"
+  },
+  "native_test_suite": {
+    "command": "npm test -- --runInBand",
+    "exit_code": 0,
+    "test_count_passed": 591,
+    "output_tail": "est.js\nPASS src/data-structures/trie/__test__/TrieNode.test.js\nPASS src/data-structures/stack/__test__/Stack.test.js\nPASS src/data-structures/queue/__test__/Queue.test.js\nPASS src/data-structures/priority-queue/__test__/PriorityQueue.test.js\nPASS src/data-structures/heap/__test__/MinHeap.test.js\nPASS src/data-structures/hash-table/__test__/HashTable.test.js\nPASS src/algorithms/uncategorized/square-matrix-rotation/__test__/squareMatrixRotation.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/uniquePaths.test.js\nPASS src/algorithms/uncategorized/recursive-staircase/__test__/recursiveStaircaseBF.test.js\nPASS src/algorithms/uncategorized/rain-terraces/__test__/dpRainTerraces.test.js\nPASS src/algorithms/uncategorized/jump-game/__test__/dpTopDownJumpGame.test.js\nPASS src/algorithms/uncategorized/jump-game/__test__/greedyJumpGame.test.js\nPASS src/algorithms/sets/longest-increasing-subsequence/__test__/dpLongestIncreasingSubsequence.test.js\nPASS src/algorithms/sets/longest-common-subsequence/__test__/longestCommonSubsequence.test.js\nPASS src/algorithms/sets/knapsack-problem/__test__/KnapsackItem.test.js\nPASS src/algorithms/search/binary-search/__test__/binarySearch.test.js\nPASS src/algorithms/math/radian/__test__/radianToDegree.test.js\nPASS src/algorithms/math/pascal-triangle/__test__/pascalTriangle.test.js\nPASS src/algorithms/math/fibonacci/__test__/fibonacciNth.test.js\nPASS src/algorithms/math/is-power-of-two/__test__/isPowerOfTwo.test.js\nPASS src/algorithms/math/horner-method/__test__/classicPolynome.test.js\nPASS src/algorithms/math/factorial/__test__/factorialRecursive.test.js\nPASS src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithm.test.js\nPASS src/algorithms/math/factorial/__test__/factorial.test.js\nPASS src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithmIterative.test.js\nPASS src/algorithms/math/bits/__test__/setBit.test.js\nPASS src/algorithms/math/bits/__test__/multiplyByTwo.test.js\nPASS src/algorithms/math/bits/__test__/getBit.test.js\nPASS src/algorithms/math/bits/__test__/divideByTwo.test.js\nPASS src/algorithms/math/bits/__test__/clearBit.test.js\nPASS src/algorithms/math/bits/__test__/bitLength.test.js\nPASS src/data-structures/tree/binary-search-tree/__test__/BinarySearchTree.test.js\nPASS src/data-structures/linked-list/__test__/LinkedListNode.test.js\nPASS src/data-structures/graph/__test__/GraphEdge.test.js\nPASS src/data-structures/doubly-linked-list/__test__/DoublyLinkedListNode.test.js\nPASS src/data-structures/disjoint-set/__test__/DisjointSetAdhoc.test.js\nPASS src/utils/comparator/__test__/Comparator.test.js\nPASS src/playground/__test__/playground.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/dpUniquePaths.test.js\nPASS src/algorithms/math/bits/__test__/isPositive.test.js\nPASS src/algorithms/math/bits/__test__/countSetBits.test.js\n\nTest Suites: 178 passed, 178 total\nTests:       591 passed, 591 total\nSnapshots:   0 total\nTime:        2.451 s, estimated 3 s\nRan all test suites.\n"
+  },
+  "focused_test_run": {
+    "command": "npm test -- --runInBand src/algorithms/linked-list/reverse-traversal/__test__/reverseTraversal.test.js",
+    "exit_code": 0,
+    "test_count_passed": 5,
+    "output_tail": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest --runInBand src/algorithms/linked-list/reverse-traversal/__test__/reverseTraversal.test.js\n\n(node:22361) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.\n(Use `node --trace-warnings ...` to show where the warning was created)\nPASS src/algorithms/linked-list/reverse-traversal/__test__/reverseTraversal.test.js\n\nTest Suites: 1 passed, 1 total\nTests:       5 passed, 5 total\nSnapshots:   0 total\nTime:        0.115 s, estimated 1 s\nRan all test suites matching src/algorithms/linked-list/reverse-traversal/__test__/reverseTraversal.test.js.\n"
+  },
+  "fixture_verification": [
+    {
+      "name": "three_distinct_nodes_A_B_C",
+      "inputs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "expected_traversal": [
+        "C",
+        "B",
+        "A"
+      ],
+      "actual_traversal": [
+        "C",
+        "B",
+        "A"
+      ],
+      "return_value": null,
+      "links_intact": true,
+      "values_intact": true,
+      "precondition_source": "reverseTraversal.js line 24"
+    },
+    {
+      "name": "smallest_supported_empty_list",
+      "inputs": null,
+      "expected_traversal": [],
+      "actual_traversal": [],
+      "return_value": null,
+      "precondition_source": "reverseTraversal.js line 24"
+    },
+    {
+      "name": "smallest_supported_single_node",
+      "inputs": [
+        "Solo"
+      ],
+      "expected_traversal": [
+        "Solo"
+      ],
+      "actual_traversal": [
+        "Solo"
+      ],
+      "links_intact": true,
+      "values_intact": true,
+      "precondition_source": "reverseTraversal.js line 24"
+    },
+    {
+      "name": "repeated_value_boundary_X_X_Y",
+      "inputs": [
+        "X",
+        "X",
+        "Y"
+      ],
+      "expected_traversal": [
+        "Y",
+        "X",
+        "X"
+      ],
+      "actual_traversal": [
+        "Y",
+        "X",
+        "X"
+      ],
+      "links_intact": true,
+      "values_intact": true,
+      "precondition_source": "reverseTraversal.js line 24"
+    }
+  ]
+}

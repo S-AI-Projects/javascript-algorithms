@@ -1,0 +1,24 @@
+{
+  "task": "R51-T021",
+  "description": "Lock down the contract of reverseTraversalRecursive with separate link and value assertions",
+  "source_file": "src/algorithms/linked-list/reverse-traversal/reverseTraversal.js",
+  "test_file": "src/algorithms/linked-list/reverse-traversal/__test__/reverseTraversal.test.js",
+  "contract": {
+    "function": "reverseTraversalRecursive",
+    "source_line": 24,
+    "inputs": [
+      "LinkedListNode | null",
+      "traversalCallback"
+    ],
+    "return_type": "void (undefined)",
+    "mutation": "none (values and links strictly preserved)"
+  },
+  "fixtures_tested": [
+    "A -> B -> C (ordinary)",
+    "null (empty list)",
+    "single node",
+    "X -> X -> Y (repeated-value boundary)"
+  ],
+  "total_failures": 0,
+  "failures": []
+}
