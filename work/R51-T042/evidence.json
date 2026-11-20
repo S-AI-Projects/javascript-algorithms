@@ -1,0 +1,29 @@
+{
+  "tool_versions": {
+    "node": "v24.22.1",
+    "npm": "11.19.1",
+    "python3": "Python 3.15.2"
+  },
+  "native_test_suite": {
+    "command": "npm test -- --runInBand",
+    "exit_code": 0,
+    "test_count_passed": 595,
+    "output_tail": ".js\nPASS src/algorithms/sets/knapsack-problem/__test__/KnapsackItem.test.js\nPASS src/algorithms/math/radian/__test__/degreeToRadian.test.js\nPASS src/algorithms/math/sieve-of-eratosthenes/__test__/sieveOfEratosthenes.test.js\nPASS src/algorithms/math/integer-partition/__test__/integerPartition.test.js\nPASS src/algorithms/math/is-power-of-two/__test__/isPowerOfTwoBitwise.test.js\nPASS src/algorithms/math/is-power-of-two/__test__/isPowerOfTwo.test.js\nPASS src/algorithms/math/bits/__test__/switchSign.test.js\nPASS src/algorithms/math/bits/__test__/updateBit.test.js\nPASS src/algorithms/math/bits/__test__/multiplyUnsigned.test.js\nPASS src/algorithms/math/bits/__test__/isEven.test.js\nPASS src/algorithms/math/bits/__test__/bitsDiff.test.js\nPASS src/algorithms/math/bits/__test__/clearBit.test.js\nPASS src/algorithms/math/bits/__test__/bitLength.test.js\nPASS src/algorithms/linked-list/traversal/__test__/traversal.test.js\nPASS src/algorithms/linked-list/reverse-traversal/__test__/reverseTraversal.test.js\nPASS src/data-structures/heap/__test__/Heap.test.js\nPASS src/data-structures/doubly-linked-list/__test__/DoublyLinkedListNode.test.js\nPASS src/algorithms/sorting/__test__/Sort.test.js\nPASS src/playground/__test__/playground.test.js\nPASS src/algorithms/uncategorized/n-queens/__test__/QueensPosition.test.js\nPASS src/algorithms/sets/longest-common-subsequence/__test__/longestCommonSubsequence.test.js\nPASS src/algorithms/math/pascal-triangle/__test__/pascalTriangle.test.js\nPASS src/algorithms/math/horner-method/__test__/classicPolynome.test.js\nPASS src/algorithms/math/bits/__test__/multiplyByTwo.test.js\nPASS src/algorithms/math/bits/__test__/getBit.test.js\nPASS src/algorithms/math/bits/__test__/divideByTwo.test.js\nPASS src/algorithms/math/radian/__test__/radianToDegree.test.js\nPASS src/algorithms/math/factorial/__test__/factorial.test.js\n\nTest Suites: 178 passed, 178 total\nTests:       595 passed, 595 total\nSnapshots:   0 total\nTime:        2.703 s, estimated 4 s\nRan all test suites.\n"
+  },
+  "focused_test_suite": {
+    "command": "npm test -- /Users/anjali/Assignment/javascript-algorithms/src/algorithms/graph/breadth-first-search/__test__/breadthFirstSearch.test.js",
+    "exit_code": 0,
+    "test_count_passed": 10,
+    "output": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest /Users/anjali/Assignment/javascript-algorithms/src/algorithms/graph/breadth-first-search/__test__/breadthFirstSearch.test.js\n\nPASS src/algorithms/graph/breadth-first-search/__test__/breadthFirstSearch.test.js\n\nTest Suites: 1 passed, 1 total\nTests:       10 passed, 10 total\nSnapshots:   0 total\nTime:        0.133 s, estimated 1 s\nRan all test suites matching /Users/anjali/Assignment/javascript-algorithms/src/algorithms/graph/breadth-first-search/__test__/breadthFirstSearch.test.js.\n"
+  },
+  "lint": {
+    "command": "npm run lint",
+    "exit_code": 0,
+    "output": "\n> javascript-algorithms-and-data-structures@0.0.4 lint\n> eslint ./src/**\n\n"
+  },
+  "git_diff_check": {
+    "command": "git diff --check",
+    "exit_code": 0,
+    "output": ""
+  }
+}

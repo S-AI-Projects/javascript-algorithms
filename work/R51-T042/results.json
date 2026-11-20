@@ -1,0 +1,76 @@
+{
+  "task": "R51-T042",
+  "description": "Define the supported boundaries of initCallbacks (breadthFirstSearch.js)",
+  "source_file": "src/algorithms/graph/breadth-first-search/breadthFirstSearch.js",
+  "test_file": "src/algorithms/graph/breadth-first-search/__test__/breadthFirstSearch.test.js",
+  "boundary_partitions": [
+    {
+      "partition": "valid_boundary_omitted",
+      "input": "undefined",
+      "contract": "default parameter {} attaches default allowTraversal and stubs",
+      "supported": true
+    },
+    {
+      "partition": "valid_boundary_empty",
+      "input": "{}",
+      "contract": "populates empty object with default allowTraversal and stubs",
+      "supported": true
+    },
+    {
+      "partition": "valid_boundary_partial",
+      "input": "{ enterVertex }",
+      "contract": "attaches defaults for omitted allowTraversal and leaveVertex",
+      "supported": true
+    },
+    {
+      "partition": "valid_interior_full",
+      "input": "{ allowTraversal, enterVertex, leaveVertex }",
+      "contract": "preserves all caller-provided callback functions",
+      "supported": true
+    },
+    {
+      "partition": "unsupported_boundary_null",
+      "input": "null",
+      "contract": "native property assignment throws TypeError without arbitrary error policy",
+      "supported": false
+    }
+  ],
+  "fixture_validation": {
+    "directed": {
+      "distances": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 2
+      },
+      "entered_order": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "unreachable": [
+        "E"
+      ]
+    },
+    "undirected": {
+      "distances": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 2
+      },
+      "entered_order": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "unreachable": [
+        "E"
+      ]
+    }
+  },
+  "total_failures": 0,
+  "failures": []
+}

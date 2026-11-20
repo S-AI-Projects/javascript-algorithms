@@ -13,10 +13,30 @@ import Queue from '../../../data-structures/queue/Queue';
  */
 
 /**
+ * Initializes and completes the BFS callbacks object, establishing defaults for omitted handlers.
+ *
+ * Boundary Specification & Contract:
+ * - Source contract: initCallbacks(callbacks = {}) near line 32.
+ * - Valid boundary (omitted / undefined): default parameter `{}` applies; defaults are attached.
+ * - Valid boundary (empty object `{}`): returns object populated with default handlers.
+ * - Valid boundary (partial handlers): any omitted handler is defaulted to its stub or seen-guard.
+ * - Valid interior: caller supplies custom allowTraversal, enterVertex, and/or leaveVertex.
+ * - Unsupported boundary (null / primitive): native property assignment throws TypeError without
+ *   imposing arbitrary custom error policies.
+ *
+ * Boundary Partition Table:
+ * | Partition | Input (callbacks) | Expected Behavior / Contract |
+ * |---|---|---|
+ * | Valid boundary (omitted) | undefined | Returns Callbacks with default handlers |
+ * | Valid boundary (empty) | {} | Returns Callbacks with default handlers |
+ * | Valid boundary (partial) | { enterVertex } | Default handlers attached for omitted keys |
+ * | Valid interior (full) | { enter, leave, allow } | All custom handlers preserved |
+ * | Unsupported boundary | null | Throws native TypeError |
+ *
  * @param {Callbacks} [callbacks]
  * @returns {Callbacks}
  */
-function initCallbacks(callbacks = {}) {
+export function initCallbacks(callbacks = {}) {
   const initiatedCallback = callbacks;
 
   const stubCallback = () => {};
