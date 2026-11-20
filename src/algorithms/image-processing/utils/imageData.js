@@ -10,6 +10,22 @@
 
 /**
  * Helper function that returns the color of the pixel.
+ *
+ * Contract & Specification:
+ * - Preconditions:
+ *   - Coordinate parameter {PixelCoordinate}: Destructured as { x, y } (line 33).
+ *   - Image width {number}: img.width must be positive integer (line 36).
+ *   - Channel count: cellsPerColor = 4 for RGBA channels (line 37).
+ *   - Data buffer: img.data must implement .subarray() (line 40).
+ * - Immutability: Pure read operation; does not mutate img.data or coordinate.
+ * - Return type: Uint8ClampedArray view of 4 elements representing [R, G, B, A].
+ *
+ * Representative Result:
+ * - In a 2x2 image (width = 2, height = 2) with flat data [R0,G0,B0,A0, R1,G1,B1,A1, ...],
+ *   querying coordinate { x: 1, y: 0 } computes linear index i = 0 * 2 + 1 = 1.
+ *   With cellsPerColor = 4, byte offset is [4, 8), returning img.data.subarray(4, 8)
+ *   corresponding to [R1, G1, B1, A1].
+ *
  * @param {ImageData} img
  * @param {PixelCoordinate} coordinate
  * @returns {PixelColor}

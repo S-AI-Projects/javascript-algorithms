@@ -1,0 +1,396 @@
+{
+  "task": "R51-T043",
+  "description": "Cross-check getPixel (imageData.js) against independent reference",
+  "source_file": "src/algorithms/image-processing/utils/imageData.js",
+  "test_file": "src/algorithms/image-processing/utils/__test__/imageData.test.js",
+  "preconditions": [
+    {
+      "source_line": 33,
+      "code": "export const getPixel = (img, { x, y }) => {",
+      "precondition": "Destructures coordinate parameter as { x, y }"
+    },
+    {
+      "source_line": 36,
+      "code": "const i = y * img.width + x;",
+      "precondition": "Requires numeric img.width and non-negative integer coordinates x, y"
+    },
+    {
+      "source_line": 37,
+      "code": "const cellsPerColor = 4; // RGBA",
+      "precondition": "Assumes 4 RGBA channels per pixel"
+    },
+    {
+      "source_line": 40,
+      "code": "return img.data.subarray(i * cellsPerColor, i * cellsPerColor + cellsPerColor);",
+      "precondition": "Requires img.data to implement typed array .subarray() method"
+    }
+  ],
+  "fixture_validation": {
+    "smallest_valid": {
+      "width": 1,
+      "height": 1,
+      "coord": {
+        "x": 0,
+        "y": 0
+      },
+      "expected": [
+        255,
+        128,
+        64,
+        255
+      ],
+      "actual": [
+        255,
+        128,
+        64,
+        255
+      ],
+      "preconditions": [
+        {
+          "line": 33,
+          "precondition": "Coordinate destructuring { x: 0, y: 0 }"
+        },
+        {
+          "line": 36,
+          "precondition": "Linear index i = 0 * 1 + 0 = 0"
+        },
+        {
+          "line": 37,
+          "precondition": "Channel count cellsPerColor = 4"
+        },
+        {
+          "line": 40,
+          "precondition": "Byte slice range [0, 4)"
+        }
+      ]
+    },
+    "ordinary": {
+      "width": 3,
+      "height": 3,
+      "coord": {
+        "x": 1,
+        "y": 2
+      },
+      "expected": [
+        175,
+        104,
+        33,
+        255
+      ],
+      "actual": [
+        175,
+        104,
+        33,
+        255
+      ],
+      "preconditions": [
+        {
+          "line": 33,
+          "precondition": "Coordinate destructuring { x: 1, y: 2 }"
+        },
+        {
+          "line": 36,
+          "precondition": "Linear index i = 2 * 3 + 1 = 7"
+        },
+        {
+          "line": 37,
+          "precondition": "Channel count cellsPerColor = 4"
+        },
+        {
+          "line": 40,
+          "precondition": "Byte slice range [28, 32)"
+        }
+      ]
+    }
+  },
+  "oracle_comparisons": [
+    {
+      "width": 1,
+      "height": 1,
+      "x": 0,
+      "y": 0,
+      "color": [
+        5,
+        15,
+        25,
+        35
+      ],
+      "passed": true
+    },
+    {
+      "width": 2,
+      "height": 2,
+      "x": 0,
+      "y": 0,
+      "color": [
+        5,
+        15,
+        25,
+        35
+      ],
+      "passed": true
+    },
+    {
+      "width": 2,
+      "height": 2,
+      "x": 1,
+      "y": 0,
+      "color": [
+        22,
+        46,
+        72,
+        94
+      ],
+      "passed": true
+    },
+    {
+      "width": 2,
+      "height": 2,
+      "x": 0,
+      "y": 1,
+      "color": [
+        39,
+        77,
+        119,
+        153
+      ],
+      "passed": true
+    },
+    {
+      "width": 2,
+      "height": 2,
+      "x": 1,
+      "y": 1,
+      "color": [
+        56,
+        108,
+        166,
+        212
+      ],
+      "passed": true
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "x": 0,
+      "y": 0,
+      "color": [
+        5,
+        15,
+        25,
+        35
+      ],
+      "passed": true
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "x": 1,
+      "y": 0,
+      "color": [
+        22,
+        46,
+        72,
+        94
+      ],
+      "passed": true
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "x": 2,
+      "y": 0,
+      "color": [
+        39,
+        77,
+        119,
+        153
+      ],
+      "passed": true
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "x": 0,
+      "y": 1,
+      "color": [
+        56,
+        108,
+        166,
+        212
+      ],
+      "passed": true
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "x": 1,
+      "y": 1,
+      "color": [
+        73,
+        139,
+        213,
+        15
+      ],
+      "passed": true
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "x": 2,
+      "y": 1,
+      "color": [
+        90,
+        170,
+        4,
+        74
+      ],
+      "passed": true
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "x": 0,
+      "y": 2,
+      "color": [
+        107,
+        201,
+        51,
+        133
+      ],
+      "passed": true
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "x": 1,
+      "y": 2,
+      "color": [
+        124,
+        232,
+        98,
+        192
+      ],
+      "passed": true
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "x": 2,
+      "y": 2,
+      "color": [
+        141,
+        7,
+        145,
+        251
+      ],
+      "passed": true
+    },
+    {
+      "width": 4,
+      "height": 2,
+      "x": 0,
+      "y": 0,
+      "color": [
+        5,
+        15,
+        25,
+        35
+      ],
+      "passed": true
+    },
+    {
+      "width": 4,
+      "height": 2,
+      "x": 1,
+      "y": 0,
+      "color": [
+        22,
+        46,
+        72,
+        94
+      ],
+      "passed": true
+    },
+    {
+      "width": 4,
+      "height": 2,
+      "x": 2,
+      "y": 0,
+      "color": [
+        39,
+        77,
+        119,
+        153
+      ],
+      "passed": true
+    },
+    {
+      "width": 4,
+      "height": 2,
+      "x": 3,
+      "y": 0,
+      "color": [
+        56,
+        108,
+        166,
+        212
+      ],
+      "passed": true
+    },
+    {
+      "width": 4,
+      "height": 2,
+      "x": 0,
+      "y": 1,
+      "color": [
+        73,
+        139,
+        213,
+        15
+      ],
+      "passed": true
+    },
+    {
+      "width": 4,
+      "height": 2,
+      "x": 1,
+      "y": 1,
+      "color": [
+        90,
+        170,
+        4,
+        74
+      ],
+      "passed": true
+    },
+    {
+      "width": 4,
+      "height": 2,
+      "x": 2,
+      "y": 1,
+      "color": [
+        107,
+        201,
+        51,
+        133
+      ],
+      "passed": true
+    },
+    {
+      "width": 4,
+      "height": 2,
+      "x": 3,
+      "y": 1,
+      "color": [
+        124,
+        232,
+        98,
+        192
+      ],
+      "passed": true
+    }
+  ],
+  "total_failures": 0,
+  "failures": []
+}
