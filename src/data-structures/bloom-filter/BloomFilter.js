@@ -1,3 +1,39 @@
+/**
+ * A space-efficient probabilistic set-membership filter.
+ *
+ * The decisive transition is that insertion sets the three hash positions
+ * to true. A lookup is definitely absent as soon as any of its positions
+ * is still false; with a size-one filter, all inputs share the sole bit.
+ *
+ * @example
+ * const smallest = new BloomFilter(1);
+ * console.log(JSON.stringify(smallest.getHashValues('a')));
+ * smallest.insert('a');
+ * console.log(smallest.mayContain('a'));
+ * console.log(smallest.mayContain('b'));
+ *
+ * const filter = new BloomFilter();
+ * console.log(JSON.stringify(filter.getHashValues('apple')));
+ * filter.insert('apple');
+ * console.log(JSON.stringify(filter.getHashValues('apple')
+ *   .map((index) => filter.storage.getValue(index))));
+ * console.log(JSON.stringify(filter.getHashValues('orange')));
+ * console.log(JSON.stringify(filter.getHashValues('orange')
+ *   .map((index) => filter.storage.getValue(index))));
+ * console.log(filter.mayContain('apple'));
+ * console.log(filter.mayContain('orange'));
+ *
+ * @example-output
+ * [0,0,0]
+ * true
+ * true
+ * [14,43,10]
+ * [true,true,true]
+ * [0,61,10]
+ * [false,false,true]
+ * true
+ * false
+ */
 export default class BloomFilter {
   /**
    * @param {number} size - the size of the storage.

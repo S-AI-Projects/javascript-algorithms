@@ -1,0 +1,60 @@
+{
+  "inputs": {
+    "smallest_positive_size": {
+      "size": 1,
+      "inserted": "a",
+      "queries": [
+        "a",
+        "b"
+      ]
+    },
+    "ordinary_default_size": {
+      "size": 100,
+      "inserted": "apple",
+      "queries": [
+        "apple",
+        "orange"
+      ]
+    }
+  },
+  "preconditions": {
+    "size_and_store": "BloomFilter.js:41-45",
+    "initial_false_bits": "BloomFilter.js:89-91",
+    "insertion_sets_bits": "BloomFilter.js:51-56",
+    "query_rejects_a_false_bit": "BloomFilter.js:62-73",
+    "three_hash_indexes": "BloomFilter.js:160-165"
+  },
+  "expected_example_output": [
+    "[0,0,0]",
+    "true",
+    "true",
+    "[14,43,10]",
+    "[true,true,true]",
+    "[0,61,10]",
+    "[false,false,true]",
+    "true",
+    "false"
+  ],
+  "actual_example_output": [
+    "[0,0,0]",
+    "true",
+    "true",
+    "[14,43,10]",
+    "[true,true,true]",
+    "[0,61,10]",
+    "[false,false,true]",
+    "true",
+    "false"
+  ],
+  "example_output_matches": true,
+  "focused_test_counts": {
+    "passed": 8,
+    "failed": 0,
+    "summary": "8 passed, 8 total"
+  },
+  "full_test_counts": {
+    "passed": 590,
+    "failed": 0,
+    "summary": "590 passed, 590 total"
+  }
+}
