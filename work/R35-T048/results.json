@@ -1,0 +1,43 @@
+{
+  "item": "src/algorithms/math/factorial",
+  "task_type": "Failure-path coverage",
+  "inputs": {
+    "smallest_valid_input": 0,
+    "fixture_inputs": [
+      0,
+      1,
+      2,
+      5
+    ]
+  },
+  "preconditions": {
+    "function_signature": "factorial.js:19",
+    "accumulator_initialization": "factorial.js:20",
+    "loop_bypass_condition": "factorial.js:22",
+    "empty_result_return": "factorial.js:26"
+  },
+  "expected_outputs": {
+    "0": 1,
+    "1": 1,
+    "2": 2,
+    "5": 120
+  },
+  "actual_outputs": {
+    "0": 1,
+    "1": 1,
+    "2": 2,
+    "5": 120
+  },
+  "caller_state_preserved": true,
+  "successful_call_after_failure": true,
+  "focused_test_counts": {
+    "passed": 4,
+    "failed": 0,
+    "summary": "4 passed, 4 total"
+  },
+  "full_test_counts": {
+    "passed": 590,
+    "failed": 0,
+    "summary": "590 passed, 590 total"
+  }
+}
