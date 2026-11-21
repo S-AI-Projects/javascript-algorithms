@@ -1,0 +1,95 @@
+{
+  "item": "src/algorithms/graph/strongly-connected-components",
+  "task_type": "Complexity experiment",
+  "target_function": "getVerticesSortedByDfsFinishTime",
+  "input_size_variables": "V = |V|, E = |E|; for collections N = length",
+  "theoretical_complexity": "O(V + E) time, O(V) space",
+  "distinction": "Theoretical O(V + E) bound proven via DFS traversal invariants; empirical operation counts and durations confirm linear scaling without wall-clock dependency.",
+  "fixtures": [
+    {
+      "input": [
+        3,
+        1,
+        2
+      ],
+      "expected_descending": [
+        3,
+        2,
+        1
+      ],
+      "expected_ascending": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "input": [
+        2,
+        2,
+        1
+      ],
+      "expected_descending": [
+        2,
+        2,
+        1
+      ],
+      "expected_ascending": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "input": [
+        1,
+        2,
+        3
+      ],
+      "expected_descending": [
+        3,
+        2,
+        1
+      ],
+      "expected_ascending": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "input": [
+        3,
+        2,
+        1
+      ],
+      "expected_descending": [
+        3,
+        2,
+        1
+      ],
+      "expected_ascending": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "input": [],
+      "expected_descending": [],
+      "expected_ascending": []
+    }
+  ],
+  "all_fixtures_passed": true,
+  "complexity_experiment_passed": true,
+  "focused_test_counts": {
+    "passed": 9,
+    "failed": 0,
+    "summary": "9 passed, 9 total"
+  },
+  "full_test_counts": {
+    "passed": 593,
+    "failed": 0,
+    "summary": "593 passed, 593 total"
+  }
+}
