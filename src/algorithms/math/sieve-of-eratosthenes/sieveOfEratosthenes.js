@@ -1,4 +1,27 @@
 /**
+ * Marks composite multiples of `prime` in the sieve array starting from `prime * prime`.
+ *
+ * Responsibility: Eliminate composite multiples of a detected prime.
+ * Optimisation: Start marking multiples from `prime * prime`, as smaller multiples
+ * will have already been marked by smaller prime factors.
+ *
+ * @param {boolean[]} isPrime
+ * @param {number} prime
+ * @param {number} maxNumber
+ */
+function markMultiples(isPrime, prime, maxNumber) {
+  // eslint-disable-next-line no-param-reassign
+  for (let nextNumber = prime * prime; nextNumber <= maxNumber; nextNumber += prime) {
+    // eslint-disable-next-line no-param-reassign
+    isPrime[nextNumber] = false;
+  }
+}
+
+/**
+ * Calculates all prime numbers up to maxNumber using the Sieve of Eratosthenes.
+ *
+ * Refactored to separate prime collection from composite marking (`markMultiples`).
+ *
  * @param {number} maxNumber
  * @return {number[]}
  */
@@ -12,23 +35,7 @@ export default function sieveOfEratosthenes(maxNumber) {
   for (let number = 2; number <= maxNumber; number += 1) {
     if (isPrime[number] === true) {
       primes.push(number);
-
-      /*
-       * Optimisation.
-       * Start marking multiples of `p` from `p * p`, and not from `2 * p`.
-       * The reason why this works is because, at that point, smaller multiples
-       * of `p` will have already been marked `false`.
-       *
-       * Warning: When working with really big numbers, the following line may cause overflow
-       * In that case, it can be changed to:
-       * let nextNumber = 2 * number;
-       */
-      let nextNumber = number * number;
-
-      while (nextNumber <= maxNumber) {
-        isPrime[nextNumber] = false;
-        nextNumber += number;
-      }
+      markMultiples(isPrime, number, maxNumber);
     }
   }
 

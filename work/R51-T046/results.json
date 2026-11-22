@@ -1,0 +1,77 @@
+{
+  "item": "src/algorithms/math/sieve-of-eratosthenes",
+  "task_type": "Focused refactoring",
+  "refactored_responsibility": "markMultiples (composite multiple elimination)",
+  "inputs": {
+    "fixture_inputs": [
+      1,
+      2,
+      9,
+      11,
+      12
+    ]
+  },
+  "expected_outputs": {
+    "1": [],
+    "2": [
+      2
+    ],
+    "9": [
+      2,
+      3,
+      5,
+      7
+    ],
+    "11": [
+      2,
+      3,
+      5,
+      7,
+      11
+    ],
+    "12": [
+      2,
+      3,
+      5,
+      7,
+      11
+    ]
+  },
+  "actual_outputs": {
+    "1": [],
+    "2": [
+      2
+    ],
+    "9": [
+      2,
+      3,
+      5,
+      7
+    ],
+    "11": [
+      2,
+      3,
+      5,
+      7,
+      11
+    ],
+    "12": [
+      2,
+      3,
+      5,
+      7,
+      11
+    ]
+  },
+  "caller_state_preserved": true,
+  "focused_test_counts": {
+    "passed": 3,
+    "failed": 0,
+    "summary": "3 passed, 3 total"
+  },
+  "full_test_counts": {
+    "passed": 589,
+    "failed": 0,
+    "summary": "589 passed, 589 total"
+  }
+}
