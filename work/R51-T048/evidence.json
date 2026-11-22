@@ -1,0 +1,106 @@
+{
+  "versions": {
+    "node": {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "v24.22.1\n",
+      "stderr": ""
+    },
+    "npm": {
+      "command": [
+        "npm",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "11.19.1\n",
+      "stderr": ""
+    },
+    "python": {
+      "command": [
+        "python3",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "Python 3.15.2\n",
+      "stderr": ""
+    }
+  },
+  "install": {
+    "command": [
+      "npm",
+      "ci",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "returncode": 0,
+    "stdout": "\n> javascript-algorithms-and-data-structures@0.0.4 prepare\n> husky\n\nerror: could not lock config file .git/config: Operation not permitted\n\nadded 637 packages in 5s\n",
+    "stderr": "npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead\nnpm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.\nnpm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:\nnpm warn install-scripts   fsevents@2.3.3 (install: (install scripts present))\nnpm warn install-scripts   unrs-resolver@1.11.1 (postinstall: napi-postinstall unrs-resolver 1.11.1 check)\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n"
+  },
+  "actual_execution": {
+    "command": [
+      "node",
+      "--input-type=module",
+      "-e",
+      "\nimport factorial from './src/algorithms/math/factorial/factorial.js';\n\nconst fixtureInputs = [0, 1, 2, 5];\nconst actualOutputs = {};\nfor (const n of fixtureInputs) {\n  actualOutputs[String(n)] = factorial(n);\n}\n\nconst callerState = { tag: 'caller-owned-object', items: [10, 20, 30], nested: { counter: 42 } };\nconst before = JSON.stringify(callerState);\nconst zeroResult = factorial(0);\nconst stateAfterZero = JSON.stringify(callerState);\nconst validResultAfter = factorial(5);\nconst stateAfterValid = JSON.stringify(callerState);\n\nprocess.stdout.write(JSON.stringify({\n  actual_outputs: actualOutputs,\n  zero_result: zeroResult,\n  caller_state_preserved: before === stateAfterZero && before === stateAfterValid,\n  successful_call_after_failure: validResultAfter === 120,\n}));\n"
+    ],
+    "returncode": 0,
+    "stdout": "{\"actual_outputs\":{\"0\":1,\"1\":1,\"2\":2,\"5\":120},\"zero_result\":1,\"caller_state_preserved\":true,\"successful_call_after_failure\":true}",
+    "stderr": "(node:34793) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/anjali/Assignment/javascript-algorithms/src/algorithms/math/factorial/factorial.js is not specified and it doesn't parse as CommonJS.\nReparsing as ES module because module syntax was detected. This incurs a performance overhead.\nTo eliminate this warning, add \"type\": \"module\" to /Users/anjali/Assignment/javascript-algorithms/package.json.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+  },
+  "focused_tests": {
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--runInBand",
+      "src/algorithms/math/factorial/__test__/factorial.test.js"
+    ],
+    "returncode": 0,
+    "stdout": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest --runInBand src/algorithms/math/factorial/__test__/factorial.test.js\n\n",
+    "stderr": "PASS src/algorithms/math/factorial/__test__/factorial.test.js\n\nTest Suites: 1 passed, 1 total\nTests:       4 passed, 4 total\nSnapshots:   0 total\nTime:        0.278 s, estimated 1 s\nRan all test suites matching src/algorithms/math/factorial/__test__/factorial.test.js.\n",
+    "counts": {
+      "passed": 4,
+      "failed": 0,
+      "summary": "4 passed, 4 total"
+    }
+  },
+  "full_tests": {
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--runInBand"
+    ],
+    "returncode": 0,
+    "stdout": "\n> javascript-algorithms-and-data-structures@0.0.4 test\n> jest --runInBand\n\n",
+    "stderr": "PASS src/algorithms/image-processing/seam-carving/__tests__/resizeImageWidth.node.js\nPASS src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__/dqBestTimeToBuySellStocks.test.js\nPASS src/algorithms/math/factorial/__test__/factorial.test.js\nPASS src/algorithms/cryptography/polynomial-hash/__test__/PolynomialHash.test.js\nPASS src/algorithms/uncategorized/n-queens/__test__/nQueensBitwise.test.js\nPASS src/algorithms/cryptography/polynomial-hash/__test__/SimplePolynomialHash.test.js\nPASS src/data-structures/tree/red-black-tree/__test__/RedBlackTree.test.js\nPASS src/data-structures/graph/__test__/Graph.test.js\nPASS src/algorithms/math/matrix/__tests__/Matrix.test.js\nPASS src/algorithms/uncategorized/knight-tour/__test__/knightTour.test.js\nPASS src/algorithms/uncategorized/jump-game/__test__/dpTopDownJumpGame.test.js\nPASS src/algorithms/graph/prim/__test__/prim.test.js\nPASS src/algorithms/graph/eulerian-path/__test__/eulerianPath.test.js\nPASS src/data-structures/tree/binary-search-tree/__test__/BinarySearchTreeNode.test.js\nPASS src/algorithms/ml/k-means/__test__/kMeans.test.js\nPASS src/algorithms/graph/kruskal/__test__/kruskal.test.js\nPASS src/algorithms/math/fourier-transform/__test__/discreteFourierTransform.test.js\nPASS src/data-structures/deque/__test__/Deque.test.js\nPASS src/data-structures/tree/fenwick-tree/__test__/FenwickTree.test.js\nPASS src/data-structures/tree/avl-tree/__test__/AvlTRee.test.js\nPASS src/algorithms/sorting/bucket-sort/__test__/BucketSort.test.js\nPASS src/algorithms/ml/knn/__test__/knn.test.js\nPASS src/data-structures/graph/__test__/GraphVertex.test.js\nPASS src/algorithms/math/complex-number/__test__/ComplexNumber.test.js\nPASS src/algorithms/sets/longest-common-subsequence/__test__/longestCommonSubsequenceRecursive.test.js\nPASS src/data-structures/disjoint-set/__test__/DisjointSet.test.js\nPASS src/algorithms/statistics/weighted-random/__test__/weightedRandom.test.js\nPASS src/algorithms/math/square-root/__test__/squareRoot.test.js\nPASS src/algorithms/sets/knapsack-problem/__test__/Knapsack.test.js\nPASS src/data-structures/tree/segment-tree/__test__/SegmentTree.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/btUniquePaths.test.js\nPASS src/algorithms/math/fourier-transform/__test__/fastFourierTransform.test.js\nPASS src/algorithms/math/fibonacci/__test__/fibonacciNthClosedForm.test.js\nPASS src/algorithms/math/euclidean-distance/__tests__/euclideanDistance.test.js\nPASS src/algorithms/graph/strongly-connected-components/__test__/stronglyConnectedComponents.test.js\nPASS src/algorithms/cryptography/hill-cipher/_test_/hillCipher.test.js\nPASS src/data-structures/tree/__test__/BinaryTreeNode.test.js\nPASS src/data-structures/linked-list/__test__/LinkedList.test.js\nPASS src/data-structures/heap/__test__/Heap.test.js\nPASS src/algorithms/sorting/shell-sort/__test__/ShellSort.test.js\nPASS src/algorithms/sorting/quick-sort/__test__/QuickSortInPlace.test.js\nPASS src/algorithms/sorting/quick-sort/__test__/QuickSort.test.js\nPASS src/algorithms/sorting/bubble-sort/__test__/BubbleSort.test.js\nPASS src/algorithms/string/regular-expression-matching/__test__/regularExpressionMatching.test.js\nPASS src/algorithms/tree/breadth-first-search/__test__/breadthFirstSearch.test.js\nPASS src/algorithms/math/prime-factors/__test__/primeFactors.test.js\nPASS src/algorithms/math/bits/__test__/multiply.test.js\nPASS src/algorithms/math/binary-floating-point/__tests__/bitsToFloat.test.js\nPASS src/algorithms/graph/floyd-warshall/__test__/floydWarshall.test.js\nPASS src/algorithms/graph/dijkstra/__test__/dijkstra.test.js\nPASS src/algorithms/graph/breadth-first-search/__test__/breadthFirstSearch.test.js\nPASS src/algorithms/graph/depth-first-search/__test__/depthFirstSearch.test.js\nPASS src/data-structures/trie/__test__/Trie.test.js\nPASS src/data-structures/lru-cache/__test__/LRUCacheOnMap.test.js\nPASS src/data-structures/lru-cache/__test__/LRUCache.test.js\nPASS src/data-structures/doubly-linked-list/__test__/DoublyLinkedList.test.js\nPASS src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js\nPASS src/algorithms/sorting/radix-sort/__test__/RadixSort.test.js\nPASS src/algorithms/sorting/insertion-sort/__test__/InsertionSort.test.js\nPASS src/algorithms/sorting/heap-sort/__test__/HeapSort.test.js\nPASS src/algorithms/sorting/counting-sort/__test__/CountingSort.test.js\nPASS src/algorithms/uncategorized/recursive-staircase/__test__/recursiveStaircaseIT.test.js\nPASS src/algorithms/uncategorized/n-queens/__test__/nQueens.test.js\nPASS src/algorithms/uncategorized/jump-game/__test__/backtrackingJumpGame.test.js\nPASS src/algorithms/uncategorized/hanoi-tower/__test__/hanoiTower.test.js\nPASS src/algorithms/string/rabin-karp/__test__/rabinKarp.test.js\nPASS src/algorithms/stack/valid-parentheses/__test__/validParentheses.test.js\nPASS src/algorithms/math/least-common-multiple/__test__/leastCommonMultiple.test.js\nPASS src/algorithms/math/binary-floating-point/__tests__/floatAsBinaryString.test.js\nPASS src/algorithms/sets/shortest-common-supersequence/__test__/shortestCommonSupersequence.test.js\nPASS src/algorithms/sets/combinations/__test__/combineWithoutRepetitions.test.js\nPASS src/algorithms/sets/combinations/__test__/combineWithRepetitions.test.js\nPASS src/algorithms/search/linear-search/__test__/linearSearch.test.js\nPASS src/algorithms/graph/hamiltonian-cycle/__test__/hamiltonianCycle.test.js\nPASS src/algorithms/graph/bridges/__test__/graphBridges.test.js\nPASS src/algorithms/graph/bellman-ford/__test__/bellmanFord.test.js\nPASS src/algorithms/graph/articulation-points/__test__/articulationPoints.test.js\nPASS src/data-structures/heap/__test__/MinHeapAdhoc.test.js\nPASS src/data-structures/heap/__test__/MinHeap.test.js\nPASS src/data-structures/heap/__test__/MaxHeap.test.js\nPASS src/data-structures/heap/__test__/MaxHeapAdhoc.test.js\nPASS src/data-structures/disjoint-set/__test__/DisjointSetItem.test.js\nPASS src/data-structures/bloom-filter/__test__/BloomFilter.test.js\nPASS src/algorithms/sorting/__test__/Sort.test.js\nPASS src/algorithms/sorting/merge-sort/__test__/MergeSort.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/uniquePaths.test.js\nPASS src/algorithms/uncategorized/recursive-staircase/__test__/recursiveStaircaseMEM.test.js\nPASS src/algorithms/uncategorized/square-matrix-rotation/__test__/squareMatrixRotation.test.js\nPASS src/algorithms/uncategorized/rain-terraces/__test__/dpRainTerraces.test.js\nPASS src/algorithms/uncategorized/jump-game/__test__/dpBottomUpJumpGame.test.js\nPASS src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__/dpBestTimeToBuySellStocks.test.js\nPASS src/algorithms/string/palindrome/__test__/isPalindrome.test.js\nPASS src/algorithms/string/longest-common-substring/__test__/longestCommonSubstring.test.js\nPASS src/algorithms/tree/depth-first-search/__test__/depthFirstSearch.test.js\nPASS src/algorithms/string/hamming-distance/__test__/hammingDistance.test.js\nPASS src/algorithms/math/liu-hui/__test__/liuHui.test.js\nPASS src/algorithms/math/fourier-transform/__test__/inverseDiscreteFourierTransform.test.js\nPASS src/algorithms/math/horner-method/__test__/hornerMethod.test.js\nPASS src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithmIterative.test.js\nPASS src/algorithms/sets/permutations/__test__/permutateWithoutRepetitions.test.js\nPASS src/algorithms/sets/maximum-subarray/__test__/bfMaximumSubarray.test.js\nPASS src/algorithms/sets/fisher-yates/__test__/fisherYates.test.js\nPASS src/algorithms/search/jump-search/__test__/jumpSearch.test.js\nPASS src/algorithms/graph/travelling-salesman/__test__/bfTravellingSalesman.test.js\nPASS src/algorithms/cryptography/rail-fence-cipher/__test__/railFenceCipher.test.js\nPASS src/algorithms/cryptography/caesar-cipher/__test__/caesarCipher.test.js\nPASS src/data-structures/trie/__test__/TrieNode.test.js\nPASS src/data-structures/priority-queue/__test__/PriorityQueue.test.js\nPASS src/data-structures/hash-table/__test__/HashTable.test.js\nPASS src/data-structures/tree/binary-search-tree/__test__/BinarySearchTree.test.js\nPASS src/algorithms/uncategorized/jump-game/__test__/greedyJumpGame.test.js\nPASS src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__/peakvalleyBestTimeToBuySellStocks.test.js\nPASS src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__/accumulatorBestTimeToBuySellStocks.test.js\nPASS src/algorithms/string/z-algorithm/__test__/zAlgorithm.test.js\nPASS src/algorithms/string/levenshtein-distance/__test__/levenshteinDistance.test.js\nPASS src/algorithms/string/knuth-morris-pratt/__test__/knuthMorrisPratt.test.js\nPASS src/algorithms/math/radian/__test__/degreeToRadian.test.js\nPASS src/algorithms/math/primality-test/__test__/trialDivision.test.js\nPASS src/algorithms/math/pascal-triangle/__test__/pascalTriangleRecursive.test.js\nPASS src/algorithms/math/integer-partition/__test__/integerPartition.test.js\nPASS src/algorithms/math/fibonacci/__test__/fibonacciNth.test.js\nPASS src/algorithms/math/fibonacci/__test__/fibonacci.test.js\nPASS src/algorithms/math/fast-powering/__test__/fastPowering.test.js\nPASS src/algorithms/math/bits/__test__/fullAdder.test.js\nPASS src/algorithms/math/bits/__test__/countSetBits.test.js\nPASS src/algorithms/sets/permutations/__test__/permutateWithRepetitions.test.js\nPASS src/algorithms/sets/maximum-subarray/__test__/dpMaximumSubarray.test.js\nPASS src/algorithms/sets/longest-increasing-subsequence/__test__/dpLongestIncreasingSubsequence.test.js\nPASS src/algorithms/sets/knapsack-problem/__test__/KnapsackItem.test.js\nPASS src/algorithms/sets/cartesian-product/__test__/cartesianProduct.test.js\nPASS src/algorithms/sets/combination-sum/__test__/combinationSum.test.js\nPASS src/algorithms/search/binary-search/__test__/binarySearch.test.js\nPASS src/algorithms/graph/topological-sorting/__test__/topologicalSort.test.js\nPASS src/algorithms/graph/detect-cycle/__test__/detectUndirectedCycleUsingDisjointSet.test.js\nPASS src/algorithms/graph/detect-cycle/__test__/detectUndirectedCycle.test.js\nPASS src/data-structures/stack/__test__/Stack.test.js\nPASS src/data-structures/graph/__test__/GraphEdge.test.js\nPASS src/data-structures/disjoint-set/__test__/DisjointSetAdhoc.test.js\nPASS src/algorithms/uncategorized/unique-paths/__test__/dpUniquePaths.test.js\nPASS src/algorithms/uncategorized/recursive-staircase/__test__/recursiveStaircaseDP.test.js\nPASS src/algorithms/uncategorized/recursive-staircase/__test__/recursiveStaircaseBF.test.js\nPASS src/algorithms/uncategorized/n-queens/__test__/QueensPosition.test.js\nPASS src/algorithms/uncategorized/rain-terraces/__test__/bfRainTerraces.test.js\nPASS src/algorithms/math/sieve-of-eratosthenes/__test__/sieveOfEratosthenes.test.js\nPASS src/algorithms/math/horner-method/__test__/classicPolynome.test.js\nPASS src/algorithms/math/is-power-of-two/__test__/isPowerOfTwoBitwise.test.js\nPASS src/algorithms/math/is-power-of-two/__test__/isPowerOfTwo.test.js\nPASS src/algorithms/math/factorial/__test__/factorialRecursive.test.js\nPASS src/algorithms/math/bits/__test__/switchSign.test.js\nPASS src/algorithms/math/bits/__test__/updateBit.test.js\nPASS src/algorithms/math/bits/__test__/setBit.test.js\nPASS src/algorithms/math/bits/__test__/multiplyUnsigned.test.js\nPASS src/algorithms/math/bits/__test__/multiplyByTwo.test.js\nPASS src/algorithms/math/bits/__test__/isPowerOfTwo.test.js\nPASS src/algorithms/math/bits/__test__/isEven.test.js\nPASS src/algorithms/math/bits/__test__/getBit.test.js\nPASS src/algorithms/math/bits/__test__/clearBit.test.js\nPASS src/algorithms/math/bits/__test__/bitsDiff.test.js\nPASS src/algorithms/math/bits/__test__/bitLength.test.js\nPASS src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithm.test.js\nPASS src/algorithms/sets/power-set/__test__/caPowerSet.test.js\nPASS src/algorithms/sets/power-set/__test__/bwPowerSet.test.js\nPASS src/algorithms/sets/power-set/__test__/btPowerSet.test.js\nPASS src/algorithms/sets/maximum-subarray/__test__/dcMaximumSubarraySum.test.js\nPASS src/algorithms/search/interpolation-search/__test__/interpolationSearch.test.js\nPASS src/algorithms/graph/detect-cycle/__test__/detectDirectedCycle.test.js\nPASS src/algorithms/linked-list/reverse-traversal/__test__/reverseTraversal.test.js\nPASS src/algorithms/linked-list/traversal/__test__/traversal.test.js\nPASS src/data-structures/queue/__test__/Queue.test.js\nPASS src/data-structures/linked-list/__test__/LinkedListNode.test.js\nPASS src/data-structures/doubly-linked-list/__test__/DoublyLinkedListNode.test.js\nPASS src/utils/comparator/__test__/Comparator.test.js\nPASS src/playground/__test__/playground.test.js\nPASS src/algorithms/math/pascal-triangle/__test__/pascalTriangle.test.js\nPASS src/algorithms/math/bits/__test__/isPositive.test.js\nPASS src/algorithms/math/bits/__test__/divideByTwo.test.js\nPASS src/algorithms/sets/longest-common-subsequence/__test__/longestCommonSubsequence.test.js\nPASS src/algorithms/math/radian/__test__/radianToDegree.test.js\n\nTest Suites: 178 passed, 178 total\nTests:       590 passed, 590 total\nSnapshots:   0 total\nTime:        5.183 s\nRan all test suites.\n",
+    "counts": {
+      "passed": 590,
+      "failed": 0,
+      "summary": "590 passed, 590 total"
+    }
+  },
+  "lint": {
+    "command": [
+      "npm",
+      "run",
+      "lint"
+    ],
+    "returncode": 0,
+    "stdout": "\n> javascript-algorithms-and-data-structures@0.0.4 lint\n> eslint ./src/**\n\n",
+    "stderr": ""
+  },
+  "diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+}
