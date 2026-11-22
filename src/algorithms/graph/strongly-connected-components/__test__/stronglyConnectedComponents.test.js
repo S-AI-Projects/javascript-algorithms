@@ -1,7 +1,9 @@
 import GraphVertex from '../../../../data-structures/graph/GraphVertex';
 import GraphEdge from '../../../../data-structures/graph/GraphEdge';
 import Graph from '../../../../data-structures/graph/Graph';
-import stronglyConnectedComponents from '../stronglyConnectedComponents';
+import stronglyConnectedComponents, {
+  getVerticesSortedByDfsFinishTime,
+} from '../stronglyConnectedComponents';
 
 describe('stronglyConnectedComponents', () => {
   it('should detect strongly connected components in simple graph', () => {
@@ -125,5 +127,63 @@ describe('stronglyConnectedComponents', () => {
     expect(components.length).toBe(2);
     expect(components[0].map((vertex) => vertex.getKey()).sort()).toEqual(['A', 'B', 'C']);
     expect(components[1].map((vertex) => vertex.getKey())).toEqual(['D']);
+  });
+});
+
+describe('getVerticesSortedByDfsFinishTime scaling and correctness fixtures', () => {
+  it('correctly processes the smallest supported collection (empty)', () => {
+    const emptyArrayResult = getVerticesSortedByDfsFinishTime([]);
+    expect(emptyArrayResult.isEmpty()).toBe(true);
+    expect(emptyArrayResult.toArray()).toEqual([]);
+
+    const emptyGraph = new Graph(true);
+    const emptyGraphResult = getVerticesSortedByDfsFinishTime(emptyGraph);
+    expect(emptyGraphResult.isEmpty()).toBe(true);
+    expect(emptyGraphResult.toArray()).toEqual([]);
+  });
+
+  it('orders fixture [3, 1, 2] descending according to finish-time stack interface', () => {
+    const stack = getVerticesSortedByDfsFinishTime([3, 1, 2]);
+    expect(stack.toArray()).toEqual([3, 2, 1]);
+    expect(stack.pop()).toBe(3);
+    expect(stack.pop()).toBe(2);
+    expect(stack.pop()).toBe(1);
+  });
+
+  it('orders fixture [2, 2, 1] descending according to finish-time stack interface', () => {
+    const stack = getVerticesSortedByDfsFinishTime([2, 2, 1]);
+    expect(stack.toArray()).toEqual([2, 2, 1]);
+    expect(stack.pop()).toBe(2);
+    expect(stack.pop()).toBe(2);
+    expect(stack.pop()).toBe(1);
+  });
+
+  it('orders already ordered [1, 2, 3] descending according to finish-time stack interface', () => {
+    const stack = getVerticesSortedByDfsFinishTime([1, 2, 3]);
+    expect(stack.toArray()).toEqual([3, 2, 1]);
+    expect(stack.pop()).toBe(3);
+    expect(stack.pop()).toBe(2);
+    expect(stack.pop()).toBe(1);
+  });
+
+  it('orders reversed [3, 2, 1] descending according to finish-time stack interface', () => {
+    const stack = getVerticesSortedByDfsFinishTime([3, 2, 1]);
+    expect(stack.toArray()).toEqual([3, 2, 1]);
+    expect(stack.pop()).toBe(3);
+    expect(stack.pop()).toBe(2);
+    expect(stack.pop()).toBe(1);
+  });
+
+  it('correctly orders a directed graph fixture by DFS finish time', () => {
+    const v1 = new GraphVertex('1');
+    const v2 = new GraphVertex('2');
+    const v3 = new GraphVertex('3');
+    const graph = new Graph(true);
+    graph.addEdge(new GraphEdge(v3, v2));
+    graph.addEdge(new GraphEdge(v2, v1));
+
+    const stack = getVerticesSortedByDfsFinishTime(graph);
+    const keys = stack.toArray().map((v) => v.getKey());
+    expect(keys).toEqual(['3', '2', '1']);
   });
 });
