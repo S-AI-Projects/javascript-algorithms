@@ -1,0 +1,37 @@
+{
+  "item": "src/algorithms/math/radian",
+  "task_type": "Deterministic execution",
+  "inputs": {
+    "smallest_valid_input": 0,
+    "ordinary_input": 180,
+    "fixture_inputs": [
+      0,
+      180
+    ]
+  },
+  "preconditions": {
+    "function_signature": "degreeToRadian.js:14",
+    "pure_return_conversion": "degreeToRadian.js:15",
+    "observable_dependencies": "none"
+  },
+  "expected_outputs": {
+    "0": 0.0,
+    "180": 3.141592653589793
+  },
+  "actual_outputs": {
+    "0": 0,
+    "180": 3.141592653589793
+  },
+  "repeatable_execution": true,
+  "caller_state_preserved": true,
+  "focused_test_counts": {
+    "passed": 4,
+    "failed": 0,
+    "summary": "4 passed, 4 total"
+  },
+  "full_test_counts": {
+    "passed": 590,
+    "failed": 0,
+    "summary": "590 passed, 590 total"
+  }
+}
